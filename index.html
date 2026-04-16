@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Teacher Dashboard · Motion in a straight line · Grade 10</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fc;
+      color: #1e293b;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* header */
+    .header {
+      margin-bottom: 28px;
+    }
+
+    .header h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .header h1 i {
+      color: #3b82f6;
+      background: #e0f2fe;
+      padding: 10px;
+      border-radius: 16px;
+    }
+
+    .sub {
+      color: #475569;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* control panel — grade, lesson, topic */
+    .control-panel {
+      background: white;
+      border-radius: 24px;
+      padding: 20px 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 20px 30px;
+    }
+
+    .selector-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 180px;
+    }
+
+    .selector-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .selector-group select {
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 18px;
+      color: #0f172a;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .selector-group select:hover {
+      border-color: #94a3b8;
+      background: #ffffff;
+    }
+
+    .selector-group select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .topic-badge {
+      display: inline-block;
+      background: #eef2ff;
+      color: #2563eb;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 12px;
+    }
+
+    /* video grid */
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-title h2 {
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: #0f172a;
+    }
+
+    .video-count {
+      background: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.03);
+      border: 1px solid #e9eef3;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+      border-color: #bdd3ff;
+    }
+
+    .thumbnail {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #0b1120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .video-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .play-icon {
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      font-size: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 1px solid #ffffff50;
+    }
+
+    .card-content {
+      padding: 18px 16px 20px;
+    }
+
+    .video-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .video-meta i {
+      font-size: 14px;
+      color: #3b82f6;
+    }
+
+    .badge {
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    /* fullscreen player overlay */
+    .fullscreen-player {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fullscreen-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close-fullscreen {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: rgba(20,20,30,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #ffffff30;
+      color: white;
+      border-radius: 50px;
+      padding: 12px 18px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+      border: none;
+    }
+
+    .close-fullscreen:hover {
+      background: #1e293b;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 32px;
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #62748c;
+      text-align: center;
+      border-top: 1px solid #dce3ec;
+      padding-top: 24px;
+    }
+
+    i {
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="header">
+    <h1>
+      <i class="fas fa-chalkboard-teacher"></i> 
+      Physics Dashboard · Grade 10
+      <span class="topic-badge"><i class="fas fa-arrow-right"></i> Motion in a straight line</span>
+    </h1>
+    <div class="sub">Select topic → click any video to play fullscreen</div>
+  </div>
+
+  <!-- Control row: grade, lesson, topic (fully dynamic) -->
+  <div class="control-panel">
+    <div class="selector-group">
+      <label><i class="fas fa-graduation-cap"></i> Grade</label>
+      <select id="gradeSelect">
+        <option value="10" selected>Grade 10</option>
+        <!-- future grades can be added here -->
+      </select>
+    </div>
+    <div class="selector-group">
+      <label><i class="fas fa-book-open"></i> Lesson</label>
+      <select id="lessonSelect">
+        <option value="motion" selected>2. Motion in a straight line</option>
+      </select>
+    </div>
+    <div class="selector-group" style="flex:2; min-width:240px;">
+      <label><i class="fas fa-tags"></i> Topic</label>
+      <select id="topicSelect"></select>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 10px;">
+      <span style="background:#dbeafe; padding:8px 18px; border-radius:40px; font-weight:500;"><i class="fas fa-video"></i> <span id="videoCountBadge">0</span> videos</span>
+    </div>
+  </div>
+
+  <!-- Video grid section -->
+  <div class="section-title">
+    <h2 id="currentTopicTitle">Distance and displacement</h2>
+    <div class="video-count" id="videoCountDisplay">📹 3 videos</div>
+  </div>
+  <div id="videoGridContainer" class="video-grid">
+    <!-- dynamic cards -->
+  </div>
+
+  <!-- empty / fallback -->
+  <div id="emptyMessage" class="empty-state" style="display: none;">
+    <i class="fas fa-film" style="font-size: 48px; opacity: 0.5; margin-bottom: 16px;"></i>
+    <h3>No videos for this topic</h3>
+    <p>Select another topic from the list.</p>
+  </div>
+  
+  <div class="footer-note">
+    ⚡ Click any card — video plays in fullscreen • Press ESC or use close button to exit
+  </div>
+</div>
+
+<!-- Fullscreen video overlay -->
+<div id="fullscreenOverlay" class="fullscreen-player">
+  <button class="close-fullscreen" id="closeFullscreenBtn"><i class="fas fa-times"></i> Exit fullscreen</button>
+  <iframe id="youtubeIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+<script>
+  (function(){
+    "use strict";
+
+    // ---------- DATA (Grade 10, Motion in a straight line) ----------
+    // All YouTube links from the prompt, mapped to topics.
+    const topicsData = {
+      "2.1 Distance and displacement": [
+        { title: "Distance & displacement · Short", url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz" },
+        { title: "Distance & displacement · Explanation", url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx" },
+        { title: "Distance & displacement · Detailed", url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu" }
+      ],
+      "2.2 Speed": [
+        { title: "Speed · Concept", url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V" },
+        { title: "Speed · Examples", url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU" },
+        { title: "Speed · Short", url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx" }
+      ],
+      "2.3 Velocity": [
+        { title: "Velocity · Explained", url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH" },
+        { title: "Velocity · Short", url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS" }
+      ],
+      "2.4 Acceleration": [
+        { title: "Acceleration · Full lesson", url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx" }
+      ],
+      "2.5 Displacement - Time graphs": [
+        { title: "Displacement-Time graph (1)", url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD" },
+        { title: "Displacement-Time graph (2)", url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH" }
+      ],
+      "2.6 Velocity - Time graphs": [
+        { title: "Velocity-Time graph", url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw" }
+      ],
+      "2.7 Gravitational acceleration": [
+        { title: "Gravitational acceleration", url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS" }
+      ]
+    };
+
+    // Helper: extract YouTube ID from various URL formats
+    function extractYouTubeID(url) {
+      if (!url) return null;
+      let id = null;
+      // youtu.be/...
+      if (url.includes('youtu.be/')) {
+        const parts = url.split('youtu.be/')[1];
+        id = parts.split(/[?&]/)[0];
+      } 
+      // youtube.com/shorts/...
+      else if (url.includes('youtube.com/shorts/')) {
+        const parts = url.split('shorts/')[1];
+        id = parts.split(/[?&]/)[0];
+      }
+      // youtube.com/watch?v= or embed
+      else {
+        const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+        const match = url.match(regExp);
+        if (match) id = match[1];
+      }
+      return id ? id.split('?')[0].split('&')[0] : null;
+    }
+
+    // Build enhanced video objects with id and thumbnail
+    function buildVideoObjects(topicName) {
+      const rawVideos = topicsData[topicName] || [];
+      return rawVideos.map((v, index) => {
+        const videoId = extractYouTubeID(v.url);
+        return {
+          ...v,
+          id: videoId,
+          thumbnail: videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null,
+          fallbackTitle: v.title || `${topicName} video ${index+1}`
+        };
+      }).filter(v => v.id !== null); // only videos with valid id
+    }
+
+    // DOM elements
+    const gradeSelect = document.getElementById('gradeSelect');
+    const lessonSelect = document.getElementById('lessonSelect');
+    const topicSelect = document.getElementById('topicSelect');
+    const videoGrid = document.getElementById('videoGridContainer');
+    const emptyMsg = document.getElementById('emptyMessage');
+    const currentTopicTitle = document.getElementById('currentTopicTitle');
+    const videoCountDisplay = document.getElementById('videoCountDisplay');
+    const videoCountBadge = document.getElementById('videoCountBadge');
+
+    const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    const closeBtn = document.getElementById('closeFullscreenBtn');
+
+    // State
+    let currentVideos = [];
+
+    // ---------- Populate topic dropdown ----------
+    function populateTopics() {
+      const topics = Object.keys(topicsData);
+      topicSelect.innerHTML = '';
+      topics.forEach(topic => {
+        const option = document.createElement('option');
+        option.value = topic;
+        option.textContent = topic;
+        topicSelect.appendChild(option);
+      });
+      if (topics.length > 0) {
+        topicSelect.value = topics[0];
+      }
+    }
+
+    // Render video cards for selected topic
+    function renderVideosForTopic(topic) {
+      const videoItems = buildVideoObjects(topic);
+      currentVideos = videoItems;
+      
+      // update title and counts
+      currentTopicTitle.textContent = topic;
+      const count = videoItems.length;
+      videoCountDisplay.textContent = `📹 ${count} video${count !== 1 ? 's' : ''}`;
+      videoCountBadge.textContent = count;
+
+      if (count === 0) {
+        videoGrid.style.display = 'none';
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      
+      videoGrid.style.display = 'grid';
+      emptyMsg.style.display = 'none';
+      
+      let html = '';
+      videoItems.forEach((video, idx) => {
+        const thumbUrl = video.thumbnail || '';
+        const title = video.title || video.fallbackTitle;
+        // detect if it's a short (just for badge)
+        const isShort = video.url.includes('/shorts/') || video.url.includes('youtube.com/shorts');
+        
+        html += `
+          <div class="video-card" data-video-id="${video.id}" data-video-title="${title.replace(/"/g, '&quot;')}">
+            <div class="thumbnail">
+              ${thumbUrl ? `<img src="${thumbUrl}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
+              <div class="play-overlay">
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="video-title">${title}</div>
+              <div class="video-meta">
+                <i class="fab fa-youtube"></i> 
+                <span>YouTube</span>
+                ${isShort ? '<span class="badge"><i class="fas fa-bolt"></i> SHORT</span>' : '<span class="badge">video</span>'}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      videoGrid.innerHTML = html;
+
+      // Attach click listeners to each card (fullscreen play)
+      document.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          const videoId = card.dataset.videoId;
+          if (videoId) {
+            playVideoFullscreen(videoId);
+          }
+        });
+      });
+    }
+
+    // ---------- Fullscreen playback ----------
+    function playVideoFullscreen(videoId) {
+      if (!videoId) return;
+      
+      // Set embed URL with autoplay
+      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      youtubeIframe.src = embedUrl;
+      
+      // Show overlay
+      fullscreenOverlay.style.display = 'flex';
+      
+      // Request fullscreen on the overlay container
+      const elem = fullscreenOverlay;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(err => {
+          console.warn("Fullscreen request failed, playing inline.");
+        });
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    }
+
+    // Close fullscreen and stop video
+    function exitFullscreenAndHide() {
+      // Exit fullscreen if active
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(()=>{});
+      } else if (document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+      } else if (document.msFullscreenElement) {
+        document.msExitFullscreen();
+      }
+      
+      // Clear iframe src to stop playback
+      youtubeIframe.src = '';
+      fullscreenOverlay.style.display = 'none';
+    }
+
+    // Handle fullscreen change (if user presses ESC)
+    function onFullscreenChange() {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        // exited fullscreen -> hide overlay and stop video
+        youtubeIframe.src = '';
+        fullscreenOverlay.style.display = 'none';
+      }
+    }
+
+    // ---------- Event listeners ----------
+    function init() {
+      populateTopics();
+      
+      // Initial render (first topic)
+      const initialTopic = topicSelect.value;
+      renderVideosForTopic(initialTopic);
+
+      // Topic change
+      topicSelect.addEventListener('change', (e) => {
+        renderVideosForTopic(e.target.value);
+      });
+
+      // Grade / Lesson are static for this demo, but we keep listeners for future
+      gradeSelect.addEventListener('change', () => {
+        // only grade 10 present, but could be extended
+        // For now, do nothing, but we can re-render if needed
+      });
+      
+      lessonSelect.addEventListener('change', () => {
+        // currently only 'motion', but if extended, reload topics
+      });
+
+      // Close button
+      closeBtn.addEventListener('click', exitFullscreenAndHide);
+
+      // Fullscreen change events
+      document.addEventListener('fullscreenchange', onFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+      document.addEventListener('msfullscreenchange', onFullscreenChange);
+      
+      // Safety: if overlay is hidden but iframe still plays, clear on any exit
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && fullscreenOverlay.style.display === 'flex') {
+          // The fullscreenchange will handle, but we can also force stop
+          setTimeout(() => {
+            if (!document.fullscreenElement) {
+              youtubeIframe.src = '';
+              fullscreenOverlay.style.display = 'none';
+            }
+          }, 50);
+        }
+      });
+    }
+
+    // Additional: make video count badge update on render already done.
+    // For robustness, when window resizes etc no problem.
+
+    // Start everything
+    init();
+
+    // (Optional) If teacher wants to click on grade/lesson but they are fixed, no change.
+    // Also expose a small helper: you can add more grades later easily.
+  })();
+</script>
+</body>
+</html>
