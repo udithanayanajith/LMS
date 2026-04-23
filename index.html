@@ -3,159 +3,82 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Teacher Dashboard · Science · Grades 7–10</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }:root {
-    --primary: #3b82f6;
-    --primary-dark: #1e40af;
-    --primary-light: #dbeafe;
-    --accent: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --dark: #0f172a;
-    --light: #f1f5f9;
-    --text-main: #0f172a;
-    --text-secondary: #475569;
-    --border: #e2e8f0;
-    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
-    --bg-card: white;
-    --bg-control: white;
-    --select-bg: #f8fafc;
-    --select-bg-light: #f1f5f9;
-    --grade-primary: #3b82f6;
-    --grade-primary-light: #dbeafe;
-  }
-
-  html.dark-mode {
-    --dark: #f1f5f9;
-    --light: #1e293b;
-    --text-main: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --border: #334155;
-    --bg-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-    --bg-card: #1e293b;
-    --bg-control: #1e293b;
-    --select-bg: #0f172a;
-    --select-bg-light: #1e293b;
-    --primary-light: #3b82f6;
-  }
-
-  .grade-6 {
-    --grade-primary: #10b981;
-    --grade-primary-light: #d1fae5;
-    --grade-text-color: #065f46;
-  }
-  html.dark-mode .grade-6 {
-    --grade-primary: #10b981;
-    --grade-primary-light: #059669;
-    --grade-text-color: #d1fae5;
-  }
-  .grade-7 {
-    --grade-primary: #8b5cf6;
-    --grade-primary-light: #ede9fe;
-    --grade-text-color: #4c1d95;
-  }
-  html.dark-mode .grade-7 {
-    --grade-primary: #a78bfa;
-    --grade-primary-light: #6d28d9;
-    --grade-text-color: #ede9fe;
-  }
-  .grade-8 {
-    --grade-primary: #f59e0b;
-    --grade-primary-light: #fef3c7;
-    --grade-text-color: #78350f;
-  }
-  html.dark-mode .grade-8 {
-    --grade-primary: #fbbf24;
-    --grade-primary-light: #b45309;
-    --grade-text-color: #fef3c7;
-  }
-  .grade-9 {
-    --grade-primary: #ef4444;
-    --grade-primary-light: #fee2e2;
-    --grade-text-color: #7f1d1d;
-  }
-  html.dark-mode .grade-9 {
-    --grade-primary: #f87171;
-    --grade-primary-light: #991b1b;
-    --grade-text-color: #fee2e2;
-  }
-  .grade-10 {
-    --grade-primary: #3b82f6;
-    --grade-primary-light: #dbeafe;
-    --grade-text-color: #0c2340;
-  }
-  html.dark-mode .grade-10 {
-    --grade-primary: #60a5fa;
-    --grade-primary-light: #1e40af;
-    --grade-text-color: #dbeafe;
-  }
-  .grade-11 {
-    --grade-primary: #ec4899;
-    --grade-primary-light: #fce7f3;
-    --grade-text-color: #500724;
-  }
-  html.dark-mode .grade-11 {
-    --grade-primary: #f472b6;
-    --grade-primary-light: #831843;
-    --grade-text-color: #fce7f3;
-  }
-
-  body {
-    font-family: "Inter", sans-serif;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --accent: #10b981;
+        --dark: #0f172a;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --border: #e2e8f0;
+        --bg-main: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
+        --bg-card: #ffffff;
+        --bg-control: #ffffff;
+        --select-bg: #f8fafc;
+        --select-bg-light: #f1f5f9;
+        --grade-primary: #3b82f6;
+        --grade-primary-light: #dbeafe;
+        --grade-text-color: #0c2340;
+      }
+      html.dark-mode {
+        --dark: #f1f5f9;
+        --text-main: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --border: #334155;
+        --bg-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        --bg-card: #1e293b;
+        --bg-control: #1e293b;
+        --select-bg: #0f172a;
+        --select-bg-light: #1e293b;
+      }
+      .grade-7 { --grade-primary: #8b5cf6; --grade-primary-light: #ede9fe; --grade-text-color: #4c1d95; }
+      .grade-8 { --grade-primary: #f59e0b; --grade-primary-light: #fef3c7; --grade-text-color: #78350f; }
+      .grade-9 { --grade-primary: #ef4444; --grade-primary-light: #fee2e2; --grade-text-color: #7f1d1d; }
+      .grade-10 { --grade-primary: #3b82f6; --grade-primary-light: #dbeafe; --grade-text-color: #0c2340; }
+      html.dark-mode .grade-7 { --grade-primary: #a78bfa; --grade-primary-light: #6d28d9; --grade-text-color: #ede9fe; }
+      html.dark-mode .grade-8 { --grade-primary: #fbbf24; --grade-primary-light: #b45309; --grade-text-color: #fef3c7; }
+      html.dark-mode .grade-9 { --grade-primary: #f87171; --grade-primary-light: #991b1b; --grade-text-color: #fee2e2; }
+      html.dark-mode .grade-10 { --grade-primary: #60a5fa; --grade-primary-light: #1e40af; --grade-text-color: #dbeafe; }body {
+    font-family: Inter, sans-serif;
     background: var(--bg-main);
     color: var(--text-main);
     padding: 20px;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
-
-  .dashboard {
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
+  .dashboard { max-width: 1400px; margin: 0 auto; width: 100%; }
   .header {
     margin-bottom: 32px;
-    animation: slideDown 0.6s ease-out;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
   }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .header-content { flex: 1; }
+  .header h1 {
+    font-weight: 700;
+    font-size: 2.3rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
   }
-
+  .header h1 i {
+    color: white;
+    background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+    padding: 12px 14px;
+    border-radius: 18px;
+    font-size: 1.8rem;
+  }
+  .sub { color: var(--text-secondary); margin-top: 8px; font-weight: 500; font-size: 0.95rem; }
   .theme-toggle-btn {
     background: var(--primary);
     border: none;
@@ -164,509 +87,128 @@
     height: 56px;
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 1.4rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-    margin-top: 4px;
   }
-
-  .theme-toggle-btn:hover {
-    transform: scale(1.1) rotate(20deg);
-    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
-  }
-
-  .header-content {
-    flex: 1;
-  }
-
-  .header h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-    letter-spacing: -0.02em;
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-  }
-
-  .header h1 i {
-    color: white;
-    background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
-    padding: 12px 14px;
-    border-radius: 18px;
-    font-size: 1.8rem;
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-  }
-
-  .sub {
-    color: var(--text-secondary);
-    margin-top: 8px;
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-
   .control-panel {
     background: var(--bg-control);
     border-radius: 28px;
     padding: 28px 32px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
     border: 1px solid var(--border);
     margin-bottom: 32px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 24px 36px;
-    animation: slideUp 0.6s ease-out 0.1s both;
   }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .selector-group {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-  }
-
+  .selector-group { display: flex; flex-direction: column; min-width: 200px; }
   .selector-group label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
   }
-
   .selector-group select {
-    padding: 14px 18px;
-    font-size: 1rem;
-    font-weight: 500;
-    background: linear-gradient(
-      135deg,
-      var(--select-bg) 0%,
-      var(--select-bg-light) 100%
-    );
-    border: 2px solid var(--border);
-    border-radius: 14px;
-    color: var(--text-main);
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: "Inter", sans-serif;
+    padding: 14px 18px; font-size: 1rem; font-weight: 500;
+    background: linear-gradient(135deg, var(--select-bg) 0%, var(--select-bg-light) 100%);
+    border: 2px solid var(--border); border-radius: 14px; color: var(--text-main); cursor: pointer;
   }
-
-  .selector-group select:hover,
-  .selector-group select:focus {
-    border-color: var(--primary);
-    background: var(--bg-control);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+  .selector-group select:focus { outline: none; border-color: var(--primary); }
+  .topic-badge, .video-count, .video-count-badge, .note-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--grade-primary-light) 0%, var(--grade-primary) 100%);
+    color: var(--grade-text-color); padding: 10px 18px; border-radius: 999px; font-size: 0.95rem; font-weight: 600;
   }
-
-  .topic-badge,
-  .video-count,
-  .video-count-badge,
-  .note-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(
-      135deg,
-      var(--grade-primary-light) 0%,
-      var(--grade-primary) 100%
-    );
-    color: var(--grade-text-color);
-    padding: 10px 18px;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-
-  .topic-badge {
-    margin-left: 8px;
-  }
-
+  .topic-badge { margin-left: 8px; }
   .section-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
   }
-
-  .section-title h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--dark);
+  .section-title h2 { font-weight: 700; font-size: 1.8rem; color: var(--dark); }
+  .video-grid, .notes-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px;
   }
-
-  .video-grid,
-  .notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 24px;
-    margin-top: 8px;
+  .video-card, .note-card {
+    background: var(--bg-card); border-radius: 22px; overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06); border: 1.5px solid var(--border);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
-
-  .video-card,
-  .note-card {
-    background: var(--bg-card);
-    border-radius: 22px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    border: 1.5px solid var(--border);
-    transition: all 0.35s ease;
-    position: relative;
+  .video-card:hover, .note-card:hover {
+    transform: translateY(-6px); box-shadow: 0 20px 40px rgba(59,130,246,0.12); border-color: var(--primary);
   }
-
-  .video-card:hover,
-  .note-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
-    border-color: var(--primary);
-  }
-
-  .video-card::before,
-  .note-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .video-card:hover::before,
-  .note-card:hover::before {
-    opacity: 1;
-  }
-
   .thumbnail {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
   }
-
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .video-card:hover .thumbnail img {
-    transform: scale(1.05);
-  }
-
+  .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
   .play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
+    position: absolute; inset: 0; background: rgba(0,0,0,.3);
+    display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .25s ease;
   }
-
-  .video-card:hover .play-overlay {
-    opacity: 1;
-  }
-
+  .video-card:hover .play-overlay { opacity: 1; }
   .play-icon {
-    background: white;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    font-size: 32px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: white; width: 64px; height: 64px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; color: var(--primary); font-size: 32px;
   }
-
-  .card-content,
-  .note-content {
-    padding: 22px 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .video-title,
-  .note-title {
-    font-weight: 700;
-    font-size: 1.08rem;
-    line-height: 1.5;
-    color: var(--text-main);
-  }
-
-  .video-meta,
-  .note-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    flex-wrap: wrap;
-  }
-
+  .card-content, .note-content { padding: 22px 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .video-title, .note-title { font-weight: 700; font-size: 1.08rem; line-height: 1.5; color: var(--text-main); }
+  .video-meta, .note-meta { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: .85rem; flex-wrap: wrap; }
   .badge {
-    background: linear-gradient(135deg, var(--light) 0%, var(--border) 100%);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+    background: linear-gradient(135deg, #f1f5f9 0%, var(--border) 100%);
+    padding: 6px 12px; border-radius: 999px; font-size: .75rem; font-weight: 600; color: var(--text-secondary);
   }
-
   .time-badge {
-    background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
-    color: #92400e;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+    background: linear-gradient(135deg, #fef08a 0%, #fde047 100%); color: #92400e; font-weight: 600;
+    padding: 6px 12px; border-radius: 999px; font-size: .75rem;
   }
-
-  .notes-section {
-    margin-top: 40px;
-  }
-
-  .note-card {
-    padding: 0;
-  }
-
-  .note-hero {
-    padding: 22px 20px;
-    background: linear-gradient(135deg, var(--grade-primary-light) 0%, rgba(255,255,255,0.9) 100%);
-    border-bottom: 1px solid var(--border);
-  }
-
-  html.dark-mode .note-hero {
-    background: linear-gradient(135deg, rgba(59,130,246,0.18) 0%, rgba(30,41,59,0.95) 100%);
-  }
-
-  .note-desc {
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.65;
-  }
-
-  .note-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
+  .notes-section { margin-top: 40px; }
+  .note-hero { padding: 22px 20px; background: linear-gradient(135deg, var(--grade-primary-light) 0%, rgba(255,255,255,.9) 100%); border-bottom: 1px solid var(--border); }
+  html.dark-mode .note-hero { background: linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(30,41,59,.95) 100%); }
+  .note-desc { color: var(--text-secondary); font-size: .92rem; line-height: 1.65; }
+  .note-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
   .btn {
-    border: none;
-    border-radius: 14px;
-    padding: 12px 16px;
-    font-family: inherit;
-    font-size: 0.92rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.25s ease;
+    border: none; border-radius: 14px; padding: 12px 16px; font-family: inherit; font-size: .92rem; font-weight: 700; cursor: pointer;
   }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    box-shadow: 0 10px 24px rgba(59,130,246,0.25);
-  }
-
-  .btn-secondary {
-    background: var(--light);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-  }
-
+  .btn-primary { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; }
+  .btn-secondary { background: #f1f5f9; color: #0f172a; border: 1px solid var(--border); }
   .empty-state {
-    text-align: center;
-    padding: 70px 36px;
-    background: var(--bg-card);
-    border-radius: 28px;
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-    border: 1px solid var(--border);
+    text-align: center; padding: 70px 36px; background: var(--bg-card); border-radius: 28px; color: var(--text-secondary);
+    box-shadow: 0 12px 32px rgba(0,0,0,.08); border: 1px solid var(--border);
   }
-
-  .empty-state h3 {
-    color: var(--text-main);
-    margin-bottom: 8px;
-    font-size: 1.3rem;
+  .empty-state h3 { color: var(--text-main); margin-bottom: 8px; font-size: 1.3rem; }
+  .footer-note { margin-top: 48px; font-size: .85rem; color: var(--text-secondary); text-align: center; border-top: 1px solid var(--border); padding-top: 28px; }
+  .fullscreen-player, .note-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,.92); backdrop-filter: blur(4px); z-index: 9999; display: none;
+    align-items: center; justify-content: center; padding: 18px;
   }
-
-  .footer-note {
-    margin-top: 48px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-    border-top: 1px solid var(--border);
-    padding-top: 28px;
+  .fullscreen-player iframe { width: 100%; height: 100%; border: none; }
+  .close-fullscreen, .close-note-modal {
+    position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    color: white; border-radius: 999px; padding: 12px 18px; font-size: .92rem; font-weight: 700; cursor: pointer; z-index: 10000;
   }
-
-  .fullscreen-player,
-  .note-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(4px);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-  }
-
-  .fullscreen-player iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .close-fullscreen,
-  .close-note-modal {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    border-radius: 999px;
-    padding: 12px 18px;
-    font-size: 0.92rem;
-    font-weight: 700;
-    cursor: pointer;
-    z-index: 10000;
-  }
-
   .note-modal-content {
-    width: min(1100px, 100%);
-    height: min(90vh, 920px);
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+    width: min(1100px, 100%); height: min(90vh, 920px); background: white; border-radius: 24px; overflow: hidden;
+    display: flex; flex-direction: column; box-shadow: 0 40px 80px rgba(0,0,0,.35);
   }
-
-  html.dark-mode .note-modal-content {
-    background: #0f172a;
-  }
-
+  html.dark-mode .note-modal-content { background: #0f172a; }
   .note-modal-toolbar {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    background: var(--bg-card);
+    padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--bg-card);
   }
-
-  .note-modal-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-main);
-  }
-
-  .note-frame {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    background: white;
-  }
-
-  .lesson-note-strip {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
+  .note-modal-title { font-size: 1rem; font-weight: 700; color: var(--text-main); }
+  .lesson-note-strip { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .note-frame { width: 100%; height: 100%; border: 0; background: white; }
   @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-    }
-
-    .header h1 {
-      font-size: 1.8rem;
-    }
-
-    .control-panel {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 20px;
-    }
-
-    .selector-group {
-      min-width: 100%;
-    }
-
-    .selector-group select {
-      width: 100%;
-    }
-
-    .video-grid,
-    .notes-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .section-title {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .note-modal-content {
-      height: 92vh;
-      border-radius: 18px;
-    }
+    .header { flex-direction: column; }
+    .header h1 { font-size: 1.8rem; }
+    .control-panel { flex-direction: column; align-items: stretch; padding: 20px; }
+    .selector-group { min-width: 100%; }
+    .video-grid, .notes-grid { grid-template-columns: 1fr; }
+    .section-title { flex-direction: column; align-items: flex-start; }
+    .note-modal-content { height: 92vh; border-radius: 18px; }
   }
 </style>
 
   </head>
   <body>
-    <div class="dashboard">
+    <div class="dashboard grade-10">
       <div class="header">
         <div class="header-content">
           <h1>
@@ -674,13 +216,9 @@
             Science with Samadhi - LMS Dashboard
             <span class="topic-badge" id="gradeLessonHint">Grade 10 · 03. Structure of Matter</span>
           </h1>
-          <div class="sub">
-            Select grade → lesson → topic · Click videos to play fullscreen · Open lesson notes separately and read them in a clean reader view
-          </div>
+          <div class="sub">Select grade → lesson → topic · Videos and lesson notes are separated clearly · Click Read Note to open the chapter in a clean reader</div>
         </div>
-        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
       </div><div class="control-panel">
     <div class="selector-group">
       <label><i class="fas fa-graduation-cap"></i> Grade</label>
@@ -690,11 +228,11 @@
       <label><i class="fas fa-book-open"></i> Lesson</label>
       <select id="lessonSelect"></select>
     </div>
-    <div class="selector-group" style="flex: 2; min-width: 240px">
+    <div class="selector-group" style="flex:2; min-width:240px;">
       <label><i class="fas fa-tags"></i> Topic</label>
       <select id="topicSelect"></select>
     </div>
-    <div style="margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap;">
+    <div style="margin-left:auto; display:flex; gap:10px; flex-wrap:wrap;">
       <span class="video-count-badge"><i class="fas fa-video"></i><span id="videoCountBadge">0</span> videos</span>
       <span class="note-chip"><i class="fas fa-book"></i><span id="noteCountBadge">0</span> notes</span>
     </div>
@@ -705,8 +243,8 @@
     <div class="video-count" id="videoCountDisplay">📹 0 videos</div>
   </div>
   <div id="videoGridContainer" class="video-grid"></div>
-  <div id="emptyMessage" class="empty-state" style="display: none">
-    <i class="fas fa-film" style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"></i>
+  <div id="emptyMessage" class="empty-state" style="display:none;">
+    <i class="fas fa-film" style="font-size:48px; opacity:.5; margin-bottom:16px"></i>
     <h3>No videos for this topic</h3>
     <p>Choose another topic or add videos later.</p>
   </div>
@@ -717,25 +255,19 @@
       <div class="video-count" id="noteAvailabilityDisplay">📚 0 notes</div>
     </div>
     <div id="notesGridContainer" class="notes-grid"></div>
-    <div id="notesEmptyMessage" class="empty-state" style="display: none">
-      <i class="fas fa-book-open" style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"></i>
+    <div id="notesEmptyMessage" class="empty-state" style="display:none;">
+      <i class="fas fa-book-open" style="font-size:48px; opacity:.5; margin-bottom:16px"></i>
       <h3>No note available yet</h3>
       <p>This lesson does not have an attached reader note yet.</p>
     </div>
   </section>
 
-  <div class="footer-note">
-    Videos and notes are now separated properly. Click “Read Note” to open the lesson note in a clean full-screen reader.
-  </div>
+  <div class="footer-note">Grade 8 now uses 04. Properties of Matter and Grade 9 now uses 03. Nature and Properties of Matter as the current chapter notes.</div>
 </div>
 
 <div id="fullscreenOverlay" class="fullscreen-player">
   <button class="close-fullscreen" id="closeFullscreenBtn"><i class="fas fa-times"></i> Exit fullscreen</button>
-  <iframe
-    id="youtubeIframe"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;"
-    allowfullscreen
-  ></iframe>
+  <iframe id="youtubeIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;" allowfullscreen></iframe>
 </div>
 
 <div id="noteModal" class="note-modal">
@@ -756,48 +288,10 @@
 </div>
 
 <script>
-  (function () {
+  (() => {
     "use strict";
 
-    function timeToSeconds(timeStr) {
-      if (!timeStr) return null;
-      let str = timeStr.trim().replace(":", ".");
-      const parts = str.split(".");
-      if (parts.length === 2) {
-        const min = parseInt(parts[0], 10);
-        const sec = parseInt(parts[1], 10);
-        if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
-      }
-      const num = parseFloat(str);
-      return isNaN(num) ? null : Math.floor(num);
-    }
-
-    function extractYouTubeID(url) {
-      if (!url) return null;
-      let id = null;
-      if (url.includes("youtu.be/")) {
-        id = url.split("youtu.be/")[1].split(/[?&]/)[0];
-      } else if (url.includes("youtube.com/shorts/")) {
-        id = url.split("shorts/")[1].split(/[?&]/)[0];
-      } else {
-        const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-        const match = url.match(regExp);
-        if (match) id = match[1];
-      }
-      return id ? id.split("?")[0] : null;
-    }
-
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
     const gradesData = {
-      6: { name: "Grade 6", lessons: {} },
       7: {
         name: "Grade 7",
         lessons: {
@@ -805,61 +299,59 @@
             name: "02. Static Electricity",
             topics: {
               "2.1 Charging an object": [
-                {
-                  title: "Charging an object (part)",
-                  url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5",
-                  start: "13.54",
-                  end: "25.46",
-                },
-                {
-                  title: "Charging · short 1",
-                  url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq",
-                },
-                {
-                  title: "Charging · short 2",
-                  url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv",
-                },
+                { title: "Charging an object (part)", url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5", start: "13.54", end: "25.46" },
+                { title: "Charging · short 1", url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq" },
+                { title: "Charging · short 2", url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv" }
               ],
               "2.2 Types of static electric charges": [
-                {
-                  title: "Types of charges (1)",
-                  url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3",
-                },
-                {
-                  title: "Types of charges (2)",
-                  url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO",
-                },
-                {
-                  title: "Types of charges (3)",
-                  url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI",
-                },
-                {
-                  title: "Charges (part from main)",
-                  url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4",
-                  start: "28.48",
-                  end: "49.48",
-                },
+                { title: "Types of charges (1)", url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3" },
+                { title: "Types of charges (2)", url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO" },
+                { title: "Types of charges (3)", url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI" },
+                { title: "Charges (part from main)", url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4", start: "28.48", end: "49.48" }
               ],
               "2.3 Generation of static electric charges": [],
               "2.4 Phenomena associated with static electricity": [],
-              "2.5 Capacitors": [],
-            },
-          },
-        },
+              "2.5 Capacitors": []
+            }
+          }
+        }
       },
-      8: { name: "Grade 8", lessons: {} },
+      8: {
+        name: "Grade 8",
+        lessons: {
+          propertiesOfMatter: {
+            name: "04. Properties of Matter",
+            topics: {
+              "4.1 What is matter and energy": [],
+              "4.2 Discontinuous nature of matter": [],
+              "4.3 Particle arrangement in three states": [],
+              "4.4 Pure and non-pure substances": [],
+              "4.5 Physical properties of matter": [],
+              "4.6 Density, melting point and boiling point": [],
+              "4.7 Metals and non-metals": [],
+              "4.8 Real-life applications": []
+            }
+          }
+        }
+      },
       9: {
         name: "Grade 9",
         lessons: {
           natureAndPropertiesOfMatter: {
             name: "03. Nature and Properties of Matter",
             topics: {
-              "3.1 Nature of matter": [],
-              "3.2 Properties of matter": [],
-              "3.3 States and behaviour of matter": [],
-            },
-          },
-        },
+              "3.0 Classification of matter": [],
+              "3.1 Elements": [],
+              "3.1.1 Symbols for elements": [],
+              "3.1.2 Building units: atoms and molecules": [],
+              "3.1.3 Atomic structure": [],
+              "3.1.4 Atomic number and mass number": [],
+              "3.2 Compounds": [],
+              "3.3 Mixtures": [],
+              "3.4 Separation methods": []
+            }
+          }
+        }
       },
       10: {
         name: "Grade 10",
@@ -872,8 +364,8 @@
               "3.3 Periodic Table": [],
               "3.4 Isotopes": [],
               "3.5 Metals and Non-metals": [],
-              "3.6 Chemical Formulae": [],
-            },
+              "3.6 Chemical Formulae": []
+            }
           },
           motion: {
             name: "02. Motion in a straight line",
@@ -881,685 +373,335 @@
               "2.1 Distance and displacement": [
                 { title: "Distance & displacement · Short", url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz" },
                 { title: "Distance & displacement · Explanation", url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx" },
-                { title: "Distance & displacement · Detailed", url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu" },
+                { title: "Distance & displacement · Detailed", url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu" }
               ],
               "2.2 Speed": [
                 { title: "Speed · Concept", url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V" },
                 { title: "Speed · Examples", url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU" },
-                { title: "Speed · Short", url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx" },
+                { title: "Speed · Short", url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx" }
               ],
               "2.3 Velocity": [
                 { title: "Velocity · Explained", url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH" },
-                { title: "Velocity · Short", url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS" },
+                { title: "Velocity · Short", url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS" }
               ],
-              "2.4 Acceleration": [
-                { title: "Acceleration · Full lesson", url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx" },
-              ],
+              "2.4 Acceleration": [{ title: "Acceleration · Full lesson", url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx" }],
               "2.5 Displacement - Time graphs": [
                 { title: "Displacement-Time graph (1)", url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD" },
-                { title: "Displacement-Time graph (2)", url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH" },
+                { title: "Displacement-Time graph (2)", url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH" }
               ],
-              "2.6 Velocity - Time graphs": [
-                { title: "Velocity-Time graph", url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw" },
-              ],
-              "2.7 Gravitational acceleration": [
-                { title: "Gravitational acceleration", url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS" },
-              ],
-            },
-          },
-        },
-      },
-      11: { name: "Grade 11", lessons: {} },
+              "2.6 Velocity - Time graphs": [{ title: "Velocity-Time graph", url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw" }],
+              "2.7 Gravitational acceleration": [{ title: "Gravitational acceleration", url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS" }]
+            }
+          }
+        }
+      }
     };
 
     const lessonNotes = {
-      staticElectricity: [
-        {
-          id: "g7-static-01",
-          title: "Grade 7 · 02. Static Electricity",
-          grade: "Grade 7",
-          lesson: "02. Static Electricity",
-          description:
-            "Full reader note for charging objects, types of static charges, attraction and repulsion, static electricity phenomena, and capacitors.",
-          html: `
-            <div class="reader-cover purple">
-              <div class="reader-label">Grade 7 Science · Chapter 02</div>
-              <h1>Static Electricity</h1>
-              <p>Clean lesson reader for student study and classroom revision.</p>
-            </div>
-            <section>
-              <h2>2.1 Charging an Object</h2>
-              <p>When a plastic pen is rubbed against dry hair and brought near tiny paper pieces, the paper pieces jump and stick to the pen. This happens because electric charges are generated on the surface by rubbing.</p>
-              <div class="reader-callout">Electric charges generated on the surface of objects by rubbing are called <strong>static electrical charges</strong>.</div>
-              <ul>
-                <li>Before rubbing, objects do not attract paper.</li>
-                <li>After rubbing, they attract paper.</li>
-                <li>Rubbing creates static charge on the surface.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.2 Types of Static Electrical Charges</h2>
-              <p>There are two types of static electrical charges.</p>
-              <div class="reader-grid two">
-                <div class="reader-card"><h3>Positive Charge</h3><p>Example: Glass rod rubbed with silk cloth.</p></div>
-                <div class="reader-card"><h3>Negative Charge</h3><p>Example: Ebonite rod rubbed with woolen cloth.</p></div>
-              </div>
-              <ul>
-                <li>Like charges repel each other.</li>
-                <li>Unlike charges attract each other.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.3 Generation of Static Electric Charges</h2>
-              <p>During rubbing, electrons move from one object to another. One object loses electrons and becomes positively charged. The other gains electrons and becomes negatively charged.</p>
-            </section>
-            <section>
-              <h2>2.4 Phenomena Associated with Static Electricity</h2>
-              <ul>
-                <li>Small paper pieces get attracted to rubbed objects.</li>
-                <li>Hair can stand up when charged.</li>
-                <li>Lightning is a large natural static electricity phenomenon.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.5 Capacitors</h2>
-              <p>A capacitor is a device used to store electric charge. It can release the stored charge when needed.</p>
-            </section>
-            <section>
-              <h2>Quick Summary</h2>
-              <ul>
-                <li>Static electricity is produced mainly by rubbing.</li>
-                <li>Charges can be positive or negative.</li>
-                <li>Like charges repel and unlike charges attract.</li>
-                <li>Capacitors store electric charge.</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
-      natureAndPropertiesOfMatter: [
-        {
-          id: "g9-matter-01",
-          title: "Grade 9 · 03. Nature and Properties of Matter",
-          grade: "Grade 9",
-          lesson: "03. Nature and Properties of Matter",
-          description:
-            "Reader area prepared for this lesson. Full note content is not attached yet, so this card shows a structured placeholder instead of fake content.",
-          html: `
-            <div class="reader-cover rose">
-              <div class="reader-label">Grade 9 Science · Chapter 03</div>
-              <h1>Nature and Properties of Matter</h1>
-              <p>Reader shell is ready. Add the actual Grade 9 note file to load the full content here.</p>
-            </div>
-            <section>
-              <h2>Note Status</h2>
-              <div class="reader-callout danger">The dashboard structure for Grade 9 is complete, but the full source note for this chapter has not been attached yet.</div>
-            </section>
-            <section>
-              <h2>Suggested Reading Sections</h2>
-              <ul>
-                <li>Nature of matter</li>
-                <li>Physical and chemical properties</li>
-                <li>States of matter</li>
-                <li>Changes in matter</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
-      structureOfMatter: [
-        {
-          id: "g10-structure-01",
-          title: "Grade 10 · 03. Structure of Matter",
-          grade: "Grade 10",
-          lesson: "03. Structure of Matter",
-          description:
-            "Full reader note for atoms, proton-neutron-electron structure, atomic number, mass number, electronic configuration, periodic table, isotopes, metals and non-metals, and formulae.",
-          html: `
-            <div class="reader-cover blue">
-              <div class="reader-label">Grade 10 Chemistry · Chapter 03</div>
-              <h1>Structure of Matter</h1>
-              <p>Complete study reader for atomic structure, electronic configuration, periodic table, isotopes and formulae.</p>
-            </div>
-            <section>
-              <h2>What is Matter?</h2>
-              <p>Matter is anything that occupies space and has mass. Matter can appear as elements, compounds and mixtures, and it exists in solid, liquid and gaseous states.</p>
-            </section>
-            <section>
-              <h2>3.1 The Planetary Model of the Atom</h2>
-              <div class="reader-grid three">
-                <div class="reader-card"><h3>Proton (+)</h3><p>Positively charged particle in the nucleus.</p></div>
-                <div class="reader-card"><h3>Neutron (0)</h3><p>Neutral particle in the nucleus.</p></div>
-                <div class="reader-card"><h3>Electron (−)</h3><p>Negatively charged particle found in shells around the nucleus.</p></div>
-              </div>
-              <p>An atom is electrically neutral because the number of protons equals the number of electrons.</p>
-            </section>
-            <section>
-              <h2>Atomic Number and Mass Number</h2>
-              <ul>
-                <li>Atomic number (Z) = number of protons.</li>
-                <li>In a neutral atom, atomic number also equals number of electrons.</li>
-                <li>Mass number (A) = protons + neutrons.</li>
-                <li>Neutrons = A − Z.</li>
-              </ul>
-              <div class="reader-callout">Example: Sodium has atomic number 11 and mass number 23, so neutrons = 12.</div>
-            </section>
-            <section>
-              <h2>3.2 Electronic Configuration</h2>
-              <p>Electronic configuration is the arrangement of electrons in shells around the nucleus.</p>
-              <ul>
-                <li>K shell = maximum 2 electrons</li>
-                <li>L shell = maximum 8 electrons</li>
-                <li>M shell = can hold more, but the outermost shell is limited to 8 for this level</li>
-              </ul>
-              <div class="reader-callout">Example: Sodium (11) = 2, 8, 1</div>
-            </section>
-            <section>
-              <h2>3.3 Periodic Table</h2>
-              <p>Elements are arranged in the periodic table according to their atomic number. Elements in the same group show similar chemical behaviour because they have similar outer electron arrangements.</p>
-            </section>
-            <section>
-              <h2>3.4 Isotopes</h2>
-              <p>Isotopes are atoms of the same element with the same atomic number but different mass numbers because the number of neutrons is different.</p>
-            </section>
-            <section>
-              <h2>3.5 Metals and Non-metals</h2>
-              <div class="reader-grid two">
-                <div class="reader-card"><h3>Metals</h3><p>Usually shiny, malleable, good conductors of heat and electricity.</p></div>
-                <div class="reader-card"><h3>Non-metals</h3><p>Often dull, brittle and poor conductors.</p></div>
-              </div>
-            </section>
-            <section>
-              <h2>3.6 Chemical Formulae</h2>
-              <p>Chemical formulae show the types and numbers of atoms in a substance. Examples: H₂O, CO₂, NaCl.</p>
-            </section>
-            <section>
-              <h2>Quick Summary</h2>
-              <ul>
-                <li>Atoms are made of protons, neutrons and electrons.</li>
-                <li>Atomic number identifies the element.</li>
-                <li>Electronic configuration explains arrangement of electrons.</li>
-                <li>The periodic table organizes elements systematically.</li>
-                <li>Isotopes have same atomic number but different mass number.</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
+      staticElectricity: [{
+        id: "g7-static-01",
+        title: "Grade 7 · 02. Static Electricity",
+        grade: "Grade 7",
+        lesson: "02. Static Electricity",
+        description: "Lesson reader for charging objects, types of static charges, attraction and repulsion, phenomena and capacitors.",
+        html: `
+          <div class="reader-cover purple"><div class="reader-label">Grade 7 Science · Chapter 02</div><h1>Static Electricity</h1><p>Student-friendly lesson reader.</p></div>
+          <section><h2>2.1 Charging an Object</h2><p>Rubbing objects can create static charges on their surfaces. Charged objects can attract small paper pieces.</p></section>
+          <section><h2>2.2 Types of Static Electrical Charges</h2><ul><li>Positive charge</li><li>Negative charge</li><li>Like charges repel</li><li>Unlike charges attract</li></ul></section>
+          <section><h2>2.3 Generation of Static Electric Charges</h2><p>Electrons move from one object to another during rubbing.</p></section>
+          <section><h2>2.4 Phenomena Associated with Static Electricity</h2><p>Charged objects attract light particles and lightning is a natural example of static electricity.</p></section>
+          <section><h2>2.5 Capacitors</h2><p>A capacitor stores electric charge.</p></section>`
+      }],
+      propertiesOfMatter: [{
+        id: "g8-properties-01",
+        title: "Grade 8 · 04. Properties of Matter",
+        grade: "Grade 8",
+        lesson: "04. Properties of Matter",
+        description: "Lesson reader for matter and energy, particulate nature of matter, states of matter, pure and non-pure substances, physical properties, density, melting point, boiling point, metals and non-metals.",
+        html: `
+          <div class="reader-cover amber"><div class="reader-label">Grade 8 Science · Chapter 04</div><h1>Properties of Matter</h1><p>Lesson reader based on the current Grade 8 chapter.</p></div>
+          <section><h2>4.1 What is Matter and Energy?</h2><div class="reader-grid two"><div class="reader-card"><h3>Matter</h3><p>Anything that has mass and occupies space.</p></div><div class="reader-card"><h3>Energy</h3><p>Light, sound, heat and electricity are examples of energy.</p></div></div></section>
+          <section><h2>4.2 Discontinuous Nature of Matter</h2><p>Matter is made up of tiny particles with spaces between them.</p></section>
+          <section><h2>4.3 Particle Arrangement in Three States</h2><div class="reader-grid three"><div class="reader-card"><h3>Solid</h3><p>Closely packed particles.</p></div><div class="reader-card"><h3>Liquid</h3><p>Particles can move within the liquid.</p></div><div class="reader-card"><h3>Gas</h3><p>Particles move freely with large spaces between them.</p></div></div></section>
+          <section><h2>4.4 Pure and Non-pure Substances</h2><ul><li>Pure substances contain one component.</li><li>Mixtures contain two or more components.</li><li>Pure substances are elements or compounds.</li></ul></section>
+          <section><h2>4.5 Physical Properties of Matter</h2><p>Important properties include lustre, hardness, brittleness, conductivity, elasticity, malleability and ductility.</p></section>
+          <section><h2>4.6 Density, Melting Point and Boiling Point</h2><p>Pure substances have fixed values for these properties.</p></section>
+          <section><h2>4.7 Metals and Non-metals</h2><div class="reader-grid two"><div class="reader-card"><h3>Metals</h3><p>Usually shiny, conductive, malleable and ductile.</p></div><div class="reader-card"><h3>Non-metals</h3><p>Usually dull and poor conductors, with some exceptions.</p></div></div></section>
+          <section><h2>4.8 Real-life Applications</h2><p>Physical properties decide which materials are used for wires, tools, utensils and thermometers.</p></section>`
+      }],
+      natureAndPropertiesOfMatter: [{
+        id: "g9-matter-01",
+        title: "Grade 9 · 03. Nature and Properties of Matter",
+        grade: "Grade 9",
+        lesson: "03. Nature and Properties of Matter",
+        description: "Lesson reader for classification of matter, elements, symbols, atoms, molecules, atomic structure, atomic number, mass number, compounds, mixtures and separation methods.",
+        html: `
+          <div class="reader-cover rose"><div class="reader-label">Grade 9 Science · Chapter 03</div><h1>Nature and Properties of Matter</h1><p>Lesson reader based on the current Grade 9 chapter.</p></div>
+          <section><h2>3.0 Classification of Matter</h2><ul><li>Pure substances contain one constituent.</li><li>Mixtures contain two or more constituents.</li><li>Pure substances are divided into elements and compounds.</li></ul></section>
+          <section><h2>3.1 Elements</h2><p>Elements are pure substances that cannot be broken down into simpler substances by physical or chemical methods.</p></section>
+          <section><h2>3.1.1 Symbols for Elements</h2><p>Symbols are internationally accepted. Some come from English names and some from Latin names such as Na, Fe, Cu and Ag.</p></section>
+          <section><h2>3.1.2 Building Units: Atoms and Molecules</h2><p>Atoms are the smallest units of matter. Molecules are groups of atoms.</p></section>
+          <section><h2>3.1.3 Atomic Structure</h2><div class="reader-grid three"><div class="reader-card"><h3>Proton</h3><p>Positive particle in the nucleus.</p></div><div class="reader-card"><h3>Neutron</h3><p>Neutral particle in the nucleus.</p></div><div class="reader-card"><h3>Electron</h3><p>Negative particle around the nucleus.</p></div></div></section>
+          <section><h2>3.1.4 Atomic Number and Mass Number</h2><ul><li>Atomic number = number of protons.</li><li>Mass number = protons + neutrons.</li><li>In neutral atoms, protons = electrons.</li></ul></section>
+          <section><h2>3.2 Compounds</h2><p>Compounds are formed by chemical combination of two or more elements in a fixed ratio.</p></section>
+          <section><h2>3.3 Mixtures</h2><p>Mixtures contain two or more substances and can be separated by physical methods.</p></section>
+          <section><h2>3.4 Separation Methods</h2><p>Different mixtures are separated using physical methods based on properties of their components.</p></section>`
+      }],
+      structureOfMatter: [{
+        id: "g10-structure-01",
+        title: "Grade 10 · 03. Structure of Matter",
+        grade: "Grade 10",
+        lesson: "03. Structure of Matter",
+        description: "Lesson reader for atoms, atomic number, mass number, electronic configuration, periodic table, isotopes, metals and non-metals, and formulae.",
+        html: `
+          <div class="reader-cover blue"><div class="reader-label">Grade 10 Science · Chapter 03</div><h1>Structure of Matter</h1><p>Lesson reader for atomic structure and related concepts.</p></div>
+          <section><h2>3.1 The Planetary Model of the Atom</h2><div class="reader-grid three"><div class="reader-card"><h3>Proton</h3><p>Positive particle in the nucleus.</p></div><div class="reader-card"><h3>Neutron</h3><p>Neutral particle in the nucleus.</p></div><div class="reader-card"><h3>Electron</h3><p>Negative particle in shells around the nucleus.</p></div></div></section>
+          <section><h2>Atomic Number and Mass Number</h2><ul><li>Atomic number = protons.</li><li>Mass number = protons + neutrons.</li><li>Neutrons = mass number − atomic number.</li></ul></section>
+          <section><h2>3.2 Electronic Configuration</h2><p>Electronic configuration is the arrangement of electrons in shells.</p></section>
+          <section><h2>3.3 Periodic Table</h2><p>Elements are arranged according to atomic number.</p></section>
+          <section><h2>3.4 Isotopes</h2><p>Isotopes have the same atomic number but different mass numbers.</p></section>
+          <section><h2>3.5 Metals and Non-metals</h2><p>Metals and non-metals show different physical and chemical properties.</p></section>
+          <section><h2>3.6 Chemical Formulae</h2><p>Formulae show the types and numbers of atoms in substances.</p></section>`
+      }]
     };
 
-    const gradeSelect = document.getElementById("gradeSelect");
-    const lessonSelect = document.getElementById("lessonSelect");
-    const topicSelect = document.getElementById("topicSelect");
-    const videoGrid = document.getElementById("videoGridContainer");
-    const emptyMsg = document.getElementById("emptyMessage");
-    const currentTopicTitle = document.getElementById("currentTopicTitle");
-    const videoCountDisplay = document.getElementById("videoCountDisplay");
-    const videoCountBadge = document.getElementById("videoCountBadge");
-    const noteCountBadge = document.getElementById("noteCountBadge");
-    const gradeLessonHint = document.getElementById("gradeLessonHint");
-    const notesGrid = document.getElementById("notesGridContainer");
-    const notesEmptyMessage = document.getElementById("notesEmptyMessage");
-    const currentNotesTitle = document.getElementById("currentNotesTitle");
-    const noteAvailabilityDisplay = document.getElementById("noteAvailabilityDisplay");
+    const gradeSelect = document.getElementById('gradeSelect');
+    const lessonSelect = document.getElementById('lessonSelect');
+    const topicSelect = document.getElementById('topicSelect');
+    const videoGrid = document.getElementById('videoGridContainer');
+    const emptyMsg = document.getElementById('emptyMessage');
+    const currentTopicTitle = document.getElementById('currentTopicTitle');
+    const videoCountDisplay = document.getElementById('videoCountDisplay');
+    const videoCountBadge = document.getElementById('videoCountBadge');
+    const noteCountBadge = document.getElementById('noteCountBadge');
+    const gradeLessonHint = document.getElementById('gradeLessonHint');
+    const notesGrid = document.getElementById('notesGridContainer');
+    const notesEmptyMessage = document.getElementById('notesEmptyMessage');
+    const currentNotesTitle = document.getElementById('currentNotesTitle');
+    const noteAvailabilityDisplay = document.getElementById('noteAvailabilityDisplay');
+    const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    const closeBtn = document.getElementById('closeFullscreenBtn');
+    const noteModal = document.getElementById('noteModal');
+    const closeNoteModalBtn = document.getElementById('closeNoteModalBtn');
+    const noteReaderFrame = document.getElementById('noteReaderFrame');
+    const noteModalTitle = document.getElementById('noteModalTitle');
+    const noteModalGrade = document.getElementById('noteModalGrade');
+    const noteModalLesson = document.getElementById('noteModalLesson');
+    const printNoteBtn = document.getElementById('printNoteBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlElement = document.documentElement;
 
-    const fullscreenOverlay = document.getElementById("fullscreenOverlay");
-    const youtubeIframe = document.getElementById("youtubeIframe");
-    const closeBtn = document.getElementById("closeFullscreenBtn");
+    let currentGrade = '10';
+    let currentLessonKey = 'structureOfMatter';
+    let currentTopic = '3.1 The Planetary Model of the Atom';
 
-    const noteModal = document.getElementById("noteModal");
-    const closeNoteModalBtn = document.getElementById("closeNoteModalBtn");
-    const noteReaderFrame = document.getElementById("noteReaderFrame");
-    const noteModalTitle = document.getElementById("noteModalTitle");
-    const noteModalGrade = document.getElementById("noteModalGrade");
-    const noteModalLesson = document.getElementById("noteModalLesson");
-    const printNoteBtn = document.getElementById("printNoteBtn");
-
-    let currentGrade = "10";
-    let currentLessonKey = "structureOfMatter";
-    let currentTopic = "3.1 The Planetary Model of the Atom";
-
+    function escapeHtml(str) {
+      return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#039;');
+    }
+    function timeToSeconds(timeStr) {
+      if (!timeStr) return null;
+      let str = timeStr.trim().replace(':','.');
+      const parts = str.split('.');
+      if (parts.length === 2) {
+        const min = parseInt(parts[0], 10); const sec = parseInt(parts[1], 10);
+        if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
+      }
+      const num = parseFloat(str);
+      return isNaN(num) ? null : Math.floor(num);
+    }
+    function extractYouTubeID(url) {
+      if (!url) return null;
+      if (url.includes('youtu.be/')) return url.split('youtu.be/')[1].split(/[?&]/)[0];
+      if (url.includes('youtube.com/shorts/')) return url.split('shorts/')[1].split(/[?&]/)[0];
+      const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+      const match = url.match(regExp);
+      return match ? match[1] : null;
+    }
     function populateGrades() {
-      gradeSelect.innerHTML = "";
+      gradeSelect.innerHTML = '';
       Object.keys(gradesData).forEach((gradeKey) => {
-        const opt = document.createElement("option");
-        opt.value = gradeKey;
-        opt.textContent = gradesData[gradeKey].name;
-        gradeSelect.appendChild(opt);
+        const opt = document.createElement('option');
+        opt.value = gradeKey; opt.textContent = gradesData[gradeKey].name; gradeSelect.appendChild(opt);
       });
       gradeSelect.value = currentGrade;
     }
-
     function populateLessons(gradeKey) {
-      lessonSelect.innerHTML = "";
+      lessonSelect.innerHTML = '';
       const lessons = gradesData[gradeKey]?.lessons || {};
       const lessonKeys = Object.keys(lessons);
-      if (lessonKeys.length === 0) return;
+      if (!lessonKeys.length) return;
       lessonKeys.forEach((key) => {
-        const opt = document.createElement("option");
-        opt.value = key;
-        opt.textContent = lessons[key].name;
-        lessonSelect.appendChild(opt);
+        const opt = document.createElement('option');
+        opt.value = key; opt.textContent = lessons[key].name; lessonSelect.appendChild(opt);
       });
-      if (lessonKeys.includes(currentLessonKey)) {
-        lessonSelect.value = currentLessonKey;
-      } else {
-        currentLessonKey = lessonKeys[0];
-        lessonSelect.value = currentLessonKey;
-      }
+      if (!lessonKeys.includes(currentLessonKey)) currentLessonKey = lessonKeys[0];
+      lessonSelect.value = currentLessonKey;
     }
-
     function populateTopics(gradeKey, lessonKey) {
-      topicSelect.innerHTML = "";
+      topicSelect.innerHTML = '';
       const topics = gradesData[gradeKey]?.lessons[lessonKey]?.topics || {};
       const topicNames = Object.keys(topics);
-      if (topicNames.length === 0) return;
+      if (!topicNames.length) return;
       topicNames.forEach((topic) => {
-        const opt = document.createElement("option");
-        opt.value = topic;
-        opt.textContent = topic;
-        topicSelect.appendChild(opt);
+        const opt = document.createElement('option');
+        opt.value = topic; opt.textContent = topic; topicSelect.appendChild(opt);
       });
-      if (topicNames.includes(currentTopic)) {
-        topicSelect.value = currentTopic;
-      } else {
-        currentTopic = topicNames[0];
-        topicSelect.value = currentTopic;
-      }
+      if (!topicNames.includes(currentTopic)) currentTopic = topicNames[0];
+      topicSelect.value = currentTopic;
     }
-
     function buildVideoObjects(gradeKey, lessonKey, topic) {
       const rawVideos = gradesData[gradeKey]?.lessons[lessonKey]?.topics[topic] || [];
-      return rawVideos
-        .map((v) => {
-          const videoId = extractYouTubeID(v.url);
-          const startSec = v.start ? timeToSeconds(v.start) : null;
-          const endSec = v.end ? timeToSeconds(v.end) : null;
-          return {
-            ...v,
-            id: videoId,
-            thumbnail: videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null,
-            startSeconds: startSec,
-            endSeconds: endSec,
-            displayTime:
-              v.start && v.end ? `${v.start} – ${v.end}` : v.start ? `starts ${v.start}` : "",
-          };
-        })
-        .filter((v) => v.id !== null);
+      return rawVideos.map((v) => {
+        const id = extractYouTubeID(v.url);
+        return {
+          ...v, id,
+          thumbnail: id ? `https://img.youtube.com/vi/${id}/mqdefault.jpg` : null,
+          startSeconds: v.start ? timeToSeconds(v.start) : null,
+          endSeconds: v.end ? timeToSeconds(v.end) : null,
+          displayTime: v.start && v.end ? `${v.start} – ${v.end}` : (v.start ? `starts ${v.start}` : '')
+        };
+      }).filter(v => v.id);
     }
-
-    function getLessonNotes(lessonKey) {
-      return lessonNotes[lessonKey] || [];
-    }
-
+    function getLessonNotes(lessonKey) { return lessonNotes[lessonKey] || []; }
     function buildReaderDocument(note) {
-      return `
-        <!doctype html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>${escapeHtml(note.title)}</title>
-            <style>
-              body {
-                margin: 0;
-                font-family: Inter, Arial, sans-serif;
-                background: #f8fafc;
-                color: #0f172a;
-                line-height: 1.7;
-              }
-              .page {
-                max-width: 950px;
-                margin: 0 auto;
-                padding: 32px 18px 48px;
-              }
-              .reader-cover {
-                padding: 34px 30px;
-                border-radius: 24px;
-                color: white;
-                margin-bottom: 24px;
-                box-shadow: 0 20px 40px rgba(15,23,42,0.18);
-              }
-              .reader-cover.blue { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
-              .reader-cover.purple { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%); }
-              .reader-cover.rose { background: linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%); }
-              .reader-label {
-                display: inline-block;
-                background: rgba(255,255,255,0.14);
-                border: 1px solid rgba(255,255,255,0.2);
-                padding: 6px 12px;
-                border-radius: 999px;
-                font-size: 12px;
-                font-weight: 700;
-                margin-bottom: 10px;
-              }
-              h1 {
-                margin: 0 0 6px;
-                font-size: clamp(2rem, 4vw, 3rem);
-                line-height: 1.1;
-              }
-              section {
-                background: white;
-                border: 1px solid #e2e8f0;
-                border-radius: 20px;
-                padding: 22px;
-                margin-bottom: 16px;
-                box-shadow: 0 8px 24px rgba(15,23,42,0.05);
-              }
-              h2 {
-                margin: 0 0 10px;
-                font-size: 1.35rem;
-                color: #0f172a;
-              }
-              h3 {
-                margin: 0 0 8px;
-                font-size: 1rem;
-              }
-              p { margin: 0 0 10px; }
-              ul { margin: 0; padding-left: 20px; }
-              li { margin-bottom: 8px; }
-              .reader-callout {
-                background: #eff6ff;
-                border: 1px solid #bfdbfe;
-                border-radius: 16px;
-                padding: 14px 16px;
-                margin: 12px 0;
-              }
-              .reader-callout.danger {
-                background: #fff1f2;
-                border-color: #fecdd3;
-              }
-              .reader-grid {
-                display: grid;
-                gap: 14px;
-                margin: 12px 0;
-              }
-              .reader-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-              .reader-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-              .reader-card {
-                border: 1px solid #e2e8f0;
-                border-radius: 16px;
-                padding: 16px;
-                background: #f8fafc;
-              }
-              @media (max-width: 700px) {
-                .reader-grid.two,
-                .reader-grid.three { grid-template-columns: 1fr; }
-                .page { padding: 18px 12px 36px; }
-                .reader-cover { padding: 24px 20px; }
-              }
-            </style>
-          </head>
-          <body>
-            <div class="page">
-              ${note.html}
-            </div>
-          </body>
-        </html>
-      `;
+      return `<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(note.title)}</title><style>
+        body { margin:0; font-family: Inter, Arial, sans-serif; background:#f8fafc; color:#0f172a; line-height:1.7; }
+        .page { max-width:950px; margin:0 auto; padding:32px 18px 48px; }
+        .reader-cover { padding:34px 30px; border-radius:24px; color:white; margin-bottom:24px; box-shadow:0 20px 40px rgba(15,23,42,.18); }
+        .reader-cover.blue { background:linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
+        .reader-cover.purple { background:linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%); }
+        .reader-cover.rose { background:linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%); }
+        .reader-cover.amber { background:linear-gradient(135deg, #78350f 0%, #f59e0b 100%); }
+        .reader-label { display:inline-block; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.2); padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; margin-bottom:10px; }
+        h1 { margin:0 0 6px; font-size:clamp(2rem,4vw,3rem); line-height:1.1; }
+        section { background:white; border:1px solid #e2e8f0; border-radius:20px; padding:22px; margin-bottom:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+        h2 { margin:0 0 10px; font-size:1.35rem; color:#0f172a; }
+        h3 { margin:0 0 8px; font-size:1rem; }
+        p { margin:0 0 10px; } ul { margin:0; padding-left:20px; } li { margin-bottom:8px; }
+        .reader-grid { display:grid; gap:14px; margin:12px 0; }
+        .reader-grid.two { grid-template-columns:repeat(2, minmax(0,1fr)); }
+        .reader-grid.three { grid-template-columns:repeat(3, minmax(0,1fr)); }
+        .reader-card { border:1px solid #e2e8f0; border-radius:16px; padding:16px; background:#f8fafc; }
+        @media (max-width:700px) { .reader-grid.two,.reader-grid.three { grid-template-columns:1fr; } .page { padding:18px 12px 36px; } .reader-cover { padding:24px 20px; } }
+      </style></head><body><div class="page">${note.html}</div></body></html>`;
     }
-
+    function applyGradeClass() {
+      const dashboard = document.querySelector('.dashboard');
+      dashboard.classList.remove('grade-7','grade-8','grade-9','grade-10');
+      dashboard.classList.add(`grade-${currentGrade}`);
+    }
     function renderVideos() {
-      const grade = currentGrade;
-      const lesson = currentLessonKey;
-      const topic = currentTopic;
-      const gradeName = gradesData[grade]?.name || "";
-      const lessonName = gradesData[grade]?.lessons[lesson]?.name || "";
-      gradeLessonHint.textContent = `${gradeName} · ${lessonName}`;
-
-      const videoItems = buildVideoObjects(grade, lesson, topic);
-      currentTopicTitle.textContent = topic;
-      const count = videoItems.length;
-      videoCountDisplay.textContent = `📹 ${count} video${count !== 1 ? "s" : ""}`;
-      videoCountBadge.textContent = count;
-
-      if (count === 0) {
-        videoGrid.style.display = "none";
-        emptyMsg.style.display = "block";
-        videoGrid.innerHTML = "";
-        return;
+      const lessonName = gradesData[currentGrade]?.lessons[currentLessonKey]?.name || '';
+      gradeLessonHint.textContent = `${gradesData[currentGrade]?.name || ''} · ${lessonName}`;
+      const videoItems = buildVideoObjects(currentGrade, currentLessonKey, currentTopic);
+      currentTopicTitle.textContent = currentTopic;
+      videoCountDisplay.textContent = `📹 ${videoItems.length} video${videoItems.length !== 1 ? 's' : ''}`;
+      videoCountBadge.textContent = videoItems.length;
+      if (!videoItems.length) {
+        videoGrid.innerHTML = ''; videoGrid.style.display = 'none'; emptyMsg.style.display = 'block'; return;
       }
-
-      videoGrid.style.display = "grid";
-      emptyMsg.style.display = "none";
-
-      let html = "";
-      videoItems.forEach((video) => {
-        const thumbUrl = video.thumbnail || "";
-        const title = video.title || "Video";
-        const isShort = video.url.includes("/shorts/");
-        const timeInfo = video.displayTime
-          ? `<span class="time-badge"><i class="far fa-clock"></i> ${video.displayTime}</span>`
-          : "";
-        html += `
-          <div class="video-card" tabindex="0" data-video-id="${video.id}" data-start="${video.startSeconds || 0}" data-end="${video.endSeconds || 0}">
-            <div class="thumbnail">
-              ${thumbUrl ? `<img src="${thumbUrl}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
-              <div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>
-            </div>
-            <div class="card-content">
-              <div class="video-title">${escapeHtml(title)}</div>
-              <div class="video-meta">
-                <i class="fab fa-youtube"></i>
-                ${isShort ? '<span class="badge"><i class="fas fa-bolt"></i> SHORT</span>' : '<span class="badge"><i class="fas fa-video"></i> VIDEO</span>'}
-                ${timeInfo}
-              </div>
+      videoGrid.style.display = 'grid'; emptyMsg.style.display = 'none';
+      videoGrid.innerHTML = videoItems.map(video => `
+        <div class="video-card" tabindex="0" data-video-id="${video.id}" data-start="${video.startSeconds || 0}" data-end="${video.endSeconds || 0}">
+          <div class="thumbnail">
+            ${video.thumbnail ? `<img src="${video.thumbnail}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
+            <div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+          </div>
+          <div class="card-content">
+            <div class="video-title">${escapeHtml(video.title || 'Video')}</div>
+            <div class="video-meta">
+              <span class="badge">${video.url.includes('/shorts/') ? 'SHORT' : 'VIDEO'}</span>
+              ${video.displayTime ? `<span class="time-badge">${video.displayTime}</span>` : ''}
             </div>
           </div>
-        `;
-      });
-
-      videoGrid.innerHTML = html;
-      document.querySelectorAll(".video-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          const videoId = card.dataset.videoId;
-          const startSec = parseInt(card.dataset.start, 10) || 0;
-          const endSec = parseInt(card.dataset.end, 10) || 0;
-          if (videoId) playVideoFullscreen(videoId, startSec, endSec);
-        });
-        card.addEventListener("keypress", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            const videoId = card.dataset.videoId;
-            const startSec = parseInt(card.dataset.start, 10) || 0;
-            const endSec = parseInt(card.dataset.end, 10) || 0;
-            if (videoId) playVideoFullscreen(videoId, startSec, endSec);
-          }
-        });
+        </div>`).join('');
+      document.querySelectorAll('.video-card').forEach(card => {
+        const open = () => playVideoFullscreen(card.dataset.videoId, parseInt(card.dataset.start,10)||0, parseInt(card.dataset.end,10)||0);
+        card.addEventListener('click', open);
+        card.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
       });
     }
-
     function renderNotes() {
-      const gradeName = gradesData[currentGrade]?.name || "";
-      const lessonName = gradesData[currentGrade]?.lessons[currentLessonKey]?.name || "";
+      const lessonName = gradesData[currentGrade]?.lessons[currentLessonKey]?.name || '';
       const notes = getLessonNotes(currentLessonKey);
       currentNotesTitle.textContent = `${lessonName} · Lesson Notes`;
       noteCountBadge.textContent = notes.length;
-      noteAvailabilityDisplay.textContent = `📚 ${notes.length} note${notes.length !== 1 ? "s" : ""}`;
-
+      noteAvailabilityDisplay.textContent = `📚 ${notes.length} note${notes.length !== 1 ? 's' : ''}`;
       if (!notes.length) {
-        notesGrid.innerHTML = "";
-        notesGrid.style.display = "none";
-        notesEmptyMessage.style.display = "block";
-        return;
+        notesGrid.innerHTML = ''; notesGrid.style.display = 'none'; notesEmptyMessage.style.display = 'block'; return;
       }
-
-      notesGrid.style.display = "grid";
-      notesEmptyMessage.style.display = "none";
-      notesGrid.innerHTML = notes
-        .map(
-          (note) => `
-            <article class="note-card">
-              <div class="note-hero">
-                <div class="note-meta">
-                  <span class="badge"><i class="fas fa-book"></i> Reader Note</span>
-                  <span class="badge"><i class="fas fa-layer-group"></i> ${escapeHtml(note.grade)}</span>
-                </div>
-              </div>
-              <div class="note-content">
-                <div class="note-title">${escapeHtml(note.title)}</div>
-                <div class="note-desc">${escapeHtml(note.description)}</div>
-                <div class="note-actions">
-                  <button class="btn btn-primary read-note-btn" data-note-id="${escapeHtml(note.id)}"><i class="fas fa-book-open"></i> Read Note</button>
-                  <button class="btn btn-secondary preview-note-btn" data-note-id="${escapeHtml(note.id)}"><i class="fas fa-eye"></i> Quick Preview</button>
-                </div>
-              </div>
-            </article>
-          `
-        )
-        .join("");
-
-      notesGrid.querySelectorAll(".read-note-btn, .preview-note-btn").forEach((btn) => {
-        btn.addEventListener("click", () => openNoteById(btn.dataset.noteId));
-      });
+      notesGrid.style.display = 'grid'; notesEmptyMessage.style.display = 'none';
+      notesGrid.innerHTML = notes.map(note => `
+        <article class="note-card">
+          <div class="note-hero"><div class="note-meta"><span class="badge">Reader Note</span><span class="badge">${escapeHtml(note.grade)}</span></div></div>
+          <div class="note-content">
+            <div class="note-title">${escapeHtml(note.title)}</div>
+            <div class="note-desc">${escapeHtml(note.description)}</div>
+            <div class="note-actions">
+              <button class="btn btn-primary read-note-btn" data-note-id="${escapeHtml(note.id)}"><i class="fas fa-book-open"></i> Read Note</button>
+            </div>
+          </div>
+        </article>`).join('');
+      notesGrid.querySelectorAll('.read-note-btn').forEach(btn => btn.addEventListener('click', () => openNoteById(btn.dataset.noteId)));
     }
-
     function findNoteById(noteId) {
-      const notes = getLessonNotes(currentLessonKey);
-      return notes.find((note) => note.id === noteId) || null;
+      return getLessonNotes(currentLessonKey).find(note => note.id === noteId) || null;
     }
-
     function openNoteById(noteId) {
-      const note = findNoteById(noteId);
-      if (!note) return;
-      noteModalTitle.textContent = note.title;
-      noteModalGrade.textContent = note.grade;
-      noteModalLesson.textContent = note.lesson;
+      const note = findNoteById(noteId); if (!note) return;
+      noteModalTitle.textContent = note.title; noteModalGrade.textContent = note.grade; noteModalLesson.textContent = note.lesson;
       noteReaderFrame.srcdoc = buildReaderDocument(note);
-      noteModal.style.display = "flex";
-      document.body.style.overflow = "hidden";
+      noteModal.style.display = 'flex'; document.body.style.overflow = 'hidden';
     }
-
-    function closeNoteModal() {
-      noteModal.style.display = "none";
-      noteReaderFrame.srcdoc = "";
-      document.body.style.overflow = "";
-    }
-
+    function closeNoteModal() { noteModal.style.display = 'none'; noteReaderFrame.srcdoc = ''; document.body.style.overflow = ''; }
     function playVideoFullscreen(videoId, startSeconds = 0, endSeconds = 0) {
       if (!videoId) return;
-      let params = "?autoplay=1&rel=0";
+      let params = '?autoplay=1&rel=0';
       if (startSeconds > 0 || endSeconds > 0) {
-        params = "?";
-        if (startSeconds > 0) params += `start=${startSeconds}&`;
-        if (endSeconds > 0) params += `end=${endSeconds}&`;
-        params += "autoplay=1&rel=0";
+        params = '?'; if (startSeconds > 0) params += `start=${startSeconds}&`; if (endSeconds > 0) params += `end=${endSeconds}&`; params += 'autoplay=1&rel=0';
       }
-      youtubeIframe.src = `https://www.youtube.com/embed/${videoId}${params}`;
-      fullscreenOverlay.style.display = "flex";
-      const elem = fullscreenOverlay;
-      if (elem.requestFullscreen) elem.requestFullscreen().catch(() => {});
+      youtubeIframe.src = `https://www.youtube.com/embed/${videoId}${params}`; fullscreenOverlay.style.display = 'flex';
+      if (fullscreenOverlay.requestFullscreen) fullscreenOverlay.requestFullscreen().catch(() => {});
     }
-
-    function exitFullscreenAndHide() {
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-      youtubeIframe.src = "";
-      fullscreenOverlay.style.display = "none";
-    }
-
-    function onFullscreenChange() {
-      if (!document.fullscreenElement) {
-        youtubeIframe.src = "";
-        fullscreenOverlay.style.display = "none";
-      }
-    }
-
-    function applyGradeClass() {
-      const dashboard = document.querySelector(".dashboard");
-      dashboard.classList.remove("grade-6", "grade-7", "grade-8", "grade-9", "grade-10", "grade-11");
-      dashboard.classList.add(`grade-${currentGrade}`);
-    }
-
+    function exitFullscreenAndHide() { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); youtubeIframe.src = ''; fullscreenOverlay.style.display = 'none'; }
+    function onFullscreenChange() { if (!document.fullscreenElement) { youtubeIframe.src = ''; fullscreenOverlay.style.display = 'none'; } }
     function handleGradeChange() {
-      currentGrade = gradeSelect.value;
-      applyGradeClass();
-      populateLessons(currentGrade);
-      currentLessonKey = lessonSelect.value;
-      populateTopics(currentGrade, currentLessonKey);
-      currentTopic = topicSelect.value;
-      renderVideos();
-      renderNotes();
+      currentGrade = gradeSelect.value; applyGradeClass(); populateLessons(currentGrade); currentLessonKey = lessonSelect.value; populateTopics(currentGrade, currentLessonKey); currentTopic = topicSelect.value; renderVideos(); renderNotes();
     }
-
     function handleLessonChange() {
-      currentLessonKey = lessonSelect.value;
-      populateTopics(currentGrade, currentLessonKey);
-      currentTopic = topicSelect.value;
-      renderVideos();
-      renderNotes();
+      currentLessonKey = lessonSelect.value; populateTopics(currentGrade, currentLessonKey); currentTopic = topicSelect.value; renderVideos(); renderNotes();
     }
-
-    function handleTopicChange() {
-      currentTopic = topicSelect.value;
-      renderVideos();
-    }
-
-    const themeToggleBtn = document.getElementById("themeToggleBtn");
-    const htmlElement = document.documentElement;
-    const darkModeClass = "dark-mode";
-    const themeStorageKey = "theme-preference";
-
+    function handleTopicChange() { currentTopic = topicSelect.value; renderVideos(); }
     function initTheme() {
-      const savedTheme = localStorage.getItem(themeStorageKey);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const isDarkMode = savedTheme ? savedTheme === "dark" : prefersDark;
-      htmlElement.classList.toggle(darkModeClass, isDarkMode);
-      themeToggleBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      const savedTheme = localStorage.getItem('theme-preference');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+      htmlElement.classList.toggle('dark-mode', isDark);
+      themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
-
     function toggleTheme() {
-      const isDarkMode = htmlElement.classList.toggle(darkModeClass);
-      localStorage.setItem(themeStorageKey, isDarkMode ? "dark" : "light");
-      themeToggleBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      const isDark = htmlElement.classList.toggle('dark-mode');
+      localStorage.setItem('theme-preference', isDark ? 'dark' : 'light');
+      themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
-
-    themeToggleBtn.addEventListener("click", toggleTheme);
-    closeBtn.addEventListener("click", exitFullscreenAndHide);
-    closeNoteModalBtn.addEventListener("click", closeNoteModal);
-
-    printNoteBtn.addEventListener("click", () => {
-      const noteWindow = noteReaderFrame.contentWindow;
-      if (noteWindow) noteWindow.print();
-    });
-
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        if (fullscreenOverlay.style.display === "flex") {
-          setTimeout(() => {
-            if (!document.fullscreenElement) exitFullscreenAndHide();
-          }, 50);
-        }
-        if (noteModal.style.display === "flex") {
-          closeNoteModal();
-        }
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    closeBtn.addEventListener('click', exitFullscreenAndHide);
+    closeNoteModalBtn.addEventListener('click', closeNoteModal);
+    printNoteBtn.addEventListener('click', () => { const noteWindow = noteReaderFrame.contentWindow; if (noteWindow) noteWindow.print(); });
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (fullscreenOverlay.style.display === 'flex') setTimeout(() => { if (!document.fullscreenElement) exitFullscreenAndHide(); }, 50);
+        if (noteModal.style.display === 'flex') closeNoteModal();
       }
     });
-
-    noteModal.addEventListener("click", (e) => {
-      if (e.target === noteModal) closeNoteModal();
-    });
-
+    noteModal.addEventListener('click', (e) => { if (e.target === noteModal) closeNoteModal(); });
     function init() {
-      initTheme();
-      populateGrades();
-      currentGrade = "10";
-      gradeSelect.value = "10";
-      applyGradeClass();
-      populateLessons("10");
-      currentLessonKey = "structureOfMatter";
-      lessonSelect.value = "structureOfMatter";
-      populateTopics("10", "structureOfMatter");
-      currentTopic = "3.1 The Planetary Model of the Atom";
-      topicSelect.value = currentTopic;
-      renderVideos();
-      renderNotes();
-      gradeSelect.addEventListener("change", handleGradeChange);
-      lessonSelect.addEventListener("change", handleLessonChange);
-      topicSelect.addEventListener("change", handleTopicChange);
-      document.documentElement.style.scrollBehavior = "smooth";
+      initTheme(); populateGrades(); applyGradeClass(); populateLessons(currentGrade); populateTopics(currentGrade, currentLessonKey); renderVideos(); renderNotes();
+      gradeSelect.addEventListener('change', handleGradeChange); lessonSelect.addEventListener('change', handleLessonChange); topicSelect.addEventListener('change', handleTopicChange);
+      document.documentElement.style.scrollBehavior = 'smooth';
     }
-
     init();
   })();
 </script>
