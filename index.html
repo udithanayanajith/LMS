@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
-    <title>Teacher Dashboard · Physics · Grades 7–10</title>
+    <title>Teacher Dashboard · Science · Grades 7–10</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,729 +23,715 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-
-      :root {
-        --primary: #3b82f6;
-        --primary-dark: #1e40af;
-        --primary-light: #dbeafe;
-        --accent: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
-        --dark: #0f172a;
-        --light: #f1f5f9;
-        --text-main: #0f172a;
-        --text-secondary: #475569;
-        --border: #e2e8f0;
-        --bg-main: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
-        --bg-card: white;
-        --bg-control: white;
-        --select-bg: #f8fafc;
-        --select-bg-light: #f1f5f9;
-        --badge-bg: #eef2ff;
-        --badge-color: #1e40af;
-        --grade-primary: #3b82f6;
-        --grade-primary-light: #dbeafe;
-      }
-
-      html.dark-mode {
-        --dark: #f1f5f9;
-        --light: #1e293b;
-        --text-main: #f1f5f9;
-        --text-secondary: #cbd5e1;
-        --border: #334155;
-        --bg-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        --bg-card: #1e293b;
-        --bg-control: #1e293b;
-        --select-bg: #0f172a;
-        --select-bg-light: #1e293b;
-        --badge-bg: #1e293b;
-        --badge-color: #60a5fa;
-        --primary-light: #3b82f6;
-      }
-
-      /* Grade 6 - Green/Teal */
-      .grade-6 {
-        --grade-primary: #10b981;
-        --grade-primary-light: #d1fae5;
-        --grade-text-color: #065f46;
-      }
-      html.dark-mode .grade-6 {
-        --grade-primary: #10b981;
-        --grade-primary-light: #059669;
-        --grade-text-color: #d1fae5;
-      }
-
-      /* Grade 7 - Purple/Violet */
-      .grade-7 {
-        --grade-primary: #8b5cf6;
-        --grade-primary-light: #ede9fe;
-        --grade-text-color: #4c1d95;
-      }
-      html.dark-mode .grade-7 {
-        --grade-primary: #a78bfa;
-        --grade-primary-light: #6d28d9;
-        --grade-text-color: #ede9fe;
-      }
-
-      /* Grade 8 - Orange/Amber */
-      .grade-8 {
-        --grade-primary: #f59e0b;
-        --grade-primary-light: #fef3c7;
-        --grade-text-color: #78350f;
-      }
-      html.dark-mode .grade-8 {
-        --grade-primary: #fbbf24;
-        --grade-primary-light: #b45309;
-        --grade-text-color: #fef3c7;
-      }
-
-      /* Grade 9 - Red/Rose */
-      .grade-9 {
-        --grade-primary: #ef4444;
-        --grade-primary-light: #fee2e2;
-        --grade-text-color: #7f1d1d;
-      }
-      html.dark-mode .grade-9 {
-        --grade-primary: #f87171;
-        --grade-primary-light: #991b1b;
-        --grade-text-color: #fee2e2;
-      }
-
-      /* Grade 10 - Blue (default) */
-      .grade-10 {
-        --grade-primary: #3b82f6;
-        --grade-primary-light: #dbeafe;
-        --grade-text-color: #0c2340;
-      }
-      html.dark-mode .grade-10 {
-        --grade-primary: #60a5fa;
-        --grade-primary-light: #1e40af;
-        --grade-text-color: #dbeafe;
-      }
-
-      /* Grade 11 - Pink/Fuchsia */
-      .grade-11 {
-        --grade-primary: #ec4899;
-        --grade-primary-light: #fce7f3;
-        --grade-text-color: #500724;
-      }
-      html.dark-mode .grade-11 {
-        --grade-primary: #f472b6;
-        --grade-primary-light: #831843;
-        --grade-text-color: #fce7f3;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--bg-main);
-        color: var(--text-main);
-        padding: 20px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease;
-      }
-
-      .dashboard {
-        max-width: 1400px;
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      .header {
-        margin-bottom: 32px;
-        animation: slideDown 0.6s ease-out;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .theme-toggle-btn {
-        background: var(--primary);
-        border: none;
-        color: white;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-        margin-top: 4px;
-      }
-
-      .theme-toggle-btn:hover {
-        transform: scale(1.1) rotate(20deg);
-        box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
-      }
-
-      .theme-toggle-btn:active {
-        transform: scale(0.95);
-      }
-
-      .header-content {
-        flex: 1;
-      }
-
-      .header h1 {
-        font-weight: 700;
-        font-size: 2.5rem;
-        letter-spacing: -0.02em;
-        color: var(--dark);
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin-bottom: 4px;
-      }
-
-      .header h1 i {
-        color: white;
-        background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
-        padding: 12px 14px;
-        border-radius: 18px;
-        font-size: 1.8rem;
-        box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-      }
-
-      .sub {
-        color: var(--text-secondary);
-        margin-top: 8px;
-        font-weight: 500;
-        font-size: 0.95rem;
-      }
-
-      .control-panel {
-        background: var(--bg-control);
-        border-radius: 28px;
-        padding: 28px 32px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-        border: 1px solid var(--border);
-        margin-bottom: 40px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        gap: 24px 36px;
-        animation: slideUp 0.6s ease-out 0.1s both;
-        transition:
-          background-color 0.3s ease,
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .selector-group {
-        display: flex;
-        flex-direction: column;
-        min-width: 200px;
-      }
-
-      .selector-group label {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--text-secondary);
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .selector-group select {
-        padding: 14px 18px;
-        font-size: 1rem;
-        font-weight: 500;
-        background: linear-gradient(
-          135deg,
-          var(--select-bg) 0%,
-          var(--select-bg-light) 100%
-        );
-        border: 2px solid var(--border);
-        border-radius: 14px;
-        color: var(--text-main);
-        cursor: pointer;
-        outline: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        font-family: "Inter", sans-serif;
-      }
-
-      .selector-group select:hover {
-        border-color: var(--primary);
-        background: var(--bg-control);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
-        transform: translateY(-2px);
-      }
-
-      .selector-group select:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-        background: var(--bg-control);
-      }
-
-      .topic-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: linear-gradient(
-          135deg,
-          var(--grade-primary-light) 0%,
-          var(--grade-primary) 100%
-        );
-        color: var(--grade-text-color);
-        padding: 8px 18px;
-        border-radius: 40px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin-left: 8px;
-        animation: slideUp 0.6s ease-out 0.2s both;
-        transition: all 0.3s ease;
-      }
-
-      .section-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 28px;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
-      .section-title h2 {
-        font-weight: 700;
-        font-size: 1.85rem;
-        color: var(--dark);
-        animation: slideUp 0.6s ease-out 0.15s both;
-      }
-
-      .video-count {
-        background: linear-gradient(
-          135deg,
-          var(--grade-primary-light) 0%,
-          var(--grade-primary) 100%
-        );
-        color: var(--grade-text-color);
-        padding: 10px 20px;
-        border-radius: 32px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-        animation: slideUp 0.6s ease-out 0.15s both;
-        transition: all 0.3s ease;
-      }
-
-      .video-count-badge {
-        background: linear-gradient(
-          135deg,
-          var(--grade-primary-light) 0%,
-          var(--grade-primary) 100%
-        );
-        color: var(--grade-text-color);
-        padding: 8px 18px;
-        border-radius: 40px;
-        font-weight: 500;
-        font-size: 0.95rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.3s ease;
-      }
-
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-        gap: 28px;
-        margin-top: 8px;
-      }
-
-      .video-card {
-        background: var(--bg-card);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-        border: 1.5px solid var(--border);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        animation: fadeInUp 0.6s ease-out forwards;
-      }
-
-      .video-card:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .video-card:nth-child(2) {
-        animation-delay: 0.15s;
-      }
-      .video-card:nth-child(3) {
-        animation-delay: 0.2s;
-      }
-      .video-card:nth-child(n + 4) {
-        animation-delay: 0.25s;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .video-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-        border-color: var(--primary);
-      }
-
-      .video-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .video-card:hover::before {
-        opacity: 1;
-      }
-
-      .thumbnail {
-        position: relative;
-        aspect-ratio: 16 / 9;
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-
-      .thumbnail::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(59, 130, 246, 0.1) 0%,
-          transparent 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .video-card:hover .thumbnail::after {
-        opacity: 1;
-      }
-
-      .thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-      }
-
-      .video-card:hover .thumbnail img {
-        transform: scale(1.05);
-      }
-
-      .play-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .video-card:hover .play-overlay {
-        opacity: 1;
-      }
-
-      .play-icon {
-        background: white;
-        backdrop-filter: blur(10px);
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
-        font-size: 32px;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-      }
-
-      .video-card:hover .play-icon {
-        animation: none;
-        animation: bounce 0.6s ease-out;
-      }
-
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.15);
-        }
-      }
-
-      .card-content {
-        padding: 22px 20px 24px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .video-title {
-        font-weight: 700;
-        font-size: 1.1rem;
-        line-height: 1.5;
-        margin-bottom: 12px;
-        color: var(--text-main);
-        transition: color 0.3s;
-      }
-
-      .video-card:hover .video-title {
-        color: var(--primary);
-      }
-
-      .video-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--text-secondary);
-        font-size: 0.85rem;
-        flex-wrap: wrap;
-        margin-top: auto;
-      }
-
-      .video-meta i {
-        font-size: 14px;
-        color: var(--primary);
-      }
-
-      .badge {
-        background: linear-gradient(
-          135deg,
-          var(--light) 0%,
-          var(--border) 100%
-        );
-        padding: 6px 12px;
-        border-radius: 28px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--text-secondary);
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        transition: all 0.3s;
-      }
-
-      .badge i {
-        color: var(--primary);
-      }
-
-      .time-badge {
-        background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
-        color: #92400e;
-        font-weight: 600;
-        padding: 6px 12px;
-        border-radius: 24px;
-        font-size: 0.75rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-      }
-
-      .fullscreen-player {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(4px);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        animation: fadeIn 0.3s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      .fullscreen-player iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      .close-fullscreen {
-        position: absolute;
-        top: 24px;
-        right: 180px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        border: 1.5px solid rgba(255, 255, 255, 0.2);
-        color: white;
-        border-radius: 50px;
-        padding: 14px 22px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .close-fullscreen:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 80px 40px;
-        background: var(--bg-card);
-        border-radius: 28px;
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-        border: 1px solid var(--border);
-        animation: slideUp 0.6s ease-out;
-        transition:
-          background-color 0.3s ease,
-          border-color 0.3s ease;
-      }
-
-      .empty-state i {
-        font-size: 64px;
-        opacity: 0.3;
-        margin-bottom: 20px;
-        display: block;
-      }
-
-      .empty-state h3 {
-        color: var(--text-main);
-        margin-bottom: 8px;
-        font-size: 1.4rem;
-      }
-
-      .footer-note {
-        margin-top: 48px;
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        text-align: center;
-        border-top: 1px solid var(--border);
-        padding-top: 28px;
-        animation: slideUp 0.6s ease-out 0.3s both;
-      }
-
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .header h1 {
-          font-size: 1.8rem;
-        }
-
-        .control-panel {
-          flex-direction: column;
-          align-items: stretch;
-          padding: 20px;
-        }
-
-        .selector-group {
-          min-width: 100%;
-        }
-
-        .selector-group select {
-          width: 100%;
-        }
-
-        .video-grid {
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 20px;
-        }
-
-        .section-title {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-    </style>
+      }:root {
+    --primary: #3b82f6;
+    --primary-dark: #1e40af;
+    --primary-light: #dbeafe;
+    --accent: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #0f172a;
+    --light: #f1f5f9;
+    --text-main: #0f172a;
+    --text-secondary: #475569;
+    --border: #e2e8f0;
+    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
+    --bg-card: white;
+    --bg-control: white;
+    --select-bg: #f8fafc;
+    --select-bg-light: #f1f5f9;
+    --badge-bg: #eef2ff;
+    --badge-color: #1e40af;
+    --grade-primary: #3b82f6;
+    --grade-primary-light: #dbeafe;
+  }
+
+  html.dark-mode {
+    --dark: #f1f5f9;
+    --light: #1e293b;
+    --text-main: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border: #334155;
+    --bg-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --bg-card: #1e293b;
+    --bg-control: #1e293b;
+    --select-bg: #0f172a;
+    --select-bg-light: #1e293b;
+    --badge-bg: #1e293b;
+    --badge-color: #60a5fa;
+    --primary-light: #3b82f6;
+  }
+
+  .grade-6 {
+    --grade-primary: #10b981;
+    --grade-primary-light: #d1fae5;
+    --grade-text-color: #065f46;
+  }
+  html.dark-mode .grade-6 {
+    --grade-primary: #10b981;
+    --grade-primary-light: #059669;
+    --grade-text-color: #d1fae5;
+  }
+
+  .grade-7 {
+    --grade-primary: #8b5cf6;
+    --grade-primary-light: #ede9fe;
+    --grade-text-color: #4c1d95;
+  }
+  html.dark-mode .grade-7 {
+    --grade-primary: #a78bfa;
+    --grade-primary-light: #6d28d9;
+    --grade-text-color: #ede9fe;
+  }
+
+  .grade-8 {
+    --grade-primary: #f59e0b;
+    --grade-primary-light: #fef3c7;
+    --grade-text-color: #78350f;
+  }
+  html.dark-mode .grade-8 {
+    --grade-primary: #fbbf24;
+    --grade-primary-light: #b45309;
+    --grade-text-color: #fef3c7;
+  }
+
+  .grade-9 {
+    --grade-primary: #ef4444;
+    --grade-primary-light: #fee2e2;
+    --grade-text-color: #7f1d1d;
+  }
+  html.dark-mode .grade-9 {
+    --grade-primary: #f87171;
+    --grade-primary-light: #991b1b;
+    --grade-text-color: #fee2e2;
+  }
+
+  .grade-10 {
+    --grade-primary: #3b82f6;
+    --grade-primary-light: #dbeafe;
+    --grade-text-color: #0c2340;
+  }
+  html.dark-mode .grade-10 {
+    --grade-primary: #60a5fa;
+    --grade-primary-light: #1e40af;
+    --grade-text-color: #dbeafe;
+  }
+
+  .grade-11 {
+    --grade-primary: #ec4899;
+    --grade-primary-light: #fce7f3;
+    --grade-text-color: #500724;
+  }
+  html.dark-mode .grade-11 {
+    --grade-primary: #f472b6;
+    --grade-primary-light: #831843;
+    --grade-text-color: #fce7f3;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .header {
+    margin-bottom: 32px;
+    animation: slideDown 0.6s ease-out;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .theme-toggle-btn {
+    background: var(--primary);
+    border: none;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    margin-top: 4px;
+  }
+
+  .theme-toggle-btn:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
+  }
+
+  .theme-toggle-btn:active {
+    transform: scale(0.95);
+  }
+
+  .header-content {
+    flex: 1;
+  }
+
+  .header h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .header h1 i {
+    color: white;
+    background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+    padding: 12px 14px;
+    border-radius: 18px;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+  }
+
+  .sub {
+    color: var(--text-secondary);
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .control-panel {
+    background: var(--bg-control);
+    border-radius: 28px;
+    padding: 28px 32px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 24px 36px;
+    animation: slideUp 0.6s ease-out 0.1s both;
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .selector-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+  }
+
+  .selector-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .selector-group select {
+    padding: 14px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    background: linear-gradient(
+      135deg,
+      var(--select-bg) 0%,
+      var(--select-bg-light) 100%
+    );
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    color: var(--text-main);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: "Inter", sans-serif;
+  }
+
+  .selector-group select:hover {
+    border-color: var(--primary);
+    background: var(--bg-control);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .selector-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+    background: var(--bg-control);
+  }
+
+  .topic-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(
+      135deg,
+      var(--grade-primary-light) 0%,
+      var(--grade-primary) 100%
+    );
+    color: var(--grade-text-color);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-left: 8px;
+    animation: slideUp 0.6s ease-out 0.2s both;
+    transition: all 0.3s ease;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .section-title h2 {
+    font-weight: 700;
+    font-size: 1.85rem;
+    color: var(--dark);
+    animation: slideUp 0.6s ease-out 0.15s both;
+  }
+
+  .video-count {
+    background: linear-gradient(
+      135deg,
+      var(--grade-primary-light) 0%,
+      var(--grade-primary) 100%
+    );
+    color: var(--grade-text-color);
+    padding: 10px 20px;
+    border-radius: 32px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    animation: slideUp 0.6s ease-out 0.15s both;
+    transition: all 0.3s ease;
+  }
+
+  .video-count-badge {
+    background: linear-gradient(
+      135deg,
+      var(--grade-primary-light) 0%,
+      var(--grade-primary) 100%
+    );
+    color: var(--grade-text-color);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 28px;
+    margin-top: 8px;
+  }
+
+  .video-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border: 1.5px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .video-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .video-card:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .video-card:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .video-card:nth-child(n + 4) {
+    animation-delay: 0.25s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .video-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+    border-color: var(--primary);
+  }
+
+  .video-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary) 0%,
+      var(--accent) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .video-card:hover::before {
+    opacity: 1;
+  }
+
+  .thumbnail {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .thumbnail::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .video-card:hover .thumbnail::after {
+    opacity: 1;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .video-card:hover .thumbnail img {
+    transform: scale(1.05);
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .video-card:hover .play-overlay {
+    opacity: 1;
+  }
+
+  .play-icon {
+    background: white;
+    backdrop-filter: blur(10px);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 32px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .video-card:hover .play-icon {
+    animation: none;
+    animation: bounce 0.6s ease-out;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+  }
+
+  .card-content {
+    padding: 22px 20px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    transition: color 0.3s;
+  }
+
+  .video-card:hover .video-title {
+    color: var(--primary);
+  }
+
+  .video-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  .video-meta i {
+    font-size: 14px;
+    color: var(--primary);
+  }
+
+  .badge {
+    background: linear-gradient(
+      135deg,
+      var(--light) 0%,
+      var(--border) 100%
+    );
+    padding: 6px 12px;
+    border-radius: 28px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s;
+  }
+
+  .badge i {
+    color: var(--primary);
+  }
+
+  .time-badge {
+    background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+    color: #92400e;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 24px;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+  }
+
+  .fullscreen-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fullscreen-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .close-fullscreen {
+    position: absolute;
+    top: 24px;
+    right: 180px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50px;
+    padding: 14px 22px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .close-fullscreen:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    background: var(--bg-card);
+    border-radius: 28px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    animation: slideUp 0.6s ease-out;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .empty-state i {
+    font-size: 64px;
+    opacity: 0.3;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .empty-state h3 {
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+  }
+
+  .footer-note {
+    margin-top: 48px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    animation: slideUp 0.6s ease-out 0.3s both;
+  }
+
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 1.8rem;
+    }
+
+    .control-panel {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 20px;
+    }
+
+    .selector-group {
+      min-width: 100%;
+    }
+
+    .selector-group select {
+      width: 100%;
+    }
+
+    .video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .section-title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
   </head>
   <body>
     <div class="dashboard">
@@ -754,7 +741,7 @@
             <i class="fas fa-microscope"></i>
             Science with Samadhi - LMS Dashboard
             <span class="topic-badge" id="gradeLessonHint"
-              >Grade 10 · Motion</span
+              >Grade 10 · 03. Structure of Matter</span
             >
           </h1>
           <div class="sub">
@@ -769,707 +756,676 @@
         >
           <i class="fas fa-moon"></i>
         </button>
-      </div>
-
-      <!-- Control row: grade, lesson, topic -->
-      <div class="control-panel">
-        <div class="selector-group">
-          <label><i class="fas fa-graduation-cap"></i> Grade</label>
-          <select id="gradeSelect"></select>
-        </div>
-        <div class="selector-group">
-          <label><i class="fas fa-book-open"></i> Lesson</label>
-          <select id="lessonSelect"></select>
-        </div>
-        <div class="selector-group" style="flex: 2; min-width: 240px">
-          <label><i class="fas fa-tags"></i> Topic</label>
-          <select id="topicSelect"></select>
-        </div>
-        <div style="margin-left: auto; display: flex; gap: 10px">
-          <span class="video-count-badge"
-            ><i class="fas fa-video"></i>
-            <span id="videoCountBadge">0</span> videos</span
-          >
-        </div>
-      </div>
-
-      <!-- Video grid -->
-      <div class="section-title">
-        <h2 id="currentTopicTitle">Select a topic</h2>
-        <div class="video-count" id="videoCountDisplay">📹 0 videos</div>
-      </div>
-      <div id="videoGridContainer" class="video-grid"></div>
-      <div id="emptyMessage" class="empty-state" style="display: none">
-        <i
-          class="fas fa-film"
-          style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"
-        ></i>
-        <h3>No videos for this topic</h3>
-        <p>Choose another topic or check back later.</p>
-      </div>
-
-      <div class="footer-note">
-        ⚡ Start times applied automatically · Press ESC or close button to exit
-        fullscreen
-      </div>
+      </div><div class="control-panel">
+    <div class="selector-group">
+      <label><i class="fas fa-graduation-cap"></i> Grade</label>
+      <select id="gradeSelect"></select>
     </div>
-
-    <!-- Fullscreen overlay -->
-    <div id="fullscreenOverlay" class="fullscreen-player">
-      <button class="close-fullscreen" id="closeFullscreenBtn">
-        <i class="fas fa-times"></i> Exit fullscreen
-      </button>
-      <iframe
-        id="youtubeIframe"
-        allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          fullscreen;
-        "
-        allowfullscreen
-      ></iframe>
+    <div class="selector-group">
+      <label><i class="fas fa-book-open"></i> Lesson</label>
+      <select id="lessonSelect"></select>
     </div>
+    <div class="selector-group" style="flex: 2; min-width: 240px">
+      <label><i class="fas fa-tags"></i> Topic</label>
+      <select id="topicSelect"></select>
+    </div>
+    <div style="margin-left: auto; display: flex; gap: 10px">
+      <span class="video-count-badge"
+        ><i class="fas fa-video"></i>
+        <span id="videoCountBadge">0</span> videos</span
+      >
+    </div>
+  </div>
 
-    <script>
-      (function () {
-        "use strict";
+  <div class="section-title">
+    <h2 id="currentTopicTitle">Select a topic</h2>
+    <div class="video-count" id="videoCountDisplay">📹 0 videos</div>
+  </div>
+  <div id="videoGridContainer" class="video-grid"></div>
+  <div id="emptyMessage" class="empty-state" style="display: none">
+    <i
+      class="fas fa-film"
+      style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"
+    ></i>
+    <h3>No videos for this topic</h3>
+    <p>Choose another topic or check back later.</p>
+  </div>
 
-        // ---------- HELPER: convert "13.54" or "13:54" to seconds ----------
-        function timeToSeconds(timeStr) {
-          if (!timeStr) return null;
-          let str = timeStr.trim();
-          // support both "13.54" and "13:54"
-          str = str.replace(":", ".");
-          const parts = str.split(".");
-          if (parts.length === 2) {
-            const min = parseInt(parts[0], 10);
-            const sec = parseInt(parts[1], 10);
-            if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
-          }
-          // if already number
-          const num = parseFloat(str);
-          return isNaN(num) ? null : Math.floor(num);
-        }
+  <div class="footer-note">
+    Start times applied automatically · Press ESC or close button to exit
+    fullscreen
+  </div>
+</div>
 
-        // extract YouTube ID
-        function extractYouTubeID(url) {
-          if (!url) return null;
-          let id = null;
-          if (url.includes("youtu.be/")) {
-            id = url.split("youtu.be/")[1].split(/[?&]/)[0];
-          } else if (url.includes("youtube.com/shorts/")) {
-            id = url.split("shorts/")[1].split(/[?&]/)[0];
-          } else {
-            const regExp =
-              /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-            const match = url.match(regExp);
-            if (match) id = match[1];
-          }
-          return id ? id.split("?")[0] : null;
-        }
+<div id="fullscreenOverlay" class="fullscreen-player">
+  <button class="close-fullscreen" id="closeFullscreenBtn">
+    <i class="fas fa-times"></i> Exit fullscreen
+  </button>
+  <iframe
+    id="youtubeIframe"
+    allow="
+      accelerometer;
+      autoplay;
+      clipboard-write;
+      encrypted-media;
+      gyroscope;
+      picture-in-picture;
+      fullscreen;
+    "
+    allowfullscreen
+  ></iframe>
+</div>
 
-        // ---------- DATA STRUCTURE : grades -> lessons -> topics -> videos ----------
-        const gradesData = {
-          6: {
-            name: "Grade 6",
-            lessons: {},
+<script>
+  (function () {
+    "use strict";
+
+    function timeToSeconds(timeStr) {
+      if (!timeStr) return null;
+      let str = timeStr.trim();
+      str = str.replace(":", ".");
+      const parts = str.split(".");
+      if (parts.length === 2) {
+        const min = parseInt(parts[0], 10);
+        const sec = parseInt(parts[1], 10);
+        if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
+      }
+      const num = parseFloat(str);
+      return isNaN(num) ? null : Math.floor(num);
+    }
+
+    function extractYouTubeID(url) {
+      if (!url) return null;
+      let id = null;
+      if (url.includes("youtu.be/")) {
+        id = url.split("youtu.be/")[1].split(/[?&]/)[0];
+      } else if (url.includes("youtube.com/shorts/")) {
+        id = url.split("shorts/")[1].split(/[?&]/)[0];
+      } else {
+        const regExp =
+          /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+        const match = url.match(regExp);
+        if (match) id = match[1];
+      }
+      return id ? id.split("?")[0] : null;
+    }
+
+    const gradesData = {
+      6: {
+        name: "Grade 6",
+        lessons: {},
+      },
+      7: {
+        name: "Grade 7",
+        lessons: {
+          plantDiversity: {
+            name: "01. Plant Diversity",
+            topics: {},
           },
-          7: {
-            name: "Grade 7",
-            lessons: {
-              plantDiversity: {
-                name: "1. Plant Diversity",
-                topics: {},
-              },
-              staticElectricity: {
-                name: "2. Static Electricity",
-                topics: {
-                  "2.1 Charging an object": [
-                    {
-                      title: "Charging an object (part)",
-                      url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5",
-                      start: "13.54",
-                      end: "25.46",
-                    },
-                    {
-                      title: "Charging · short 1",
-                      url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq",
-                    },
-                    {
-                      title: "Charging · short 2",
-                      url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv",
-                    },
-                  ],
-                  "2.2 Types of static electric charges": [
-                    {
-                      title: "Types of charges (1)",
-                      url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3",
-                    },
-                    {
-                      title: "Types of charges (2)",
-                      url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO",
-                    },
-                    {
-                      title: "Types of charges (3)",
-                      url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI",
-                    },
-                    {
-                      title: "Charges (part from main)",
-                      url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4",
-                      start: "28.48",
-                      end: "49.48",
-                    },
-                  ],
-                  "2.3 Generation of static electric charges": [],
-                  "2.4 Phenomena associated with static electricity": [],
-                  "2.5 Capacitors": [],
+          staticElectricity: {
+            name: "02. Static Electricity",
+            topics: {
+              "2.1 Charging an object": [
+                {
+                  title: "Charging an object (part)",
+                  url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5",
+                  start: "13.54",
+                  end: "25.46",
                 },
-              },
-              generationOfElectricity: {
-                name: "3. Generation of Electricity",
-                topics: {},
-              },
-              functionsOfWater: {
-                name: "4. Functions of Water",
-                topics: {},
-              },
-              acidsAndBases: {
-                name: "5. Acids and Bases",
-                topics: {},
-              },
-              animalDiversity: {
-                name: "6. Animal Diversity",
-                topics: {},
-              },
-              formsOfEnergy: {
-                name: "7. Forms of Energy and Uses",
-                topics: {},
-              },
-              natureOfEarth: {
-                name: "8. The Nature of the Earth",
-                topics: {},
-              },
-              light: {
-                name: "9. Light",
-                topics: {},
-              },
-              microscope: {
-                name: "10. The Correct Use of the Microscope",
-                topics: {},
-              },
-              sound: {
-                name: "11. Sound",
-                topics: {},
-              },
-              biologicalProcesses: {
-                name: "12. Biological Processes",
-                topics: {},
-              },
-              atmosphere: {
-                name: "13. Atmosphere",
-                topics: {},
-              },
-              heatAndTemperature: {
-                name: "14. Heat and Temperature",
-                topics: {},
-              },
-              soil: {
-                name: "15. Soil",
-                topics: {},
-              },
-              forceAndMotion: {
-                name: "16. Force and Motion",
-                topics: {},
-              },
-              nutrientsInFood: {
-                name: "17. Nutrients in Food",
-                topics: {},
-              },
-              mineralsAndRocks: {
-                name: "18. Minerals and Rocks",
-                topics: {},
-              },
-              sourcesOfEnergy: {
-                name: "19. Sources of Energy",
-                topics: {},
-              },
+                {
+                  title: "Charging · short 1",
+                  url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq",
+                },
+                {
+                  title: "Charging · short 2",
+                  url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv",
+                },
+              ],
+              "2.2 Types of static electric charges": [
+                {
+                  title: "Types of charges (1)",
+                  url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3",
+                },
+                {
+                  title: "Types of charges (2)",
+                  url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO",
+                },
+                {
+                  title: "Types of charges (3)",
+                  url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI",
+                },
+                {
+                  title: "Charges (part from main)",
+                  url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4",
+                  start: "28.48",
+                  end: "49.48",
+                },
+              ],
+              "2.3 Generation of static electric charges": [],
+              "2.4 Phenomena associated with static electricity": [],
+              "2.5 Capacitors": [],
             },
           },
-          8: {
-            name: "Grade 8",
-            lessons: {
-              sound: {
-                name: "05. Sound",
-                topics: {
-                  "Frequency of vibrations": [
-                    {
-                      title: "Frequency of vibrations (short)",
-                      url: "https://youtube.com/shorts/DWaDSmInTqU?si=R2WpTs-jGmxSHGHo",
-                    },
-                  ],
-                  "5.1 Musical instruments that produce sound by vibrating membranes":
-                    [
-                      {
-                        title: "Membranes short",
-                        url: "https://youtube.com/shorts/9ILsEzvw5nI?si=XlohwrVDohu3JRnN",
-                      },
-                    ],
-                  "5.2 Musical instruments that produce sound by vibrating air columns":
-                    [],
-                  "5.3 Musical instruments that produce sound by vibrating strings/rods":
-                    [],
-                  "Musical tones and noises": [],
-                  "Ancient, traditional and modern musical instruments": [],
-                  "Musical therapy": [],
-                  "Limits of hearing": [],
+          generationOfElectricity: {
+            name: "03. Generation of Electricity",
+            topics: {},
+          },
+          functionsOfWater: {
+            name: "04. Functions of Water",
+            topics: {},
+          },
+          acidsAndBases: {
+            name: "05. Acids and Bases",
+            topics: {},
+          },
+          animalDiversity: {
+            name: "06. Animal Diversity",
+            topics: {},
+          },
+          formsOfEnergy: {
+            name: "07. Forms of Energy and Uses",
+            topics: {},
+          },
+          natureOfEarth: {
+            name: "08. The Nature of the Earth",
+            topics: {},
+          },
+          light: {
+            name: "09. Light",
+            topics: {},
+          },
+          microscope: {
+            name: "10. The Correct Use of the Microscope",
+            topics: {},
+          },
+          sound: {
+            name: "11. Sound",
+            topics: {},
+          },
+          biologicalProcesses: {
+            name: "12. Biological Processes",
+            topics: {},
+          },
+          atmosphere: {
+            name: "13. Atmosphere",
+            topics: {},
+          },
+          heatAndTemperature: {
+            name: "14. Heat and Temperature",
+            topics: {},
+          },
+          soil: {
+            name: "15. Soil",
+            topics: {},
+          },
+          forceAndMotion: {
+            name: "16. Force and Motion",
+            topics: {},
+          },
+          nutrientsInFood: {
+            name: "17. Nutrients in Food",
+            topics: {},
+          },
+          mineralsAndRocks: {
+            name: "18. Minerals and Rocks",
+            topics: {},
+          },
+          sourcesOfEnergy: {
+            name: "19. Sources of Energy",
+            topics: {},
+          },
+        },
+      },
+      8: {
+        name: "Grade 8",
+        lessons: {
+          sound: {
+            name: "05. Sound",
+            topics: {
+              "Frequency of vibrations": [
+                {
+                  title: "Frequency of vibrations (short)",
+                  url: "https://youtube.com/shorts/DWaDSmInTqU?si=R2WpTs-jGmxSHGHo",
                 },
-              },
+              ],
+              "5.1 Musical instruments that produce sound by vibrating membranes": [
+                {
+                  title: "Membranes short",
+                  url: "https://youtube.com/shorts/9ILsEzvw5nI?si=XlohwrVDohu3JRnN",
+                },
+              ],
+              "5.2 Musical instruments that produce sound by vibrating air columns": [],
+              "5.3 Musical instruments that produce sound by vibrating strings/rods": [],
+              "Musical tones and noises": [],
+              "Ancient, traditional and modern musical instruments": [],
+              "Musical therapy": [],
+              "Limits of hearing": [],
             },
           },
-          9: {
-            name: "Grade 9",
-            lessons: {},
-          },
-          10: {
-            name: "Grade 10",
-            lessons: {
-              motion: {
-                name: "2. Motion in a straight line",
-                topics: {
-                  "2.1 Distance and displacement": [
-                    {
-                      title: "Distance & displacement · Short",
-                      url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz",
-                    },
-                    {
-                      title: "Distance & displacement · Explanation",
-                      url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx",
-                    },
-                    {
-                      title: "Distance & displacement · Detailed",
-                      url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu",
-                    },
-                  ],
-                  "2.2 Speed": [
-                    {
-                      title: "Speed · Concept",
-                      url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V",
-                    },
-                    {
-                      title: "Speed · Examples",
-                      url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU",
-                    },
-                    {
-                      title: "Speed · Short",
-                      url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx",
-                    },
-                  ],
-                  "2.3 Velocity": [
-                    {
-                      title: "Velocity · Explained",
-                      url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH",
-                    },
-                    {
-                      title: "Velocity · Short",
-                      url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS",
-                    },
-                  ],
-                  "2.4 Acceleration": [
-                    {
-                      title: "Acceleration · Full lesson",
-                      url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx",
-                    },
-                  ],
-                  "2.5 Displacement - Time graphs": [
-                    {
-                      title: "Displacement-Time graph (1)",
-                      url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD",
-                    },
-                    {
-                      title: "Displacement-Time graph (2)",
-                      url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH",
-                    },
-                  ],
-                  "2.6 Velocity - Time graphs": [
-                    {
-                      title: "Velocity-Time graph",
-                      url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw",
-                    },
-                  ],
-                  "2.7 Gravitational acceleration": [
-                    {
-                      title: "Gravitational acceleration",
-                      url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS",
-                    },
-                  ],
-                },
-              },
+        },
+      },
+      9: {
+        name: "Grade 9",
+        lessons: {
+          natureAndPropertiesOfMatter: {
+            name: "03. Nature and Properties of Matter",
+            topics: {
+              "Nature of matter": [],
+              "Properties of matter": [],
             },
           },
-          11: {
-            name: "Grade 11",
-            lessons: {},
+        },
+      },
+      10: {
+        name: "Grade 10",
+        lessons: {
+          structureOfMatter: {
+            name: "03. Structure of Matter",
+            topics: {
+              "3.1 The Planetary Model of the Atom": [],
+              "3.2 Electronic Configuration": [],
+              "3.3 Periodic Table": [],
+              "3.4 Isotopes": [],
+              "3.5 Metals and Non-metals": [],
+              "3.6 Chemical Formulae": [],
+            },
           },
-        };
+          motion: {
+            name: "02. Motion in a straight line",
+            topics: {
+              "2.1 Distance and displacement": [
+                {
+                  title: "Distance & displacement · Short",
+                  url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz",
+                },
+                {
+                  title: "Distance & displacement · Explanation",
+                  url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx",
+                },
+                {
+                  title: "Distance & displacement · Detailed",
+                  url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu",
+                },
+              ],
+              "2.2 Speed": [
+                {
+                  title: "Speed · Concept",
+                  url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V",
+                },
+                {
+                  title: "Speed · Examples",
+                  url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU",
+                },
+                {
+                  title: "Speed · Short",
+                  url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx",
+                },
+              ],
+              "2.3 Velocity": [
+                {
+                  title: "Velocity · Explained",
+                  url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH",
+                },
+                {
+                  title: "Velocity · Short",
+                  url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS",
+                },
+              ],
+              "2.4 Acceleration": [
+                {
+                  title: "Acceleration · Full lesson",
+                  url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx",
+                },
+              ],
+              "2.5 Displacement - Time graphs": [
+                {
+                  title: "Displacement-Time graph (1)",
+                  url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD",
+                },
+                {
+                  title: "Displacement-Time graph (2)",
+                  url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH",
+                },
+              ],
+              "2.6 Velocity - Time graphs": [
+                {
+                  title: "Velocity-Time graph",
+                  url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw",
+                },
+              ],
+              "2.7 Gravitational acceleration": [
+                {
+                  title: "Gravitational acceleration",
+                  url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS",
+                },
+              ],
+            },
+          },
+        },
+      },
+      11: {
+        name: "Grade 11",
+        lessons: {},
+      },
+    };
 
-        // DOM elements
-        const gradeSelect = document.getElementById("gradeSelect");
-        const lessonSelect = document.getElementById("lessonSelect");
-        const topicSelect = document.getElementById("topicSelect");
-        const videoGrid = document.getElementById("videoGridContainer");
-        const emptyMsg = document.getElementById("emptyMessage");
-        const currentTopicTitle = document.getElementById("currentTopicTitle");
-        const videoCountDisplay = document.getElementById("videoCountDisplay");
-        const videoCountBadge = document.getElementById("videoCountBadge");
-        const gradeLessonHint = document.getElementById("gradeLessonHint");
+    const gradeSelect = document.getElementById("gradeSelect");
+    const lessonSelect = document.getElementById("lessonSelect");
+    const topicSelect = document.getElementById("topicSelect");
+    const videoGrid = document.getElementById("videoGridContainer");
+    const emptyMsg = document.getElementById("emptyMessage");
+    const currentTopicTitle = document.getElementById("currentTopicTitle");
+    const videoCountDisplay = document.getElementById("videoCountDisplay");
+    const videoCountBadge = document.getElementById("videoCountBadge");
+    const gradeLessonHint = document.getElementById("gradeLessonHint");
 
-        const fullscreenOverlay = document.getElementById("fullscreenOverlay");
-        const youtubeIframe = document.getElementById("youtubeIframe");
-        const closeBtn = document.getElementById("closeFullscreenBtn");
+    const fullscreenOverlay = document.getElementById("fullscreenOverlay");
+    const youtubeIframe = document.getElementById("youtubeIframe");
+    const closeBtn = document.getElementById("closeFullscreenBtn");
 
-        // State
-        let currentGrade = "10";
-        let currentLessonKey = "motion";
-        let currentTopic = "2.1 Distance and displacement";
+    let currentGrade = "10";
+    let currentLessonKey = "structureOfMatter";
+    let currentTopic = "3.1 The Planetary Model of the Atom";
 
-        // ---------- Populate grade dropdown ----------
-        function populateGrades() {
-          gradeSelect.innerHTML = "";
-          Object.keys(gradesData).forEach((gradeKey) => {
-            const opt = document.createElement("option");
-            opt.value = gradeKey;
-            opt.textContent = gradesData[gradeKey].name;
-            gradeSelect.appendChild(opt);
-          });
-          gradeSelect.value = currentGrade;
-        }
+    function populateGrades() {
+      gradeSelect.innerHTML = "";
+      Object.keys(gradesData).forEach((gradeKey) => {
+        const opt = document.createElement("option");
+        opt.value = gradeKey;
+        opt.textContent = gradesData[gradeKey].name;
+        gradeSelect.appendChild(opt);
+      });
+      gradeSelect.value = currentGrade;
+    }
 
-        // Populate lessons based on grade
-        function populateLessons(gradeKey) {
-          lessonSelect.innerHTML = "";
-          const lessons = gradesData[gradeKey]?.lessons || {};
-          const lessonKeys = Object.keys(lessons);
-          if (lessonKeys.length === 0) return;
-          lessonKeys.forEach((key) => {
-            const opt = document.createElement("option");
-            opt.value = key;
-            opt.textContent = lessons[key].name;
-            lessonSelect.appendChild(opt);
-          });
-          // set to first or maintain if possible
-          if (lessonKeys.includes(currentLessonKey)) {
-            lessonSelect.value = currentLessonKey;
-          } else {
-            currentLessonKey = lessonKeys[0];
-            lessonSelect.value = currentLessonKey;
-          }
-        }
+    function populateLessons(gradeKey) {
+      lessonSelect.innerHTML = "";
+      const lessons = gradesData[gradeKey]?.lessons || {};
+      const lessonKeys = Object.keys(lessons);
+      if (lessonKeys.length === 0) return;
+      lessonKeys.forEach((key) => {
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = lessons[key].name;
+        lessonSelect.appendChild(opt);
+      });
+      if (lessonKeys.includes(currentLessonKey)) {
+        lessonSelect.value = currentLessonKey;
+      } else {
+        currentLessonKey = lessonKeys[0];
+        lessonSelect.value = currentLessonKey;
+      }
+    }
 
-        // Populate topics based on grade+lesson
-        function populateTopics(gradeKey, lessonKey) {
-          topicSelect.innerHTML = "";
-          const topics = gradesData[gradeKey]?.lessons[lessonKey]?.topics || {};
-          const topicNames = Object.keys(topics);
-          if (topicNames.length === 0) return;
-          topicNames.forEach((topic) => {
-            const opt = document.createElement("option");
-            opt.value = topic;
-            opt.textContent = topic;
-            topicSelect.appendChild(opt);
-          });
-          if (topicNames.includes(currentTopic)) {
-            topicSelect.value = currentTopic;
-          } else {
-            currentTopic = topicNames[0];
-            topicSelect.value = currentTopic;
-          }
-        }
+    function populateTopics(gradeKey, lessonKey) {
+      topicSelect.innerHTML = "";
+      const topics = gradesData[gradeKey]?.lessons[lessonKey]?.topics || {};
+      const topicNames = Object.keys(topics);
+      if (topicNames.length === 0) return;
+      topicNames.forEach((topic) => {
+        const opt = document.createElement("option");
+        opt.value = topic;
+        opt.textContent = topic;
+        topicSelect.appendChild(opt);
+      });
+      if (topicNames.includes(currentTopic)) {
+        topicSelect.value = currentTopic;
+      } else {
+        currentTopic = topicNames[0];
+        topicSelect.value = currentTopic;
+      }
+    }
 
-        // Build video objects with id, thumbnail, start seconds
-        function buildVideoObjects(gradeKey, lessonKey, topic) {
-          const rawVideos =
-            gradesData[gradeKey]?.lessons[lessonKey]?.topics[topic] || [];
-          return rawVideos
-            .map((v) => {
-              const videoId = extractYouTubeID(v.url);
-              const startSec = v.start ? timeToSeconds(v.start) : null;
-              const endSec = v.end ? timeToSeconds(v.end) : null;
-              return {
-                ...v,
-                id: videoId,
-                thumbnail: videoId
-                  ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
-                  : null,
-                startSeconds: startSec,
-                endSeconds: endSec,
-                displayTime:
-                  v.start && v.end
-                    ? `${v.start} – ${v.end}`
-                    : v.start
-                      ? `starts ${v.start}`
-                      : "",
-              };
-            })
-            .filter((v) => v.id !== null);
-        }
+    function buildVideoObjects(gradeKey, lessonKey, topic) {
+      const rawVideos =
+        gradesData[gradeKey]?.lessons[lessonKey]?.topics[topic] || [];
+      return rawVideos
+        .map((v) => {
+          const videoId = extractYouTubeID(v.url);
+          const startSec = v.start ? timeToSeconds(v.start) : null;
+          const endSec = v.end ? timeToSeconds(v.end) : null;
+          return {
+            ...v,
+            id: videoId,
+            thumbnail: videoId
+              ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+              : null,
+            startSeconds: startSec,
+            endSeconds: endSec,
+            displayTime:
+              v.start && v.end
+                ? `${v.start} – ${v.end}`
+                : v.start
+                  ? `starts ${v.start}`
+                  : "",
+          };
+        })
+        .filter((v) => v.id !== null);
+    }
 
-        // Render video grid
-        function renderVideos() {
-          const grade = currentGrade;
-          const lesson = currentLessonKey;
-          const topic = currentTopic;
+    function renderVideos() {
+      const grade = currentGrade;
+      const lesson = currentLessonKey;
+      const topic = currentTopic;
 
-          const gradeName = gradesData[grade]?.name || "";
-          const lessonName = gradesData[grade]?.lessons[lesson]?.name || "";
-          gradeLessonHint.textContent = `${gradeName} · ${lessonName}`;
+      const gradeName = gradesData[grade]?.name || "";
+      const lessonName = gradesData[grade]?.lessons[lesson]?.name || "";
+      gradeLessonHint.textContent = `${gradeName} · ${lessonName}`;
 
-          const videoItems = buildVideoObjects(grade, lesson, topic);
-          currentTopicTitle.textContent = topic;
-          const count = videoItems.length;
-          videoCountDisplay.textContent = `📹 ${count} video${count !== 1 ? "s" : ""}`;
-          videoCountBadge.textContent = count;
+      const videoItems = buildVideoObjects(grade, lesson, topic);
+      currentTopicTitle.textContent = topic;
+      const count = videoItems.length;
+      videoCountDisplay.textContent = `📹 ${count} video${count !== 1 ? "s" : ""}`;
+      videoCountBadge.textContent = count;
 
-          if (count === 0) {
-            videoGrid.style.display = "none";
-            emptyMsg.style.display = "block";
-            return;
-          }
-          videoGrid.style.display = "grid";
-          emptyMsg.style.display = "none";
+      if (count === 0) {
+        videoGrid.style.display = "none";
+        emptyMsg.style.display = "block";
+        return;
+      }
+      videoGrid.style.display = "grid";
+      emptyMsg.style.display = "none";
 
-          let html = "";
-          videoItems.forEach((video, index) => {
-            const thumbUrl = video.thumbnail || "";
-            const title = video.title || "Video";
-            const isShort = video.url.includes("/shorts/");
-            const timeInfo = video.displayTime
-              ? `<span class="time-badge"><i class="far fa-clock"></i> ${video.displayTime}</span>`
-              : "";
+      let html = "";
+      videoItems.forEach((video) => {
+        const thumbUrl = video.thumbnail || "";
+        const title = video.title || "Video";
+        const isShort = video.url.includes("/shorts/");
+        const timeInfo = video.displayTime
+          ? `<span class="time-badge"><i class="far fa-clock"></i> ${video.displayTime}</span>`
+          : "";
 
-            html += `
-          <div class="video-card" data-video-id="${video.id}" data-start="${video.startSeconds || 0}" data-end="${video.endSeconds || 0}" data-title="${title.replace(/"/g, "&quot;")}">
-            <div class="thumbnail">
-              ${thumbUrl ? `<img src="${thumbUrl}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
-              <div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>
-            </div>
-            <div class="card-content">
-              <div class="video-title">${title}</div>
-              <div class="video-meta">
-                <i class="fab fa-youtube"></i> 
-                ${isShort ? '<span class="badge"><i class="fas fa-bolt"></i> SHORT</span>' : '<span class="badge"><i class="fas fa-video"></i> VIDEO</span>'}
-                ${timeInfo}
-              </div>
-            </div>
+        html += `
+      <div class="video-card" tabindex="0" data-video-id="${video.id}" data-start="${video.startSeconds || 0}" data-end="${video.endSeconds || 0}" data-title="${title.replace(/"/g, "&quot;")}">
+        <div class="thumbnail">
+          ${thumbUrl ? `<img src="${thumbUrl}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
+          <div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+        </div>
+        <div class="card-content">
+          <div class="video-title">${title}</div>
+          <div class="video-meta">
+            <i class="fab fa-youtube"></i>
+            ${isShort ? '<span class="badge"><i class="fas fa-bolt"></i> SHORT</span>' : '<span class="badge"><i class="fas fa-video"></i> VIDEO</span>'}
+            ${timeInfo}
           </div>
-        `;
-          });
-          videoGrid.innerHTML = html;
+        </div>
+      </div>
+    `;
+      });
+      videoGrid.innerHTML = html;
 
-          document.querySelectorAll(".video-card").forEach((card) => {
-            card.addEventListener("click", () => {
-              const videoId = card.dataset.videoId;
-              const startSec = parseInt(card.dataset.start, 10) || 0;
-              const endSec = parseInt(card.dataset.end, 10) || 0;
-              if (videoId) playVideoFullscreen(videoId, startSec, endSec);
-            });
+      document.querySelectorAll(".video-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const videoId = card.dataset.videoId;
+          const startSec = parseInt(card.dataset.start, 10) || 0;
+          const endSec = parseInt(card.dataset.end, 10) || 0;
+          if (videoId) playVideoFullscreen(videoId, startSec, endSec);
+        });
 
-            // Add keyboard support
-            card.addEventListener("keypress", (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                const videoId = card.dataset.videoId;
-                const startSec = parseInt(card.dataset.start, 10) || 0;
-                const endSec = parseInt(card.dataset.end, 10) || 0;
-                if (videoId) playVideoFullscreen(videoId, startSec, endSec);
-              }
-            });
-          });
-        }
-
-        // Fullscreen playback with start and end time
-        function playVideoFullscreen(
-          videoId,
-          startSeconds = 0,
-          endSeconds = 0,
-        ) {
-          if (!videoId) return;
-          let startParam = "?autoplay=1&rel=0";
-          if (startSeconds > 0 || endSeconds > 0) {
-            startParam = "?";
-            if (startSeconds > 0) startParam += `start=${startSeconds}&`;
-            if (endSeconds > 0) startParam += `end=${endSeconds}&`;
-            startParam += "autoplay=1&rel=0";
+        card.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            const videoId = card.dataset.videoId;
+            const startSec = parseInt(card.dataset.start, 10) || 0;
+            const endSec = parseInt(card.dataset.end, 10) || 0;
+            if (videoId) playVideoFullscreen(videoId, startSec, endSec);
           }
-          const embedUrl = `https://www.youtube.com/embed/${videoId}${startParam}`;
-          youtubeIframe.src = embedUrl;
-          fullscreenOverlay.style.display = "flex";
+        });
+      });
+    }
 
-          const elem = fullscreenOverlay;
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen().catch(() => {});
-          } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-          } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-          }
+    function playVideoFullscreen(videoId, startSeconds = 0, endSeconds = 0) {
+      if (!videoId) return;
+      let startParam = "?autoplay=1&rel=0";
+      if (startSeconds > 0 || endSeconds > 0) {
+        startParam = "?";
+        if (startSeconds > 0) startParam += `start=${startSeconds}&`;
+        if (endSeconds > 0) startParam += `end=${endSeconds}&`;
+        startParam += "autoplay=1&rel=0";
+      }
+      const embedUrl = `https://www.youtube.com/embed/${videoId}${startParam}`;
+      youtubeIframe.src = embedUrl;
+      fullscreenOverlay.style.display = "flex";
+
+      const elem = fullscreenOverlay;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => {});
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    }
+
+    function exitFullscreenAndHide() {
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      else if (document.webkitFullscreenElement) document.webkitExitFullscreen();
+      else if (document.msFullscreenElement) document.msExitFullscreen();
+      youtubeIframe.src = "";
+      fullscreenOverlay.style.display = "none";
+    }
+
+    function onFullscreenChange() {
+      if (
+        !document.fullscreenElement &&
+        !document.webkitFullscreenElement &&
+        !document.msFullscreenElement
+      ) {
+        youtubeIframe.src = "";
+        fullscreenOverlay.style.display = "none";
+      }
+    }
+
+    function handleGradeChange() {
+      currentGrade = gradeSelect.value;
+      const dashboard = document.querySelector(".dashboard");
+      dashboard.classList.remove(
+        "grade-6",
+        "grade-7",
+        "grade-8",
+        "grade-9",
+        "grade-10",
+        "grade-11"
+      );
+      dashboard.classList.add(`grade-${currentGrade}`);
+
+      populateLessons(currentGrade);
+      currentLessonKey = lessonSelect.value;
+      populateTopics(currentGrade, currentLessonKey);
+      currentTopic = topicSelect.value;
+      renderVideos();
+    }
+
+    function handleLessonChange() {
+      currentLessonKey = lessonSelect.value;
+      populateTopics(currentGrade, currentLessonKey);
+      currentTopic = topicSelect.value;
+      renderVideos();
+    }
+
+    function handleTopicChange() {
+      currentTopic = topicSelect.value;
+      renderVideos();
+    }
+
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const htmlElement = document.documentElement;
+    const darkModeClass = "dark-mode";
+    const themeStorageKey = "theme-preference";
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem(themeStorageKey);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      let isDarkMode = false;
+
+      if (savedTheme) {
+        isDarkMode = savedTheme === "dark";
+      } else {
+        isDarkMode = prefersDark;
+      }
+
+      if (isDarkMode) {
+        htmlElement.classList.add(darkModeClass);
+        themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        htmlElement.classList.remove(darkModeClass);
+        themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    }
+
+    function toggleTheme() {
+      const isDarkMode = htmlElement.classList.toggle(darkModeClass);
+      const theme = isDarkMode ? "dark" : "light";
+      localStorage.setItem(themeStorageKey, theme);
+      themeToggleBtn.innerHTML = isDarkMode
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    }
+
+    themeToggleBtn.addEventListener("click", toggleTheme);
+
+    function init() {
+      initTheme();
+      populateGrades();
+
+      currentGrade = "10";
+      gradeSelect.value = "10";
+
+      const dashboard = document.querySelector(".dashboard");
+      dashboard.classList.add("grade-10");
+
+      populateLessons("10");
+      currentLessonKey = "structureOfMatter";
+      lessonSelect.value = "structureOfMatter";
+      populateTopics("10", "structureOfMatter");
+      currentTopic = "3.1 The Planetary Model of the Atom";
+      topicSelect.value = currentTopic;
+
+      renderVideos();
+
+      gradeSelect.addEventListener("change", handleGradeChange);
+      lessonSelect.addEventListener("change", handleLessonChange);
+      topicSelect.addEventListener("change", handleTopicChange);
+
+      closeBtn.addEventListener("click", exitFullscreenAndHide);
+      document.addEventListener("fullscreenchange", onFullscreenChange);
+      document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+      document.addEventListener("msfullscreenchange", onFullscreenChange);
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && fullscreenOverlay.style.display === "flex") {
+          setTimeout(() => {
+            if (!document.fullscreenElement) exitFullscreenAndHide();
+          }, 50);
         }
+      });
 
-        function exitFullscreenAndHide() {
-          if (document.fullscreenElement)
-            document.exitFullscreen().catch(() => {});
-          else if (document.webkitFullscreenElement)
-            document.webkitExitFullscreen();
-          else if (document.msFullscreenElement) document.msExitFullscreen();
-          youtubeIframe.src = "";
-          fullscreenOverlay.style.display = "none";
-        }
+      document.documentElement.style.scrollBehavior = "smooth";
+    }
 
-        function onFullscreenChange() {
-          if (
-            !document.fullscreenElement &&
-            !document.webkitFullscreenElement &&
-            !document.msFullscreenElement
-          ) {
-            youtubeIframe.src = "";
-            fullscreenOverlay.style.display = "none";
-          }
-        }
+    init();
+  })();
+</script>
 
-        // Update UI when selectors change
-        function handleGradeChange() {
-          currentGrade = gradeSelect.value;
-
-          // Apply grade color class
-          const dashboard = document.querySelector(".dashboard");
-          dashboard.classList.remove(
-            "grade-6",
-            "grade-7",
-            "grade-8",
-            "grade-9",
-            "grade-10",
-            "grade-11",
-          );
-          dashboard.classList.add(`grade-${currentGrade}`);
-
-          populateLessons(currentGrade);
-          currentLessonKey = lessonSelect.value;
-          populateTopics(currentGrade, currentLessonKey);
-          currentTopic = topicSelect.value;
-          renderVideos();
-        }
-
-        function handleLessonChange() {
-          currentLessonKey = lessonSelect.value;
-          populateTopics(currentGrade, currentLessonKey);
-          currentTopic = topicSelect.value;
-          renderVideos();
-        }
-
-        function handleTopicChange() {
-          currentTopic = topicSelect.value;
-          renderVideos();
-        }
-
-        // ---------- Theme Toggle ----------
-        const themeToggleBtn = document.getElementById("themeToggleBtn");
-        const htmlElement = document.documentElement;
-        const darkModeClass = "dark-mode";
-        const themeStorageKey = "theme-preference";
-
-        // Initialize theme from localStorage or system preference
-        function initTheme() {
-          const savedTheme = localStorage.getItem(themeStorageKey);
-          const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)",
-          ).matches;
-
-          let isDarkMode = false;
-
-          if (savedTheme) {
-            isDarkMode = savedTheme === "dark";
-          } else {
-            isDarkMode = prefersDark;
-          }
-
-          if (isDarkMode) {
-            htmlElement.classList.add(darkModeClass);
-            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-          } else {
-            htmlElement.classList.remove(darkModeClass);
-            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-          }
-        }
-
-        // Toggle dark mode
-        function toggleTheme() {
-          const isDarkMode = htmlElement.classList.toggle(darkModeClass);
-          const theme = isDarkMode ? "dark" : "light";
-          localStorage.setItem(themeStorageKey, theme);
-          themeToggleBtn.innerHTML = isDarkMode
-            ? '<i class="fas fa-sun"></i>'
-            : '<i class="fas fa-moon"></i>';
-        }
-
-        themeToggleBtn.addEventListener("click", toggleTheme);
-
-        // ---------- Initialize ----------
-        function init() {
-          // Initialize theme first
-          initTheme();
-
-          populateGrades();
-
-          // set initial grade 10 as default (matching earlier)
-          currentGrade = "10";
-          gradeSelect.value = "10";
-
-          // Apply initial grade color class
-          const dashboard = document.querySelector(".dashboard");
-          dashboard.classList.add("grade-10");
-
-          populateLessons("10");
-          currentLessonKey = "motion";
-          lessonSelect.value = "motion";
-          populateTopics("10", "motion");
-          currentTopic = "2.1 Distance and displacement";
-          topicSelect.value = currentTopic;
-
-          renderVideos();
-
-          // listeners
-          gradeSelect.addEventListener("change", handleGradeChange);
-          lessonSelect.addEventListener("change", handleLessonChange);
-          topicSelect.addEventListener("change", handleTopicChange);
-
-          closeBtn.addEventListener("click", exitFullscreenAndHide);
-          document.addEventListener("fullscreenchange", onFullscreenChange);
-          document.addEventListener(
-            "webkitfullscreenchange",
-            onFullscreenChange,
-          );
-          document.addEventListener("msfullscreenchange", onFullscreenChange);
-
-          window.addEventListener("keydown", (e) => {
-            if (
-              e.key === "Escape" &&
-              fullscreenOverlay.style.display === "flex"
-            ) {
-              setTimeout(() => {
-                if (!document.fullscreenElement) exitFullscreenAndHide();
-              }, 50);
-            }
-          });
-
-          // Smooth scroll behavior
-          document.documentElement.style.scrollBehavior = "smooth";
-        }
-
-        init();
-      })();
-    </script>
   </body>
 </html>
