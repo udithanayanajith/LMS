@@ -3105,16 +3105,20 @@
         function openNoteById(noteId) {
           const note = findNoteById(noteId);
           if (!note) return;
+          if (note.filePath) {
+            const resourceUrl = encodeURI(note.filePath);
+            const resourceWindow = window.open(resourceUrl, "_blank", "noopener");
+            if (!resourceWindow) {
+              window.location.href = resourceUrl;
+            }
+            return;
+          }
           noteModalTitle.textContent = note.title;
           noteModalGrade.textContent = note.grade;
           noteModalLesson.textContent = note.lesson;
-          if (note.filePath) {
-            noteReaderFrame.src = encodeURI(note.filePath);
-            noteReaderFrame.srcdoc = "";
-          } else {
-            noteReaderFrame.removeAttribute("src");
-            noteReaderFrame.srcdoc = buildReaderDocument(note);
-          }
+          printNoteBtn.style.display = "inline-flex";
+          noteReaderFrame.removeAttribute("src");
+          noteReaderFrame.srcdoc = buildReaderDocument(note);
           noteModal.style.display = "flex";
           document.body.style.overflow = "hidden";
         }
