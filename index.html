@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -583,13 +583,15 @@
     </style>
   </head>
   <body>
-    <div class="dashboard">
+    <div class="dashboard grade-10">
       <div class="header">
         <div class="header-content">
           <h1>
             <i class="fas fa-microscope"></i>
             Science with Samadhi - LMS Dashboard
-            <span class="topic-badge" id="gradeLessonHint">Grade 10 · 03. Structure of Matter</span>
+            <span class="topic-badge" id="gradeLessonHint"
+              >Grade 10 · 03. Structure of Matter</span
+            >
           </h1>
           <div class="sub">
             Select grade → lesson → topic · Videos and lesson resources are
@@ -597,7 +599,11 @@
             reader
           </div>
         </div>
-        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark mode">
+        <button
+          class="theme-toggle-btn"
+          id="themeToggleBtn"
+          title="Toggle dark mode"
+        >
           <i class="fas fa-moon"></i>
         </button>
       </div>
@@ -665,9 +671,24 @@
         now attached as extra resources.
       </div>
     </div>
-    <div class="selector-group">
-      <label><i class="fas fa-book-open"></i> Lesson</label>
-      <select id="lessonSelect"></select>
+
+    <div id="fullscreenOverlay" class="fullscreen-player">
+      <button class="close-fullscreen" id="closeFullscreenBtn">
+        <i class="fas fa-times"></i> Exit fullscreen
+      </button>
+      <iframe
+        id="youtubeIframe"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          fullscreen;
+        "
+        allowfullscreen
+      ></iframe>
     </div>
 
     <div id="noteModal" class="note-modal">
@@ -1263,650 +1284,326 @@
       </div>
     </div>
   </div>
-
-  <div class="section-title">
-    <h2 id="currentTopicTitle">Select a topic</h2>
-    <div class="video-count" id="videoCountDisplay">📹 0 videos</div>
-  </div>
-  <div id="videoGridContainer" class="video-grid"></div>
-  <div id="emptyMessage" class="empty-state" style="display: none">
-    <i class="fas fa-film" style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"></i>
-    <h3>No videos for this topic</h3>
-    <p>Choose another topic or add videos later.</p>
-  </div>
-
-  <section class="notes-section">
+  <div class="section">
     <div class="section-title">
-      <h2 id="currentNotesTitle">Lesson Notes</h2>
-      <div class="video-count" id="noteAvailabilityDisplay">📚 0 notes</div>
+      <div class="num" style="background:#d0fde8;color:var(--accent3);">2</div>
+      <h2>Discontinuous (Particulate) Nature of Matter</h2>
     </div>
-    <div id="notesGridContainer" class="notes-grid"></div>
-    <div id="notesEmptyMessage" class="empty-state" style="display: none">
-      <i class="fas fa-book-open" style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"></i>
-      <h3>No note available yet</h3>
-      <p>This lesson does not have an attached reader note yet.</p>
+    <div class="definition">
+      <strong>Discontinuous Nature of Matter:</strong><br>
+      Matter is made up of tiny particles with <em>spaces between them</em>. This is called the particulate or discontinuous nature of matter.
     </div>
-  </section>
-
-  <div class="footer-note">
-    Videos and notes are now separated properly. Click “Read Note” to open the lesson note in a clean full-screen reader.
+    <div class="memory-box">
+      <h4>📜 Historical Background</h4>
+      <ul>
+        <li><strong>Democritus (460–370 BC)</strong> — said matter is made of very small particles.</li>
+        <li><strong>Aristotle (384–270 BC)</strong> — said matter is NOT made of particles.</li>
+        <li>A public debate in Athens was won by Democritus's idea. Modern scientists later confirmed it with experiments.</li>
+      </ul>
+    </div>
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:12px;">Evidence in all 3 states of matter:</h3>
+    <div class="activity">
+      <h4>🧱 Solid — Chalk &amp; Ink Experiment</h4>
+      <p>When chalk is placed on coloured ink, the ink rises through the chalk. This proves chalk has tiny particles with spaces between them that allow ink to pass through.</p>
+    </div>
+    <div class="activity">
+      <h4>💧 Liquid — Potassium Permanganate in Water</h4>
+      <p>When potassium permanganate crystals are placed in water, the purple colour slowly spreads. The particles of KMnO₄ move into the spaces between water particles. Same happens with ink drops in water.</p>
+    </div>
+    <div class="activity">
+      <h4>💨 Gas — Nitrogen Dioxide &amp; Perfume Experiment</h4>
+      <p>Brown NO₂ gas placed under a jar of air mixes upward into the air. Scent of a joss stick and perfume spreads across a room. Gas particles move freely through the spaces in air.</p>
+    </div>
+    <div class="memory-box" style="background:#d0fde8;border-color:var(--accent3);">
+      <h4>✅ Conclusion</h4>
+      <p>All matter — solid, liquid, and gas — is made of particles with spaces between them. Therefore, <strong>all matter is discontinuous</strong>.</p>
+    </div>
   </div>
-</div>
-
-<div id="fullscreenOverlay" class="fullscreen-player">
-  <button class="close-fullscreen" id="closeFullscreenBtn"><i class="fas fa-times"></i> Exit fullscreen</button>
-  <iframe
-    id="youtubeIframe"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;"
-    allowfullscreen
-  ></iframe>
-</div>
-
-<div id="noteModal" class="note-modal">
-  <button class="close-note-modal" id="closeNoteModalBtn"><i class="fas fa-times"></i> Close note</button>
-  <div class="note-modal-content">
-    <div class="note-modal-toolbar">
-      <div>
-        <div class="note-modal-title" id="noteModalTitle">Lesson Note</div>
-        <div class="lesson-note-strip">
-          <span class="badge" id="noteModalGrade">Grade</span>
-          <span class="badge" id="noteModalLesson">Lesson</span>
-        </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0e8fd;color:var(--accent2);">3</div>
+      <h2>Particle Arrangement in 3 States</h2>
+    </div>
+    <div class="states-grid">
+      <div class="state-card solid">
+        <h4>🧊 Solid</h4>
+        <ul>
+          <li>Particles orderly arranged</li>
+          <li>Strongly bonded</li>
+          <li>Only vibrate — don't move</li>
+          <li>Very little space between particles</li>
+        </ul>
       </div>
-      <button class="btn btn-secondary" id="printNoteBtn"><i class="fas fa-print"></i> Print</button>
+      <div class="state-card liquid">
+        <h4>💧 Liquid</h4>
+        <ul>
+          <li>Not orderly arranged</li>
+          <li>Bonding weaker than solid</li>
+          <li>Particles can move within liquid</li>
+          <li>Slightly more space than solid</li>
+        </ul>
+      </div>
+      <div class="state-card gas">
+        <h4>💨 Gas</h4>
+        <ul>
+          <li>Not orderly arranged</li>
+          <li>Very weak bonding</li>
+          <li>Particles move freely &amp; randomly</li>
+          <li>Very large spaces between particles</li>
+        </ul>
+      </div>
     </div>
-    <iframe id="noteReaderFrame" class="note-frame" title="Lesson Note Reader"></iframe>
+    <table class="props-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Solid</th>
+          <th>Liquid</th>
+          <th>Gas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Shape</strong></td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="cross">✘</span> Takes shape of container</td>
+          <td><span class="cross">✘</span> Takes shape of container</td>
+        </tr>
+        <tr>
+          <td><strong>Volume</strong></td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="cross">✘</span> Spreads to fill container</td>
+        </tr>
+        <tr>
+          <td><strong>Compressibility</strong></td>
+          <td><span class="cross">✘</span> Hard</td>
+          <td><span class="cross">✘</span> Hard</td>
+          <td><span class="tick">✔</span> Easy</td>
+        </tr>
+        <tr>
+          <td><strong>Density</strong></td>
+          <td>High</td>
+          <td>High</td>
+          <td>Low</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card">
+      <h3>💡 Why can gases be compressed easily?</h3>
+      <p>Gas particles have <strong>wide spaces</strong> between them. Applying force pushes particles closer. Solid &amp; liquid particles are already closely packed — so they can't be pushed much closer.</p>
+    </div>
   </div>
-</div>
-
-<script>
-  (function () {
-    "use strict";
-
-    function timeToSeconds(timeStr) {
-      if (!timeStr) return null;
-      let str = timeStr.trim().replace(":", ".");
-      const parts = str.split(".");
-      if (parts.length === 2) {
-        const min = parseInt(parts[0], 10);
-        const sec = parseInt(parts[1], 10);
-        if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
-      }
-      const num = parseFloat(str);
-      return isNaN(num) ? null : Math.floor(num);
-    }
-
-    function extractYouTubeID(url) {
-      if (!url) return null;
-      let id = null;
-      if (url.includes("youtu.be/")) {
-        id = url.split("youtu.be/")[1].split(/[?&]/)[0];
-      } else if (url.includes("youtube.com/shorts/")) {
-        id = url.split("shorts/")[1].split(/[?&]/)[0];
-      } else {
-        const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-        const match = url.match(regExp);
-        if (match) id = match[1];
-      }
-      return id ? id.split("?")[0] : null;
-    }
-
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    const gradesData = {
-      6: { name: "Grade 6", lessons: {} },
-      7: {
-        name: "Grade 7",
-        lessons: {
-          staticElectricity: {
-            name: "02. Static Electricity",
-            topics: {
-              "2.1 Charging an object": [
-                {
-                  title: "Charging an object (part)",
-                  url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5",
-                  start: "13.54",
-                  end: "25.46",
-                },
-                {
-                  title: "Charging · short 1",
-                  url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq",
-                },
-                {
-                  title: "Charging · short 2",
-                  url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv",
-                },
-              ],
-              "2.2 Types of static electric charges": [
-                {
-                  title: "Types of charges (1)",
-                  url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3",
-                },
-                {
-                  title: "Types of charges (2)",
-                  url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO",
-                },
-                {
-                  title: "Types of charges (3)",
-                  url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI",
-                },
-                {
-                  title: "Charges (part from main)",
-                  url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4",
-                  start: "28.48",
-                  end: "49.48",
-                },
-              ],
-              "2.3 Generation of static electric charges": [],
-              "2.4 Phenomena associated with static electricity": [],
-              "2.5 Capacitors": [],
-            },
-          },
-        },
-      },
-      8: { name: "Grade 8", lessons: {} },
-      9: {
-        name: "Grade 9",
-        lessons: {
-          natureAndPropertiesOfMatter: {
-            name: "03. Nature and Properties of Matter",
-            topics: {
-              "3.1 Nature of matter": [],
-              "3.2 Properties of matter": [],
-              "3.3 States and behaviour of matter": [],
-            },
-          },
-        },
-      },
-      10: {
-        name: "Grade 10",
-        lessons: {
-          structureOfMatter: {
-            name: "03. Structure of Matter",
-            topics: {
-              "3.1 The Planetary Model of the Atom": [],
-              "3.2 Electronic Configuration": [],
-              "3.3 Periodic Table": [],
-              "3.4 Isotopes": [],
-              "3.5 Metals and Non-metals": [],
-              "3.6 Chemical Formulae": [],
-            },
-          },
-          motion: {
-            name: "02. Motion in a straight line",
-            topics: {
-              "2.1 Distance and displacement": [
-                { title: "Distance & displacement · Short", url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz" },
-                { title: "Distance & displacement · Explanation", url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx" },
-                { title: "Distance & displacement · Detailed", url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu" },
-              ],
-              "2.2 Speed": [
-                { title: "Speed · Concept", url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V" },
-                { title: "Speed · Examples", url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU" },
-                { title: "Speed · Short", url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx" },
-              ],
-              "2.3 Velocity": [
-                { title: "Velocity · Explained", url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH" },
-                { title: "Velocity · Short", url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS" },
-              ],
-              "2.4 Acceleration": [
-                { title: "Acceleration · Full lesson", url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx" },
-              ],
-              "2.5 Displacement - Time graphs": [
-                { title: "Displacement-Time graph (1)", url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD" },
-                { title: "Displacement-Time graph (2)", url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH" },
-              ],
-              "2.6 Velocity - Time graphs": [
-                { title: "Velocity-Time graph", url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw" },
-              ],
-              "2.7 Gravitational acceleration": [
-                { title: "Gravitational acceleration", url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS" },
-              ],
-            },
-          },
-        },
-      },
-      11: { name: "Grade 11", lessons: {} },
-    };
-
-    const lessonNotes = {
-      staticElectricity: [
-        {
-          id: "g7-static-01",
-          title: "Grade 7 · 02. Static Electricity",
-          grade: "Grade 7",
-          lesson: "02. Static Electricity",
-          description:
-            "Full reader note for charging objects, types of static charges, attraction and repulsion, static electricity phenomena, and capacitors.",
-          html: `
-            <div class="reader-cover purple">
-              <div class="reader-label">Grade 7 Science · Chapter 02</div>
-              <h1>Static Electricity</h1>
-              <p>Clean lesson reader for student study and classroom revision.</p>
-            </div>
-            <section>
-              <h2>2.1 Charging an Object</h2>
-              <p>When a plastic pen is rubbed against dry hair and brought near tiny paper pieces, the paper pieces jump and stick to the pen. This happens because electric charges are generated on the surface by rubbing.</p>
-              <div class="reader-callout">Electric charges generated on the surface of objects by rubbing are called <strong>static electrical charges</strong>.</div>
-              <ul>
-                <li>Before rubbing, objects do not attract paper.</li>
-                <li>After rubbing, they attract paper.</li>
-                <li>Rubbing creates static charge on the surface.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.2 Types of Static Electrical Charges</h2>
-              <p>There are two types of static electrical charges.</p>
-              <div class="reader-grid two">
-                <div class="reader-card"><h3>Positive Charge</h3><p>Example: Glass rod rubbed with silk cloth.</p></div>
-                <div class="reader-card"><h3>Negative Charge</h3><p>Example: Ebonite rod rubbed with woolen cloth.</p></div>
-              </div>
-              <ul>
-                <li>Like charges repel each other.</li>
-                <li>Unlike charges attract each other.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.3 Generation of Static Electric Charges</h2>
-              <p>During rubbing, electrons move from one object to another. One object loses electrons and becomes positively charged. The other gains electrons and becomes negatively charged.</p>
-            </section>
-            <section>
-              <h2>2.4 Phenomena Associated with Static Electricity</h2>
-              <ul>
-                <li>Small paper pieces get attracted to rubbed objects.</li>
-                <li>Hair can stand up when charged.</li>
-                <li>Lightning is a large natural static electricity phenomenon.</li>
-              </ul>
-            </section>
-            <section>
-              <h2>2.5 Capacitors</h2>
-              <p>A capacitor is a device used to store electric charge. It can release the stored charge when needed.</p>
-            </section>
-            <section>
-              <h2>Quick Summary</h2>
-              <ul>
-                <li>Static electricity is produced mainly by rubbing.</li>
-                <li>Charges can be positive or negative.</li>
-                <li>Like charges repel and unlike charges attract.</li>
-                <li>Capacitors store electric charge.</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
-      natureAndPropertiesOfMatter: [
-        {
-          id: "g9-matter-01",
-          title: "Grade 9 · 03. Nature and Properties of Matter",
-          grade: "Grade 9",
-          lesson: "03. Nature and Properties of Matter",
-          description:
-            "Reader area prepared for this lesson. Full note content is not attached yet, so this card shows a structured placeholder instead of fake content.",
-          html: `
-            <div class="reader-cover rose">
-              <div class="reader-label">Grade 9 Science · Chapter 03</div>
-              <h1>Nature and Properties of Matter</h1>
-              <p>Reader shell is ready. Add the actual Grade 9 note file to load the full content here.</p>
-            </div>
-            <section>
-              <h2>Note Status</h2>
-              <div class="reader-callout danger">The dashboard structure for Grade 9 is complete, but the full source note for this chapter has not been attached yet.</div>
-            </section>
-            <section>
-              <h2>Suggested Reading Sections</h2>
-              <ul>
-                <li>Nature of matter</li>
-                <li>Physical and chemical properties</li>
-                <li>States of matter</li>
-                <li>Changes in matter</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
-      structureOfMatter: [
-        {
-          id: "g10-structure-01",
-          title: "Grade 10 · 03. Structure of Matter",
-          grade: "Grade 10",
-          lesson: "03. Structure of Matter",
-          description:
-            "Full reader note for atoms, proton-neutron-electron structure, atomic number, mass number, electronic configuration, periodic table, isotopes, metals and non-metals, and formulae.",
-          html: `
-            <div class="reader-cover blue">
-              <div class="reader-label">Grade 10 Chemistry · Chapter 03</div>
-              <h1>Structure of Matter</h1>
-              <p>Complete study reader for atomic structure, electronic configuration, periodic table, isotopes and formulae.</p>
-            </div>
-            <section>
-              <h2>What is Matter?</h2>
-              <p>Matter is anything that occupies space and has mass. Matter can appear as elements, compounds and mixtures, and it exists in solid, liquid and gaseous states.</p>
-            </section>
-            <section>
-              <h2>3.1 The Planetary Model of the Atom</h2>
-              <div class="reader-grid three">
-                <div class="reader-card"><h3>Proton (+)</h3><p>Positively charged particle in the nucleus.</p></div>
-                <div class="reader-card"><h3>Neutron (0)</h3><p>Neutral particle in the nucleus.</p></div>
-                <div class="reader-card"><h3>Electron (−)</h3><p>Negatively charged particle found in shells around the nucleus.</p></div>
-              </div>
-              <p>An atom is electrically neutral because the number of protons equals the number of electrons.</p>
-            </section>
-            <section>
-              <h2>Atomic Number and Mass Number</h2>
-              <ul>
-                <li>Atomic number (Z) = number of protons.</li>
-                <li>In a neutral atom, atomic number also equals number of electrons.</li>
-                <li>Mass number (A) = protons + neutrons.</li>
-                <li>Neutrons = A − Z.</li>
-              </ul>
-              <div class="reader-callout">Example: Sodium has atomic number 11 and mass number 23, so neutrons = 12.</div>
-            </section>
-            <section>
-              <h2>3.2 Electronic Configuration</h2>
-              <p>Electronic configuration is the arrangement of electrons in shells around the nucleus.</p>
-              <ul>
-                <li>K shell = maximum 2 electrons</li>
-                <li>L shell = maximum 8 electrons</li>
-                <li>M shell = can hold more, but the outermost shell is limited to 8 for this level</li>
-              </ul>
-              <div class="reader-callout">Example: Sodium (11) = 2, 8, 1</div>
-            </section>
-            <section>
-              <h2>3.3 Periodic Table</h2>
-              <p>Elements are arranged in the periodic table according to their atomic number. Elements in the same group show similar chemical behaviour because they have similar outer electron arrangements.</p>
-            </section>
-            <section>
-              <h2>3.4 Isotopes</h2>
-              <p>Isotopes are atoms of the same element with the same atomic number but different mass numbers because the number of neutrons is different.</p>
-            </section>
-            <section>
-              <h2>3.5 Metals and Non-metals</h2>
-              <div class="reader-grid two">
-                <div class="reader-card"><h3>Metals</h3><p>Usually shiny, malleable, good conductors of heat and electricity.</p></div>
-                <div class="reader-card"><h3>Non-metals</h3><p>Often dull, brittle and poor conductors.</p></div>
-              </div>
-            </section>
-            <section>
-              <h2>3.6 Chemical Formulae</h2>
-              <p>Chemical formulae show the types and numbers of atoms in a substance. Examples: H₂O, CO₂, NaCl.</p>
-            </section>
-            <section>
-              <h2>Quick Summary</h2>
-              <ul>
-                <li>Atoms are made of protons, neutrons and electrons.</li>
-                <li>Atomic number identifies the element.</li>
-                <li>Electronic configuration explains arrangement of electrons.</li>
-                <li>The periodic table organizes elements systematically.</li>
-                <li>Isotopes have same atomic number but different mass number.</li>
-              </ul>
-            </section>
-          `,
-        },
-      ],
-    };
-
-    const gradeSelect = document.getElementById("gradeSelect");
-    const lessonSelect = document.getElementById("lessonSelect");
-    const topicSelect = document.getElementById("topicSelect");
-    const videoGrid = document.getElementById("videoGridContainer");
-    const emptyMsg = document.getElementById("emptyMessage");
-    const currentTopicTitle = document.getElementById("currentTopicTitle");
-    const videoCountDisplay = document.getElementById("videoCountDisplay");
-    const videoCountBadge = document.getElementById("videoCountBadge");
-    const noteCountBadge = document.getElementById("noteCountBadge");
-    const gradeLessonHint = document.getElementById("gradeLessonHint");
-    const notesGrid = document.getElementById("notesGridContainer");
-    const notesEmptyMessage = document.getElementById("notesEmptyMessage");
-    const currentNotesTitle = document.getElementById("currentNotesTitle");
-    const noteAvailabilityDisplay = document.getElementById("noteAvailabilityDisplay");
-
-    const fullscreenOverlay = document.getElementById("fullscreenOverlay");
-    const youtubeIframe = document.getElementById("youtubeIframe");
-    const closeBtn = document.getElementById("closeFullscreenBtn");
-
-    const noteModal = document.getElementById("noteModal");
-    const closeNoteModalBtn = document.getElementById("closeNoteModalBtn");
-    const noteReaderFrame = document.getElementById("noteReaderFrame");
-    const noteModalTitle = document.getElementById("noteModalTitle");
-    const noteModalGrade = document.getElementById("noteModalGrade");
-    const noteModalLesson = document.getElementById("noteModalLesson");
-    const printNoteBtn = document.getElementById("printNoteBtn");
-
-    let currentGrade = "10";
-    let currentLessonKey = "structureOfMatter";
-    let currentTopic = "3.1 The Planetary Model of the Atom";
-
-    function populateGrades() {
-      gradeSelect.innerHTML = "";
-      Object.keys(gradesData).forEach((gradeKey) => {
-        const opt = document.createElement("option");
-        opt.value = gradeKey;
-        opt.textContent = gradesData[gradeKey].name;
-        gradeSelect.appendChild(opt);
-      });
-      gradeSelect.value = currentGrade;
-    }
-
-    function populateLessons(gradeKey) {
-      lessonSelect.innerHTML = "";
-      const lessons = gradesData[gradeKey]?.lessons || {};
-      const lessonKeys = Object.keys(lessons);
-      if (lessonKeys.length === 0) return;
-      lessonKeys.forEach((key) => {
-        const opt = document.createElement("option");
-        opt.value = key;
-        opt.textContent = lessons[key].name;
-        lessonSelect.appendChild(opt);
-      });
-      if (lessonKeys.includes(currentLessonKey)) {
-        lessonSelect.value = currentLessonKey;
-      } else {
-        currentLessonKey = lessonKeys[0];
-        lessonSelect.value = currentLessonKey;
-      }
-    }
-
-    function populateTopics(gradeKey, lessonKey) {
-      topicSelect.innerHTML = "";
-      const topics = gradesData[gradeKey]?.lessons[lessonKey]?.topics || {};
-      const topicNames = Object.keys(topics);
-      if (topicNames.length === 0) return;
-      topicNames.forEach((topic) => {
-        const opt = document.createElement("option");
-        opt.value = topic;
-        opt.textContent = topic;
-        topicSelect.appendChild(opt);
-      });
-      if (topicNames.includes(currentTopic)) {
-        topicSelect.value = currentTopic;
-      } else {
-        currentTopic = topicNames[0];
-        topicSelect.value = currentTopic;
-      }
-    }
-
-    function buildVideoObjects(gradeKey, lessonKey, topic) {
-      const rawVideos = gradesData[gradeKey]?.lessons[lessonKey]?.topics[topic] || [];
-      return rawVideos
-        .map((v) => {
-          const videoId = extractYouTubeID(v.url);
-          const startSec = v.start ? timeToSeconds(v.start) : null;
-          const endSec = v.end ? timeToSeconds(v.end) : null;
-          return {
-            ...v,
-            id: videoId,
-            thumbnail: videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : null,
-            startSeconds: startSec,
-            endSeconds: endSec,
-            displayTime:
-              v.start && v.end ? `${v.start} – ${v.end}` : v.start ? `starts ${v.start}` : "",
-          };
-        })
-        .filter((v) => v.id !== null);
-    }
-
-    function getLessonNotes(lessonKey) {
-      return lessonNotes[lessonKey] || [];
-    }
-
-    function buildReaderDocument(note) {
-      return `
-        <!doctype html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>${escapeHtml(note.title)}</title>
-            <style>
-              body {
-                margin: 0;
-                font-family: Inter, Arial, sans-serif;
-                background: #f8fafc;
-                color: #0f172a;
-                line-height: 1.7;
-              }
-              .page {
-                max-width: 950px;
-                margin: 0 auto;
-                padding: 32px 18px 48px;
-              }
-              .reader-cover {
-                padding: 34px 30px;
-                border-radius: 24px;
-                color: white;
-                margin-bottom: 24px;
-                box-shadow: 0 20px 40px rgba(15,23,42,0.18);
-              }
-              .reader-cover.blue { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
-              .reader-cover.purple { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%); }
-              .reader-cover.rose { background: linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%); }
-              .reader-label {
-                display: inline-block;
-                background: rgba(255,255,255,0.14);
-                border: 1px solid rgba(255,255,255,0.2);
-                padding: 6px 12px;
-                border-radius: 999px;
-                font-size: 12px;
-                font-weight: 700;
-                margin-bottom: 10px;
-              }
-              h1 {
-                margin: 0 0 6px;
-                font-size: clamp(2rem, 4vw, 3rem);
-                line-height: 1.1;
-              }
-              section {
-                background: white;
-                border: 1px solid #e2e8f0;
-                border-radius: 20px;
-                padding: 22px;
-                margin-bottom: 16px;
-                box-shadow: 0 8px 24px rgba(15,23,42,0.05);
-              }
-              h2 {
-                margin: 0 0 10px;
-                font-size: 1.35rem;
-                color: #0f172a;
-              }
-              h3 {
-                margin: 0 0 8px;
-                font-size: 1rem;
-              }
-              p { margin: 0 0 10px; }
-              ul { margin: 0; padding-left: 20px; }
-              li { margin-bottom: 8px; }
-              .reader-callout {
-                background: #eff6ff;
-                border: 1px solid #bfdbfe;
-                border-radius: 16px;
-                padding: 14px 16px;
-                margin: 12px 0;
-              }
-              .reader-callout.danger {
-                background: #fff1f2;
-                border-color: #fecdd3;
-              }
-              .reader-grid {
-                display: grid;
-                gap: 14px;
-                margin: 12px 0;
-              }
-              .reader-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-              .reader-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-              .reader-card {
-                border: 1px solid #e2e8f0;
-                border-radius: 16px;
-                padding: 16px;
-                background: #f8fafc;
-              }
-              @media (max-width: 700px) {
-                .reader-grid.two,
-                .reader-grid.three { grid-template-columns: 1fr; }
-                .page { padding: 18px 12px 36px; }
-                .reader-cover { padding: 24px 20px; }
-              }
-            </style>
-          </head>
-          <body>
-            <div class="page">
-              ${note.html}
-            </div>
-          </body>
-        </html>
-      `;
-    }
-
-    function renderVideos() {
-      const grade = currentGrade;
-      const lesson = currentLessonKey;
-      const topic = currentTopic;
-      const gradeName = gradesData[grade]?.name || "";
-      const lessonName = gradesData[grade]?.lessons[lesson]?.name || "";
-      gradeLessonHint.textContent = `${gradeName} · ${lessonName}`;
-
-      const videoItems = buildVideoObjects(grade, lesson, topic);
-      currentTopicTitle.textContent = topic;
-      const count = videoItems.length;
-      videoCountDisplay.textContent = `📹 ${count} video${count !== 1 ? "s" : ""}`;
-      videoCountBadge.textContent = count;
-
-      if (count === 0) {
-        videoGrid.style.display = "none";
-        emptyMsg.style.display = "block";
-        videoGrid.innerHTML = "";
-        return;
-      }
-
-      videoGrid.style.display = "grid";
-      emptyMsg.style.display = "none";
-
-      let html = "";
-      videoItems.forEach((video) => {
-        const thumbUrl = video.thumbnail || "";
-        const title = video.title || "Video";
-        const isShort = video.url.includes("/shorts/");
-        const timeInfo = video.displayTime
-          ? `<span class="time-badge"><i class="far fa-clock"></i> ${video.displayTime}</span>`
-          : "";
-        html += `
-          <div class="video-card" tabindex="0" data-video-id="${video.id}" data-start="${video.startSeconds || 0}" data-end="${video.endSeconds || 0}">
-            <div class="thumbnail">
-              ${thumbUrl ? `<img src="${thumbUrl}" alt="thumbnail" loading="lazy">` : '<div style="color:white; padding:20px;">🎬</div>'}
-              <div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>
-            </div>
-            <div class="card-content">
-              <div class="video-title">${escapeHtml(title)}</div>
-              <div class="video-meta">
-                <i class="fab fa-youtube"></i>
-                ${isShort ? '<span class="badge"><i class="fas fa-bolt"></i> SHORT</span>' : '<span class="badge"><i class="fas fa-video"></i> VIDEO</span>'}
-                ${timeInfo}
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#f0d0fd;color:var(--accent4);">4</div>
+      <h2>Pure Substances &amp; Non-Pure Substances</h2>
+    </div>
+    <div class="two-col">
+      <div class="card" style="border-color:#c070f0;">
+        <h3>🔬 Pure Substance</h3>
+        <p>Contains <strong>only ONE component</strong> with constant, definite properties.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: sugar, pure water, copper, iron, aluminium, silver</p>
+      </div>
+      <div class="card" style="border-color:#aaa;">
+        <h3>🧪 Non-Pure Substance (Mixture)</h3>
+        <p>Contains <strong>two or more components</strong>.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: air, drinking water, salt solution, tea</p>
+      </div>
+    </div>
+    <p style="font-weight:800;margin-bottom:12px;font-size:1rem;">Pure substances are further divided into:</p>
+    <div class="two-col">
+      <div class="card" style="border-color:var(--yellow);">
+        <h3>⚗️ Elements</h3>
+        <p>Pure substances that <strong>cannot be broken down</strong> into simpler substances by physical or chemical methods.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">~120 elements known. Each has unique properties.</p>
+        <p style="margin-top:8px;font-size:.88rem;"><strong>Examples:</strong> Iron, Copper, Aluminium, Gold, Silver, Oxygen, Hydrogen, Sulphur, Carbon</p>
+      </div>
+      <div class="card" style="border-color:var(--accent3);">
+        <h3>🔗 Compounds</h3>
+        <p>Formed when <strong>two or more elements</strong> combine chemically in a <strong>fixed ratio</strong>. Properties differ from original elements.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Millions of compounds exist!</p>
+        <p style="margin-top:8px;font-size:.88rem;"><strong>Examples:</strong> Water (H+O), Iron sulphide (Fe+S), Carbon dioxide (C+O)</p>
+      </div>
+    </div>
+    <table class="data-table" style="margin-top:10px;">
+      <thead>
+        <tr><th>Compound</th><th>Elements it contains</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Water</td><td>Hydrogen, Oxygen</td></tr>
+        <tr><td>Carbon dioxide</td><td>Carbon, Oxygen</td></tr>
+        <tr><td>Sodium chloride (salt)</td><td>Sodium, Chlorine</td></tr>
+        <tr><td>Copper sulphate</td><td>Copper, Sulphur, Oxygen</td></tr>
+        <tr><td>Calcium carbonate</td><td>Calcium, Carbon, Oxygen</td></tr>
+        <tr><td>Iron sulphide</td><td>Iron, Sulphur</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0fde8;color:var(--accent3);">5</div>
+      <h2>Physical Properties of Matter</h2>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Property</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lustre</strong></td><td>Shiny surface (reflects light)</td></tr>
+        <tr><td><strong>Hardness</strong></td><td>Resists scratching and wear</td></tr>
+        <tr><td><strong>Brittleness</strong></td><td>Breaks or crumbles easily when force is applied</td></tr>
+        <tr><td><strong>Thermal conductivity</strong></td><td>Ability to conduct heat</td></tr>
+        <tr><td><strong>Electrical conductivity</strong></td><td>Ability to conduct electricity</td></tr>
+        <tr><td><strong>Sonority</strong></td><td>Makes a ringing sound when struck</td></tr>
+        <tr><td><strong>Elasticity</strong></td><td>Stretches and returns to original shape</td></tr>
+        <tr><td><strong>Malleability</strong></td><td>Can be hammered into thin sheets</td></tr>
+        <tr><td><strong>Ductility</strong></td><td>Can be drawn into wires</td></tr>
+        <tr><td><strong>Density</strong></td><td>Mass of a unit volume</td></tr>
+        <tr><td><strong>Melting point</strong></td><td>Temperature at which solid → liquid</td></tr>
+        <tr><td><strong>Boiling point</strong></td><td>Temperature at which liquid → gas</td></tr>
+        <tr><td><strong>Expansivity</strong></td><td>Volume increases when heated</td></tr>
+        <tr><td><strong>Texture</strong></td><td>Rough or smooth feel to the touch</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">6</div>
+      <h2>Density · Melting Point · Boiling Point</h2>
+    </div>
+    <div class="definition" style="border-color:var(--accent1);">
+      <strong>Key Rule:</strong> For pure substances, density, melting point, and boiling point are <em>always constant</em>. This is used to check purity!
+    </div>
+    <div class="card">
+      <h3>📏 Density = Mass ÷ Volume</h3>
+      <p>Each pure substance has a fixed density. Mixed substances (like drinking water vs pure water) have different densities.</p>
+    </div>
+    <div class="two-col" style="margin-bottom:14px;">
+      <table class="data-table">
+        <thead><tr><th>Substance</th><th>Density (kg/m³)</th></tr></thead>
+        <tbody>
+          <tr><td>Gold</td><td>19 300</td></tr>
+          <tr><td>Mercury</td><td>13 600</td></tr>
+          <tr><td>Lead</td><td>11 300</td></tr>
+          <tr><td>Copper</td><td>8 900</td></tr>
+          <tr><td>Iron</td><td>7 700</td></tr>
+          <tr><td>Aluminium</td><td>2 700</td></tr>
+          <tr><td>Water</td><td>1 000</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <table class="data-table" style="margin-bottom:10px;">
+          <thead><tr><th>Substance</th><th>Melting Point (°C)</th></tr></thead>
+          <tbody>
+            <tr><td>Ice (Water)</td><td>0</td></tr>
+            <tr><td>Sulphur</td><td>132</td></tr>
+            <tr><td>Lead</td><td>317</td></tr>
+            <tr><td>Aluminium</td><td>660</td></tr>
+            <tr><td>Copper</td><td>1 083</td></tr>
+            <tr><td>Iron</td><td>1 539</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table">
+          <thead><tr><th>Substance</th><th>Boiling Point (°C)</th></tr></thead>
+          <tbody>
+            <tr><td>Ethyl alcohol</td><td>77</td></tr>
+            <tr><td>Pure water</td><td>100</td></tr>
+            <tr><td>Sulphur</td><td>444</td></tr>
+            <tr><td>Lead</td><td>1 744</td></tr>
+            <tr><td>Iron</td><td>2 900</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="memory-box">
+      <h4>🧊 Ice melts at 0°C · 💧 Water boils at 100°C</h4>
+      <p>These are the melting and boiling points of <strong>pure water</strong> at standard atmospheric pressure. If water has dissolved substances, these values change.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fff8cc;color:#b8860b;">7</div>
+      <h2>Metals vs Non-Metals</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="metal-card metal">
+        <h4>🔩 Metals</h4>
+        <ul>
+          <li>✔ Good conductors of heat</li>
+          <li>✔ Good conductors of electricity</li>
+          <li>✔ Lustrous (shiny)</li>
+          <li>✔ Sonorous (ringing sound)</li>
+          <li>✔ Malleable (hammer into sheets)</li>
+          <li>✔ Ductile (draw into wires)</li>
+          <li>✘ Not brittle</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.85rem;color:#666;">Examples: Iron, Copper, Aluminium, Gold, Silver, Lead, Zinc, Magnesium, Mercury</p>
+      </div>
+      <div class="metal-card nonmetal">
+        <h4>🧪 Non-Metals</h4>
+        <ul>
+          <li>✘ Poor conductors of heat</li>
+          <li>✘ Poor conductors of electricity<br><em>(except Carbon/Graphite)</em></li>
+          <li>✘ Not lustrous (dull)</li>
+          <li>✔ Brittle (breaks when struck)</li>
+          <li>✘ Not malleable</li>
+          <li>✘ Not ductile</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.85rem;color:#666;">Examples: Sulphur, Carbon, Oxygen, Hydrogen, Nitrogen, Chlorine, Phosphorus, Iodine, Bromine, Argon</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>💎 Special cases to remember</h3>
+      <p><strong>Mercury</strong> — a metal that is <em>liquid</em> at room temperature.<br>
+      <strong>Carbon (Graphite)</strong> — a non-metal that <em>conducts electricity</em>.<br>
+      <strong>Bromine</strong> — a non-metal that is <em>liquid</em> at room temperature.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0e8fd;color:var(--accent2);">8</div>
+      <h2>Real-Life Applications of Physical Properties</h2>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Property</th><th>Application</th><th>Substance Used</th></tr></thead>
+      <tbody>
+        <tr><td>Metallic lustre</td><td>Making jewellery</td><td>Gold, Silver</td></tr>
+        <tr><td>Hardness</td><td>Cutting glass; rail tracks</td><td>Diamond, Steel</td></tr>
+        <tr><td>Compressibility</td><td>Storing gases in cylinders</td><td>Oxygen, LP gas</td></tr>
+        <tr><td>Thermal conductivity</td><td>Cooking pans; soldering</td><td>Aluminium, Lead</td></tr>
+        <tr><td>Electrical conductivity</td><td>Electrical cables</td><td>Copper, Aluminium</td></tr>
+        <tr><td>Elasticity</td><td>Balloons</td><td>Rubber</td></tr>
+        <tr><td>Expansivity</td><td>Thermometers; thermostats</td><td>Mercury, Alcohol</td></tr>
+        <tr><td>Odour</td><td>Detecting gas leaks; perfumes</td><td>LP gas, Scents</td></tr>
+        <tr><td>Brittleness</td><td>Breaking material into pieces</td><td>Granite, egg shells</td></tr>
+        <tr><td>Texture (rough)</td><td>Smoothing wood/walls</td><td>Sandpaper</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">✦</div>
+      <h2>Chapter Summary – Classification of Matter</h2>
+    </div>
+    <div class="summary-tree">
+      <div><span class="tree-root">⚗️ Matter</span></div>
+      <div class="tree-connector"></div>
+      <div class="tree-row">
+        <span class="tree-node orange">Pure Substances</span>
+        <span class="tree-node blue">Non-Pure Substances (Mixtures)</span>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;">
+        <div>
+          <div class="tree-connector"></div>
+          <div class="tree-row">
+            <span class="tree-node yellow">Elements</span>
+            <span class="tree-node green">Compounds</span>
+          </div>
+          <div style="display:flex;gap:14px;justify-content:center;">
+            <div>
+              <div class="tree-connector"></div>
+              <div class="tree-row">
+                <span class="tree-node yellow" style="font-size:.8rem;">Metals</span>
+                <span class="tree-node purple" style="font-size:.8rem;">Non-metals</span>
               </div>
             </div>
           </div>
@@ -3502,212 +3199,34 @@
           const noteWindow = noteReaderFrame.contentWindow;
           if (noteWindow) noteWindow.print();
         });
-        card.addEventListener("keypress", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            const videoId = card.dataset.videoId;
-            const startSec = parseInt(card.dataset.start, 10) || 0;
-            const endSec = parseInt(card.dataset.end, 10) || 0;
-            if (videoId) playVideoFullscreen(videoId, startSec, endSec);
+        document.addEventListener("fullscreenchange", onFullscreenChange);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (fullscreenOverlay.style.display === "flex")
+              setTimeout(function () {
+                if (!document.fullscreenElement) exitFullscreenAndHide();
+              }, 50);
+            if (noteModal.style.display === "flex") closeNoteModal();
           }
         });
-      });
-    }
-
-    function renderNotes() {
-      const gradeName = gradesData[currentGrade]?.name || "";
-      const lessonName = gradesData[currentGrade]?.lessons[currentLessonKey]?.name || "";
-      const notes = getLessonNotes(currentLessonKey);
-      currentNotesTitle.textContent = `${lessonName} · Lesson Notes`;
-      noteCountBadge.textContent = notes.length;
-      noteAvailabilityDisplay.textContent = `📚 ${notes.length} note${notes.length !== 1 ? "s" : ""}`;
-
-      if (!notes.length) {
-        notesGrid.innerHTML = "";
-        notesGrid.style.display = "none";
-        notesEmptyMessage.style.display = "block";
-        return;
-      }
-
-      notesGrid.style.display = "grid";
-      notesEmptyMessage.style.display = "none";
-      notesGrid.innerHTML = notes
-        .map(
-          (note) => `
-            <article class="note-card">
-              <div class="note-hero">
-                <div class="note-meta">
-                  <span class="badge"><i class="fas fa-book"></i> Reader Note</span>
-                  <span class="badge"><i class="fas fa-layer-group"></i> ${escapeHtml(note.grade)}</span>
-                </div>
-              </div>
-              <div class="note-content">
-                <div class="note-title">${escapeHtml(note.title)}</div>
-                <div class="note-desc">${escapeHtml(note.description)}</div>
-                <div class="note-actions">
-                  <button class="btn btn-primary read-note-btn" data-note-id="${escapeHtml(note.id)}"><i class="fas fa-book-open"></i> Read Note</button>
-                  <button class="btn btn-secondary preview-note-btn" data-note-id="${escapeHtml(note.id)}"><i class="fas fa-eye"></i> Quick Preview</button>
-                </div>
-              </div>
-            </article>
-          `
-        )
-        .join("");
-
-      notesGrid.querySelectorAll(".read-note-btn, .preview-note-btn").forEach((btn) => {
-        btn.addEventListener("click", () => openNoteById(btn.dataset.noteId));
-      });
-    }
-
-    function findNoteById(noteId) {
-      const notes = getLessonNotes(currentLessonKey);
-      return notes.find((note) => note.id === noteId) || null;
-    }
-
-    function openNoteById(noteId) {
-      const note = findNoteById(noteId);
-      if (!note) return;
-      noteModalTitle.textContent = note.title;
-      noteModalGrade.textContent = note.grade;
-      noteModalLesson.textContent = note.lesson;
-      noteReaderFrame.srcdoc = buildReaderDocument(note);
-      noteModal.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeNoteModal() {
-      noteModal.style.display = "none";
-      noteReaderFrame.srcdoc = "";
-      document.body.style.overflow = "";
-    }
-
-    function playVideoFullscreen(videoId, startSeconds = 0, endSeconds = 0) {
-      if (!videoId) return;
-      let params = "?autoplay=1&rel=0";
-      if (startSeconds > 0 || endSeconds > 0) {
-        params = "?";
-        if (startSeconds > 0) params += `start=${startSeconds}&`;
-        if (endSeconds > 0) params += `end=${endSeconds}&`;
-        params += "autoplay=1&rel=0";
-      }
-      youtubeIframe.src = `https://www.youtube.com/embed/${videoId}${params}`;
-      fullscreenOverlay.style.display = "flex";
-      const elem = fullscreenOverlay;
-      if (elem.requestFullscreen) elem.requestFullscreen().catch(() => {});
-    }
-
-    function exitFullscreenAndHide() {
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-      youtubeIframe.src = "";
-      fullscreenOverlay.style.display = "none";
-    }
-
-    function onFullscreenChange() {
-      if (!document.fullscreenElement) {
-        youtubeIframe.src = "";
-        fullscreenOverlay.style.display = "none";
-      }
-    }
-
-    function applyGradeClass() {
-      const dashboard = document.querySelector(".dashboard");
-      dashboard.classList.remove("grade-6", "grade-7", "grade-8", "grade-9", "grade-10", "grade-11");
-      dashboard.classList.add(`grade-${currentGrade}`);
-    }
-
-    function handleGradeChange() {
-      currentGrade = gradeSelect.value;
-      applyGradeClass();
-      populateLessons(currentGrade);
-      currentLessonKey = lessonSelect.value;
-      populateTopics(currentGrade, currentLessonKey);
-      currentTopic = topicSelect.value;
-      renderVideos();
-      renderNotes();
-    }
-
-    function handleLessonChange() {
-      currentLessonKey = lessonSelect.value;
-      populateTopics(currentGrade, currentLessonKey);
-      currentTopic = topicSelect.value;
-      renderVideos();
-      renderNotes();
-    }
-
-    function handleTopicChange() {
-      currentTopic = topicSelect.value;
-      renderVideos();
-    }
-
-    const themeToggleBtn = document.getElementById("themeToggleBtn");
-    const htmlElement = document.documentElement;
-    const darkModeClass = "dark-mode";
-    const themeStorageKey = "theme-preference";
-
-    function initTheme() {
-      const savedTheme = localStorage.getItem(themeStorageKey);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const isDarkMode = savedTheme ? savedTheme === "dark" : prefersDark;
-      htmlElement.classList.toggle(darkModeClass, isDarkMode);
-      themeToggleBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    }
-
-    function toggleTheme() {
-      const isDarkMode = htmlElement.classList.toggle(darkModeClass);
-      localStorage.setItem(themeStorageKey, isDarkMode ? "dark" : "light");
-      themeToggleBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    }
-
-    themeToggleBtn.addEventListener("click", toggleTheme);
-    closeBtn.addEventListener("click", exitFullscreenAndHide);
-    closeNoteModalBtn.addEventListener("click", closeNoteModal);
-
-    printNoteBtn.addEventListener("click", () => {
-      const noteWindow = noteReaderFrame.contentWindow;
-      if (noteWindow) noteWindow.print();
-    });
-
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        if (fullscreenOverlay.style.display === "flex") {
-          setTimeout(() => {
-            if (!document.fullscreenElement) exitFullscreenAndHide();
-          }, 50);
+        noteModal.addEventListener("click", function (e) {
+          if (e.target === noteModal) closeNoteModal();
+        });
+        function init() {
+          initTheme();
+          populateGrades();
+          applyGradeClass();
+          populateLessons(currentGrade);
+          populateTopics(currentGrade, currentLessonKey);
+          renderVideos();
+          renderNotes();
+          gradeSelect.addEventListener("change", handleGradeChange);
+          lessonSelect.addEventListener("change", handleLessonChange);
+          topicSelect.addEventListener("change", handleTopicChange);
+          document.documentElement.style.scrollBehavior = "smooth";
         }
-        if (noteModal.style.display === "flex") {
-          closeNoteModal();
-        }
-      }
-    });
-
-    noteModal.addEventListener("click", (e) => {
-      if (e.target === noteModal) closeNoteModal();
-    });
-
-    function init() {
-      initTheme();
-      populateGrades();
-      currentGrade = "10";
-      gradeSelect.value = "10";
-      applyGradeClass();
-      populateLessons("10");
-      currentLessonKey = "structureOfMatter";
-      lessonSelect.value = "structureOfMatter";
-      populateTopics("10", "structureOfMatter");
-      currentTopic = "3.1 The Planetary Model of the Atom";
-      topicSelect.value = currentTopic;
-      renderVideos();
-      renderNotes();
-      gradeSelect.addEventListener("change", handleGradeChange);
-      lessonSelect.addEventListener("change", handleLessonChange);
-      topicSelect.addEventListener("change", handleTopicChange);
-      document.documentElement.style.scrollBehavior = "smooth";
-    }
-
-    init();
-  })();
-</script>
-
+        init();
+      })();
+    </script>
   </body>
 </html>
