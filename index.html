@@ -1,3 +1,3387 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Teacher Dashboard · Science · Grades 7–10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #1e40af;
+        --accent: #10b981;
+        --dark: #0f172a;
+        --text-main: #0f172a;
+        --text-secondary: #475569;
+        --border: #e2e8f0;
+        --bg-main: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
+        --bg-card: #ffffff;
+        --bg-control: #ffffff;
+        --select-bg: #f8fafc;
+        --select-bg-light: #f1f5f9;
+        --control-panel-top: rgba(255, 255, 255, 0.96);
+        --control-panel-bottom: rgba(248, 250, 252, 0.92);
+        --control-panel-border: rgba(255, 255, 255, 0.75);
+        --control-panel-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+        --control-panel-inset: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        --select-surface: #ffffff;
+        --select-surface-2: #f8fbff;
+        --select-menu-bg: #ffffff;
+        --select-menu-text: #0f172a;
+        --select-border: rgba(148, 163, 184, 0.35);
+        --select-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+        --select-shadow-hover: 0 14px 30px rgba(59, 130, 246, 0.12);
+        --select-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        --select-arrow: #3b82f6;
+        --grade-primary: #3b82f6;
+        --grade-primary-light: #dbeafe;
+        --grade-text-color: #0c2340;
+      }
+      html.dark-mode {
+        --dark: #f1f5f9;
+        --text-main: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --border: #334155;
+        --bg-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        --bg-card: #1e293b;
+        --bg-control: #1e293b;
+        --select-bg: #0f172a;
+        --select-bg-light: #1e293b;
+        --control-panel-top: rgba(30, 41, 59, 0.92);
+        --control-panel-bottom: rgba(15, 23, 42, 0.9);
+        --control-panel-border: rgba(148, 163, 184, 0.18);
+        --control-panel-shadow: 0 22px 48px rgba(2, 6, 23, 0.35);
+        --control-panel-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        --select-surface: #0f172a;
+        --select-surface-2: #1e293b;
+        --select-menu-bg: #0f172a;
+        --select-menu-text: #f8fafc;
+        --select-border: rgba(96, 165, 250, 0.28);
+        --select-shadow: 0 10px 28px rgba(2, 6, 23, 0.28);
+        --select-shadow-hover: 0 16px 34px rgba(37, 99, 235, 0.22);
+        --select-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        --select-arrow: #93c5fd;
+      }
+      .grade-7 {
+        --grade-primary: #8b5cf6;
+        --grade-primary-light: #ede9fe;
+        --grade-text-color: #4c1d95;
+      }
+      .grade-8 {
+        --grade-primary: #f59e0b;
+        --grade-primary-light: #fef3c7;
+        --grade-text-color: #78350f;
+      }
+      .grade-9 {
+        --grade-primary: #ef4444;
+        --grade-primary-light: #fee2e2;
+        --grade-text-color: #7f1d1d;
+      }
+      .grade-10 {
+        --grade-primary: #3b82f6;
+        --grade-primary-light: #dbeafe;
+        --grade-text-color: #0c2340;
+      }
+      html.dark-mode .grade-7 {
+        --grade-primary: #a78bfa;
+        --grade-primary-light: #6d28d9;
+        --grade-text-color: #ede9fe;
+      }
+      html.dark-mode .grade-8 {
+        --grade-primary: #fbbf24;
+        --grade-primary-light: #b45309;
+        --grade-text-color: #fef3c7;
+      }
+      html.dark-mode .grade-9 {
+        --grade-primary: #f87171;
+        --grade-primary-light: #991b1b;
+        --grade-text-color: #fee2e2;
+      }
+      html.dark-mode .grade-10 {
+        --grade-primary: #60a5fa;
+        --grade-primary-light: #1e40af;
+        --grade-text-color: #dbeafe;
+      }
+      body {
+        font-family: Inter, sans-serif;
+        background: var(--bg-main);
+        color: var(--text-main);
+        padding: 20px;
+        min-height: 100vh;
+      }
+      .dashboard {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .header {
+        margin-bottom: 32px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .header-content {
+        flex: 1;
+      }
+      .header h1 {
+        font-weight: 700;
+        font-size: 2.3rem;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .header h1 i {
+        color: white;
+        background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+        padding: 12px 14px;
+        border-radius: 18px;
+        font-size: 1.8rem;
+      }
+      .sub {
+        color: var(--text-secondary);
+        margin-top: 8px;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      .theme-toggle-btn {
+        background: var(--primary);
+        border: none;
+        color: white;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.4rem;
+      }
+      .control-panel {
+        background: linear-gradient(
+          135deg,
+          var(--control-panel-top) 0%,
+          var(--control-panel-bottom) 100%
+        );
+        backdrop-filter: blur(16px);
+        border-radius: 28px;
+        padding: 28px 32px;
+        box-shadow:
+          var(--control-panel-shadow),
+          var(--control-panel-inset);
+        border: 1px solid var(--control-panel-border);
+        margin-bottom: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 24px 36px;
+      }
+      .selector-group {
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+        gap: 10px;
+      }
+      .selector-group label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .selector-group select {
+        padding: 15px 50px 15px 18px;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.35;
+        background-color: var(--select-surface);
+        background-image:
+          linear-gradient(
+            135deg,
+            var(--select-surface) 0%,
+            var(--select-surface-2) 100%
+          ),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat, no-repeat;
+        background-position:
+          center,
+          right 16px center;
+        background-size:
+          auto,
+          18px 18px;
+        border: 1.5px solid var(--select-border);
+        border-radius: 16px;
+        color: var(--select-menu-text);
+        cursor: pointer;
+        appearance: auto;
+        color-scheme: normal;
+        box-shadow:
+          var(--select-shadow),
+          var(--select-inset);
+        transition:
+          border-color 0.22s ease,
+          box-shadow 0.22s ease,
+          transform 0.22s ease;
+      }
+      .selector-group select,
+      .selector-group select option,
+      .selector-group select optgroup {
+        background: var(--select-menu-bg);
+        color: var(--select-menu-text);
+      }
+      html.dark-mode .selector-group select {
+        background-image:
+          linear-gradient(
+            135deg,
+            var(--select-surface) 0%,
+            var(--select-surface-2) 100%
+          ),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%2393c5fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      }
+      .selector-group select:hover {
+        border-color: rgba(59, 130, 246, 0.45);
+        box-shadow:
+          var(--select-shadow-hover),
+          var(--select-inset);
+        transform: translateY(-1px);
+      }
+      .selector-group select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow:
+          0 0 0 4px rgba(59, 130, 246, 0.18),
+          0 16px 32px rgba(59, 130, 246, 0.18);
+      }
+      .topic-badge,
+      .video-count,
+      .video-count-badge,
+      .note-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--grade-primary-light) 0%,
+          var(--grade-primary) 100%
+        );
+        color: var(--grade-text-color);
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .topic-badge {
+        margin-left: 8px;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .section-title h2 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--dark);
+      }
+      .video-grid,
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 24px;
+      }
+      .video-card,
+      .note-card {
+        background: var(--bg-card);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        border: 1.5px solid var(--border);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .video-card:hover,
+      .note-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(59, 130, 246, 0.12);
+        border-color: var(--primary);
+      }
+      .thumbnail {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .play-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .video-card:hover .play-overlay {
+        opacity: 1;
+      }
+      .play-icon {
+        background: white;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 32px;
+      }
+      .card-content,
+      .note-content {
+        padding: 22px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .video-title,
+      .note-title {
+        font-weight: 700;
+        font-size: 1.08rem;
+        line-height: 1.5;
+        color: var(--text-main);
+      }
+      .video-meta,
+      .note-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+      }
+      .badge {
+        background: linear-gradient(135deg, #f1f5f9 0%, var(--border) 100%);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+      .time-badge {
+        background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+        color: #92400e;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+      }
+      .notes-section {
+        margin-top: 40px;
+      }
+      .note-hero {
+        padding: 22px 20px;
+        background: linear-gradient(
+          135deg,
+          var(--grade-primary-light) 0%,
+          rgba(255, 255, 255, 0.9) 100%
+        );
+        border-bottom: 1px solid var(--border);
+      }
+      html.dark-mode .note-hero {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.18) 0%,
+          rgba(30, 41, 59, 0.95) 100%
+        );
+      }
+      .note-desc {
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+      .note-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .btn {
+        border: none;
+        border-radius: 14px;
+        padding: 12px 16px;
+        font-family: inherit;
+        font-size: 0.92rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+      }
+      .btn-secondary {
+        background: #f1f5f9;
+        color: #0f172a;
+        border: 1px solid var(--border);
+      }
+      .empty-state {
+        text-align: center;
+        padding: 70px 36px;
+        background: var(--bg-card);
+        border-radius: 28px;
+        color: var(--text-secondary);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border);
+      }
+      .empty-state h3 {
+        color: var(--text-main);
+        margin-bottom: 8px;
+        font-size: 1.3rem;
+      }
+      .footer-note {
+        margin-top: 48px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-align: center;
+        border-top: 1px solid var(--border);
+        padding-top: 28px;
+      }
+      .fullscreen-player,
+      .note-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(4px);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+      }
+      .fullscreen-player iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .close-fullscreen,
+      .close-note-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 10000;
+      }
+      .note-modal-content {
+        width: min(75%, 100%);
+        height: min(90vh, 920px);
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+      }
+      html.dark-mode .note-modal-content {
+        background: #0f172a;
+      }
+      .note-modal-toolbar {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-card);
+      }
+      .note-modal-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+      .lesson-note-strip {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .note-frame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: white;
+      }
+      .note-embed {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: white;
+      }
+      .mobile-pdf-fallback {
+        display: none;
+        flex: 1;
+        min-height: 360px;
+        padding: 34px 22px;
+        background: white;
+        color: #0f172a;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      html.dark-mode .mobile-pdf-fallback {
+        background: #0f172a;
+        color: #f8fafc;
+      }
+      .mobile-pdf-box {
+        width: min(100%, 520px);
+        margin: 0 auto;
+        background: #1e293b;
+        color: white;
+        border-radius: 26px;
+        padding: 34px 24px;
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.22);
+      }
+      .mobile-pdf-box i {
+        font-size: 42px;
+        margin-bottom: 18px;
+        color: #93c5fd;
+      }
+      .mobile-pdf-box h3 {
+        font-size: 1.35rem;
+        margin-bottom: 10px;
+      }
+      .mobile-pdf-box p {
+        color: #cbd5e1;
+        line-height: 1.55;
+        margin-bottom: 20px;
+      }
+      .mobile-pdf-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .mobile-pdf-actions .btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .toolbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .open-resource-link {
+        text-decoration: none;
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+        }
+        .header h1 {
+          font-size: 1.8rem;
+        }
+        .control-panel {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 20px;
+        }
+        .selector-group {
+          min-width: 100%;
+        }
+        .video-grid,
+        .notes-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-title {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .note-modal-content {
+          width: 100%;
+          height: 92vh;
+          border-radius: 18px;
+        }
+        .note-modal-toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .toolbar-actions {
+          width: 100%;
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard grade-10">
+      <div class="header">
+        <div class="header-content">
+          <h1>
+            <i class="fas fa-microscope"></i>
+            Science with Samadhi - LMS Dashboard
+            <span class="topic-badge" id="gradeLessonHint"
+              >Grade 10 · 03. Structure of Matter</span
+            >
+          </h1>
+          <div class="sub">
+            Select grade → lesson → topic · Videos and lesson resources are
+            separated clearly · Click Read Note to open the chapter in a clean
+            reader
+          </div>
+        </div>
+        <button
+          class="theme-toggle-btn"
+          id="themeToggleBtn"
+          title="Toggle dark mode"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+      <div class="control-panel">
+        <div class="selector-group">
+          <label><i class="fas fa-graduation-cap"></i> Grade</label>
+          <select id="gradeSelect"></select>
+        </div>
+        <div class="selector-group">
+          <label><i class="fas fa-book-open"></i> Lesson</label>
+          <select id="lessonSelect"></select>
+        </div>
+        <div class="selector-group" style="flex: 2; min-width: 240px">
+          <label><i class="fas fa-tags"></i> Topic</label>
+          <select id="topicSelect"></select>
+        </div>
+        <div
+          style="margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap"
+        >
+          <span class="video-count-badge"
+            ><i class="fas fa-video"></i
+            ><span id="videoCountBadge">0</span> videos</span
+          >
+          <span class="note-chip"
+            ><i class="fas fa-book"></i
+            ><span id="noteCountBadge">0</span> resources</span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h2 id="currentTopicTitle">Select a topic</h2>
+        <div class="video-count" id="videoCountDisplay">📹 0 videos</div>
+      </div>
+      <div id="videoGridContainer" class="video-grid"></div>
+      <div id="emptyMessage" class="empty-state" style="display: none">
+        <i
+          class="fas fa-film"
+          style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"
+        ></i>
+        <h3>No videos for this topic</h3>
+        <p>Choose another topic or add videos later.</p>
+      </div>
+
+      <section class="notes-section">
+        <div class="section-title">
+          <h2 id="currentNotesTitle">Lesson Resources</h2>
+          <div class="video-count" id="noteAvailabilityDisplay">
+            📚 0 resources
+          </div>
+        </div>
+        <div id="notesGridContainer" class="notes-grid"></div>
+        <div id="notesEmptyMessage" class="empty-state" style="display: none">
+          <i
+            class="fas fa-book-open"
+            style="font-size: 48px; opacity: 0.5; margin-bottom: 16px"
+          ></i>
+          <h3>No resource available yet</h3>
+          <p>This lesson does not have an attached resource yet.</p>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        Videos remain available where already added, and folder documents are
+        now attached as extra resources.
+      </div>
+    </div>
+
+    <div id="fullscreenOverlay" class="fullscreen-player">
+      <button class="close-fullscreen" id="closeFullscreenBtn">
+        <i class="fas fa-times"></i> Exit fullscreen
+      </button>
+      <iframe
+        id="youtubeIframe"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          fullscreen;
+        "
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div id="noteModal" class="note-modal">
+      <button class="close-note-modal" id="closeNoteModalBtn">
+        <i class="fas fa-times"></i> Close resource
+      </button>
+      <div class="note-modal-content">
+        <div class="note-modal-toolbar">
+          <div>
+            <div class="note-modal-title" id="noteModalTitle">
+              Lesson Resource
+            </div>
+            <div class="lesson-note-strip">
+              <span class="badge" id="noteModalGrade">Grade</span>
+              <span class="badge" id="noteModalLesson">Lesson</span>
+            </div>
+          </div>
+          <div class="toolbar-actions">
+            <a
+              class="btn btn-primary open-resource-link"
+              id="openResourceDirectBtn"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-external-link-alt"></i> Open Directly
+            </a>
+            <button class="btn btn-secondary" id="printNoteBtn">
+              <i class="fas fa-print"></i> Print
+            </button>
+          </div>
+        </div>
+        <div id="mobilePdfFallback" class="mobile-pdf-fallback">
+          <div class="mobile-pdf-box">
+            <i class="fas fa-file-pdf"></i>
+            <h3>Resource preview is not available on this mobile browser</h3>
+            <p>
+              Some mobile browsers block embedded PDF previews. Open the file
+              directly or download it to view the worksheet.
+            </p>
+            <div class="mobile-pdf-actions">
+              <a
+                id="openPdfBtn"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fas fa-external-link-alt"></i> Open PDF
+              </a>
+              <a id="downloadPdfBtn" class="btn btn-secondary" download>
+                <i class="fas fa-download"></i> Download PDF
+              </a>
+            </div>
+          </div>
+        </div>
+        <iframe
+          id="noteReaderFrame"
+          class="note-frame"
+          title="Lesson Resource Reader"
+        ></iframe>
+        <object
+          id="noteResourceEmbed"
+          class="note-embed"
+          type="application/pdf"
+          style="display: none"
+        >
+          <div class="empty-state" style="margin: 24px">
+            <h3>Resource preview is not available</h3>
+            <p>
+              Use Open Directly or Download PDF if your browser blocks embedded previews.
+            </p>
+          </div>
+        </object>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        "use strict";
+
+        const gradesData = {
+          7: {
+            name: "Grade 7",
+            lessons: {
+              staticElectricity: {
+                name: "02. Static Electricity",
+                topics: {
+                  "2.1 Charging an object": [
+                    {
+                      title: "Charging an object (part)",
+                      url: "https://youtu.be/1z_Z8xk8nvE?si=wJfhv88Tq5I_8bH5",
+                      start: "13.54",
+                      end: "25.46",
+                    },
+                    {
+                      title: "Charging · short 1",
+                      url: "https://youtube.com/shorts/rl9ZmJWJGD8?si=eYtnK80GWYVUA3Zq",
+                    },
+                    {
+                      title: "Charging · short 2",
+                      url: "https://youtube.com/shorts/PI18mudAoaU?si=Y-WXqG98-9W38gyv",
+                    },
+                  ],
+                  "2.2 Types of static electric charges": [
+                    {
+                      title: "Types of charges (1)",
+                      url: "https://youtu.be/ViZNgU-Yt-Y?si=tqDUy26C65YvaMN3",
+                    },
+                    {
+                      title: "Types of charges (2)",
+                      url: "https://youtu.be/yc2-363MIQs?si=zOUZYSFo2BY0gnlO",
+                    },
+                    {
+                      title: "Types of charges (3)",
+                      url: "https://youtu.be/Vrh5FeGUTJA?si=cRGiIigYkfBLerbI",
+                    },
+                    {
+                      title: "Charges (part from main)",
+                      url: "https://youtu.be/1z_Z8xk8nvE?si=I-aBWMOqVHzahSj4",
+                      start: "28.48",
+                      end: "49.48",
+                    },
+                  ],
+                  "2.3 Generation of static electric charges": [],
+                  "2.4 Phenomena associated with static electricity": [],
+                  "2.5 Capacitors": [],
+                },
+              },
+              animalDiversity: {
+                name: "06. Animal Diversity",
+                topics: {
+                  "6.1 Vertebrates and invertebrates": [],
+                  "6.2 Adaptations of organisms to environment": [],
+                  "6.3 Use of dichotomous key for classification of organisms":
+                    [],
+                },
+              },
+              natureOfTheEarth: {
+                name: "08. The Nature of the Earth",
+                topics: {
+                  "8.1 The structure of the earth": [],
+                  "8.2 Tectonic plate and plate tectonics": [],
+                },
+              },
+            },
+          },
+          8: {
+            name: "Grade 8",
+            lessons: {
+              propertiesOfMatter: {
+                name: "04. Properties of Matter",
+                topics: {
+                  "4.1 What is matter and energy": [],
+                  "4.2 Discontinuous nature of matter": [],
+                  "4.3 Particle arrangement in three states": [],
+                  "4.4 Pure and non-pure substances": [],
+                  "4.5 Physical properties of matter": [],
+                  "4.6 Density, melting point and boiling point": [],
+                  "4.7 Metals and non-metals": [],
+                  "4.8 Real-life applications": [],
+                },
+              },
+              humanOrganSystems: {
+                name: "09. Human organ systems",
+                topics: {
+                  "9.1 Human excretory system and excretory products": [],
+                  "9.2 Nervous system": [],
+                  "9.3 Human skin": [],
+                },
+              },
+            },
+          },
+          9: {
+            name: "Grade 9",
+            lessons: {
+              natureAndPropertiesOfMatter: {
+                name: "03. Nature and Properties of Matter",
+                topics: {
+                  "3.0 Classification of matter": [],
+                  "3.1 Elements": [],
+                  "3.1.1 Symbols for elements": [],
+                  "3.1.2 Building units: atoms and molecules": [],
+                  "3.1.3 Atomic structure": [],
+                  "3.1.4 Atomic number and mass number": [],
+                  "3.2 Compounds": [],
+                  "3.3 Mixtures": [],
+                  "3.4 Separation methods": [],
+                },
+              },
+              humanCirculatorySystem: {
+                name: "06. The Human Circulatory System",
+                topics: {
+                  "6.1 Structure of the human heart": [],
+                  "6.2 Arteries, veins and capillaries": [],
+                  "6.3 Components of blood and their functions": [],
+                  "6.4 Blood transfusion": [],
+                },
+              },
+              plantGrowthSubstances: {
+                name: "07. Plant Growth Substances",
+                topics: {
+                  "7.1 Introduction to plant growth substances": [],
+                  "7.2 Auxins": [],
+                  "7.3 Gibberellins and cytokinins": [],
+                },
+              },
+            },
+          },
+          10: {
+            name: "Grade 10",
+            lessons: {
+              structureOfMatter: {
+                name: "03. Structure of Matter",
+                topics: {
+                  "3.1 The Planetary Model of the Atom": [],
+                  "3.2 Electronic Configuration": [],
+                  "3.3 Periodic Table": [],
+                  "3.4 Isotopes": [],
+                  "3.5 Metals and Non-metals": [],
+                  "3.6 Chemical Formulae": [],
+                },
+              },
+              motion: {
+                name: "02. Motion in a straight line",
+                topics: {
+                  "2.1 Distance and displacement": [
+                    {
+                      title: "Distance & displacement · Short",
+                      url: "https://youtube.com/shorts/vvZbdZs34jU?si=4wHSPnaNa1aO_NRz",
+                    },
+                    {
+                      title: "Distance & displacement · Explanation",
+                      url: "https://youtu.be/k1t_TwApE8w?si=pYe40vLJvjMsJvyx",
+                    },
+                    {
+                      title: "Distance & displacement · Detailed",
+                      url: "https://youtu.be/aHqIGHj1nyA?si=l5JYM6r5gjiZ2RXu",
+                    },
+                  ],
+                  "2.2 Speed": [
+                    {
+                      title: "Speed · Concept",
+                      url: "https://youtu.be/K9rZQJuOgDk?si=V-eMSTCwV8Q_cU-V",
+                    },
+                    {
+                      title: "Speed · Examples",
+                      url: "https://youtu.be/qRR_1Gj6Kzw?si=GH90K3W9JDOFamxU",
+                    },
+                    {
+                      title: "Speed · Short",
+                      url: "https://youtube.com/shorts/rr1H9Y-TAgc?si=aAXxLt2ni8tGrbzx",
+                    },
+                  ],
+                  "2.3 Velocity": [
+                    {
+                      title: "Velocity · Explained",
+                      url: "https://youtu.be/X4Wxd4m-QVc?si=a1wWYe4-IZFYIFcH",
+                    },
+                    {
+                      title: "Velocity · Short",
+                      url: "https://youtube.com/shorts/tt04WfC9DDE?si=QQwuAo_1K9boJOoS",
+                    },
+                  ],
+                  "2.4 Acceleration": [
+                    {
+                      title: "Acceleration · Full lesson",
+                      url: "https://youtu.be/vxFYfumAAlY?si=fd83Y55LYNzJ7IJx",
+                    },
+                  ],
+                  "2.5 Displacement - Time graphs": [
+                    {
+                      title: "Displacement-Time graph (1)",
+                      url: "https://youtu.be/TG2Y2MDx-zE?si=Id6aKeyQlfS9SzJD",
+                    },
+                    {
+                      title: "Displacement-Time graph (2)",
+                      url: "https://youtu.be/H5HkS5RnhSc?si=Oq-a-elN5XFFAGMH",
+                    },
+                  ],
+                  "2.6 Velocity - Time graphs": [
+                    {
+                      title: "Velocity-Time graph",
+                      url: "https://youtu.be/AJF2n5RWXKE?si=v2apL4ClHfaXolvw",
+                    },
+                  ],
+                  "2.7 Gravitational acceleration": [
+                    {
+                      title: "Gravitational acceleration",
+                      url: "https://youtu.be/0ewWkfBA3vw?si=uMcIpjGiGT-bsqPS",
+                    },
+                  ],
+                },
+              },
+              biosphere: {
+                name: "13. Biosphere",
+                topics: {
+                  "13.1 Introduction to classification": [],
+                  "13.2 Three domain system": [],
+                  "13.3 Protista and fungi": [],
+                  "13.4 Non-flowering plants": [],
+                  "13.5 Flowering plants and animalia": [],
+                  "13.6 Cnidaria, annelida and mollusca": [],
+                  "13.7 Arthropoda and echinodermata": [],
+                  "13.8 Pisces and amphibia": [],
+                  "13.9 Reptilia, aves and mammalia": [],
+                  "13.10 Binomial nomenclature": [],
+                  "13.11 Chapter 13 revision mixed": [],
+                  "13.12 Chapter 13 final review": [],
+                },
+              },
+            },
+          },
+        };
+
+        const lessonNotes = {
+          staticElectricity: [
+            {
+              id: "g7-static-01",
+              title: "Grade 7 · 02. Static Electricity",
+              grade: "Grade 7",
+              lesson: "02. Static Electricity",
+              description:
+                "Lesson reader for charging objects, types of static charges, attraction and repulsion, phenomena and capacitors.",
+              html: `
+          <div class="reader-cover purple"><div class="reader-label">Grade 7 Science · Chapter 02</div><h1>Static Electricity</h1><p>Student-friendly lesson reader.</p></div>
+          <section><h2>2.1 Charging an Object</h2><p>Rubbing objects can create static charges on their surfaces. Charged objects can attract small paper pieces.</p></section>
+          <section><h2>2.2 Types of Static Electrical Charges</h2><ul><li>Positive charge</li><li>Negative charge</li><li>Like charges repel</li><li>Unlike charges attract</li></ul></section>
+          <section><h2>2.3 Generation of Static Electric Charges</h2><p>Electrons move from one object to another during rubbing.</p></section>
+          <section><h2>2.4 Phenomena Associated with Static Electricity</h2><p>Charged objects attract light particles and lightning is a natural example of static electricity.</p></section>
+          <section><h2>2.5 Capacitors</h2><p>A capacitor stores electric charge.</p></section>`,
+            },
+          ],
+          propertiesOfMatter: [
+            {
+              id: "g8-properties-01",
+              title: "Grade 8 · 04. Properties of Matter",
+              grade: "Grade 8",
+              lesson: "04. Properties of Matter",
+              description:
+                "Complete chapter notes: matter and energy, particulate nature of matter, states of matter, pure and non-pure substances, physical properties, density, melting point, boiling point, metals and non-metals, and real-life applications.",
+              html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 – Properties of Matter | Grade 8 Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --card: #ffffff;
+    --ink: #1e1a14;
+    --muted: #6b6256;
+    --accent1: #e85d26;
+    --accent2: #2a7bbf;
+    --accent3: #27a06b;
+    --accent4: #8e44ad;
+    --yellow: #f5c842;
+    --line: #e2d9cc;
+    --solid-bg: #fde8d0;
+    --liquid-bg: #d0e8fd;
+    --gas-bg: #d0fde8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    padding: 0 0 60px;
+  }
+  header {
+    background: var(--ink);
+    color: #fff;
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: var(--accent1);
+    opacity: .18;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: var(--accent2);
+    opacity: .15;
+  }
+  .chapter-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  header h1 span { color: var(--accent1); }
+  .grade-badge {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--yellow);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .container { max-width: 85%; margin: 0 auto; padding: 0 24px; }
+  .section {
+    margin-top: 40px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-title .num {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 900;
+    flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 1.25rem;
+    font-weight: 900;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 2px solid var(--line);
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .card p, .card li { font-size: .95rem; color: #333; }
+  .card ul { padding-left: 20px; }
+  .card ul li { margin-bottom: 5px; }
+  .definition {
+    border-left: 5px solid var(--accent1);
+    background: #fff8f3;
+    padding: 14px 18px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 16px;
+    font-size: .95rem;
+  }
+  .definition strong { color: var(--accent1); font-size: 1rem; }
+  .states-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .state-card {
+    border-radius: 14px;
+    padding: 18px 16px;
+    border: 2px solid transparent;
+  }
+  .state-card.solid { background: var(--solid-bg); border-color: #f0a060; }
+  .state-card.liquid { background: var(--liquid-bg); border-color: #60a0f0; }
+  .state-card.gas   { background: var(--gas-bg);   border-color: #60d0a0; }
+  .state-card h4 {
+    font-size: 1.05rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .state-card ul { padding-left: 18px; }
+  .state-card ul li { font-size: .88rem; margin-bottom: 4px; color: #333; }
+  .props-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    background: var(--card);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid var(--line);
+    margin-bottom: 16px;
+  }
+  .props-table th {
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 800;
+    text-align: left;
+  }
+  .props-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .props-table tr:last-child td { border-bottom: none; }
+  .props-table tr:nth-child(even) td { background: #fafafa; }
+  .tick { color: var(--accent3); font-weight: 900; }
+  .cross { color: var(--accent1); font-weight: 900; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: .8rem;
+    font-weight: 700;
+  }
+  .pill.orange { background: #fde8d0; color: var(--accent1); }
+  .pill.blue   { background: #d0e8fd; color: var(--accent2); }
+  .pill.green  { background: #d0fde8; color: var(--accent3); }
+  .pill.purple { background: #f0d0fd; color: var(--accent4); }
+  .diagram-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .diagram-box {
+    flex: 1; min-width: 160px;
+    border-radius: 12px;
+    border: 2px solid var(--line);
+    background: var(--card);
+    padding: 14px;
+    text-align: center;
+  }
+  .diagram-box .icon { font-size: 2rem; margin-bottom: 6px; }
+  .diagram-box h4 { font-size: .9rem; font-weight: 800; margin-bottom: 4px; }
+  .diagram-box p { font-size: .82rem; color: var(--muted); }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .metal-card { border-radius: 14px; padding: 18px; border: 2px solid; }
+  .metal-card.metal { background: #fff8e6; border-color: var(--yellow); }
+  .metal-card.nonmetal { background: #f5f0ff; border-color: #c3a8f0; }
+  .metal-card h4 { font-size: 1rem; font-weight: 900; margin-bottom: 10px; }
+  .metal-card.metal h4 { color: #b8860b; }
+  .metal-card.nonmetal h4 { color: var(--accent4); }
+  .metal-card ul { padding-left: 18px; }
+  .metal-card ul li { font-size: .88rem; margin-bottom: 5px; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: .88rem; border-radius: 12px; overflow: hidden; border: 2px solid var(--line); }
+  .data-table th { background: var(--accent2); color: #fff; padding: 9px 12px; text-align: left; font-weight: 800; }
+  .data-table td { padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: #f8f8ff; }
+  .memory-box {
+    background: var(--yellow);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    border: 2px solid #d4a800;
+  }
+  .memory-box h4 { font-weight: 900; font-size: 1rem; margin-bottom: 8px; }
+  .memory-box p, .memory-box li { font-size: .92rem; }
+  .memory-box ul { padding-left: 20px; }
+  .summary-tree {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .tree-root {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    padding: 10px 28px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+  }
+  .tree-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 12px; }
+  .tree-node {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: .9rem;
+  }
+  .tree-node.orange { background: var(--solid-bg); border: 2px solid #f0a060; }
+  .tree-node.blue   { background: var(--liquid-bg); border: 2px solid #60a0f0; }
+  .tree-node.green  { background: var(--gas-bg);   border: 2px solid #60d0a0; }
+  .tree-node.purple { background: #f0d0fd; border: 2px solid #c070f0; }
+  .tree-node.yellow { background: #fff8cc; border: 2px solid var(--yellow); }
+  .tree-connector { border-left: 3px dashed var(--line); height: 20px; width: 0; margin: 0 auto; }
+  .activity {
+    border: 2px dashed var(--accent2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    background: #f0f7ff;
+    margin-bottom: 14px;
+  }
+  .activity h4 { color: var(--accent2); font-weight: 900; font-size: .95rem; margin-bottom: 6px; }
+  .activity p, .activity li { font-size: .9rem; }
+  .activity ul { padding-left: 18px; }
+  @media (max-width: 600px) {
+    .states-grid, .two-col, .compare-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 1.8rem; }
+  }
+  @media print {
+    body { background: #fff; }
+    header { background: #1e1a14 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <p class="chapter-label">Chapter 4 · Science Notes</p>
+    <h1>Properties of <span>Matter</span></h1>
+    <span class="grade-badge">Grade 8 · Age 13</span>
+  </div>
+</header>
+<div class="container">
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">1</div>
+      <h2>What is Matter &amp; Energy?</h2>
+    </div>
+    <div class="two-col">
+      <div class="card" style="border-color:#f0a060;">
+        <h3>⚡ Matter</h3>
+        <p>Anything that <strong>has mass</strong> and <strong>occupies space</strong>.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: air, water, ball, bulb, table, chair, magnet</p>
+      </div>
+      <div class="card" style="border-color:#60a0f0;">
+        <h3>💡 Energy</h3>
+        <p><strong>No mass, no space</strong> occupied.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: light, sound, heat, electricity</p>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0fde8;color:var(--accent3);">2</div>
+      <h2>Discontinuous (Particulate) Nature of Matter</h2>
+    </div>
+    <div class="definition">
+      <strong>Discontinuous Nature of Matter:</strong><br>
+      Matter is made up of tiny particles with <em>spaces between them</em>. This is called the particulate or discontinuous nature of matter.
+    </div>
+    <div class="memory-box">
+      <h4>📜 Historical Background</h4>
+      <ul>
+        <li><strong>Democritus (460–370 BC)</strong> — said matter is made of very small particles.</li>
+        <li><strong>Aristotle (384–270 BC)</strong> — said matter is NOT made of particles.</li>
+        <li>A public debate in Athens was won by Democritus's idea. Modern scientists later confirmed it with experiments.</li>
+      </ul>
+    </div>
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:12px;">Evidence in all 3 states of matter:</h3>
+    <div class="activity">
+      <h4>🧱 Solid — Chalk &amp; Ink Experiment</h4>
+      <p>When chalk is placed on coloured ink, the ink rises through the chalk. This proves chalk has tiny particles with spaces between them that allow ink to pass through.</p>
+    </div>
+    <div class="activity">
+      <h4>💧 Liquid — Potassium Permanganate in Water</h4>
+      <p>When potassium permanganate crystals are placed in water, the purple colour slowly spreads. The particles of KMnO₄ move into the spaces between water particles. Same happens with ink drops in water.</p>
+    </div>
+    <div class="activity">
+      <h4>💨 Gas — Nitrogen Dioxide &amp; Perfume Experiment</h4>
+      <p>Brown NO₂ gas placed under a jar of air mixes upward into the air. Scent of a joss stick and perfume spreads across a room. Gas particles move freely through the spaces in air.</p>
+    </div>
+    <div class="memory-box" style="background:#d0fde8;border-color:var(--accent3);">
+      <h4>✅ Conclusion</h4>
+      <p>All matter — solid, liquid, and gas — is made of particles with spaces between them. Therefore, <strong>all matter is discontinuous</strong>.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0e8fd;color:var(--accent2);">3</div>
+      <h2>Particle Arrangement in 3 States</h2>
+    </div>
+    <div class="states-grid">
+      <div class="state-card solid">
+        <h4>🧊 Solid</h4>
+        <ul>
+          <li>Particles orderly arranged</li>
+          <li>Strongly bonded</li>
+          <li>Only vibrate — don't move</li>
+          <li>Very little space between particles</li>
+        </ul>
+      </div>
+      <div class="state-card liquid">
+        <h4>💧 Liquid</h4>
+        <ul>
+          <li>Not orderly arranged</li>
+          <li>Bonding weaker than solid</li>
+          <li>Particles can move within liquid</li>
+          <li>Slightly more space than solid</li>
+        </ul>
+      </div>
+      <div class="state-card gas">
+        <h4>💨 Gas</h4>
+        <ul>
+          <li>Not orderly arranged</li>
+          <li>Very weak bonding</li>
+          <li>Particles move freely &amp; randomly</li>
+          <li>Very large spaces between particles</li>
+        </ul>
+      </div>
+    </div>
+    <table class="props-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Solid</th>
+          <th>Liquid</th>
+          <th>Gas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Shape</strong></td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="cross">✘</span> Takes shape of container</td>
+          <td><span class="cross">✘</span> Takes shape of container</td>
+        </tr>
+        <tr>
+          <td><strong>Volume</strong></td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="tick">✔</span> Fixed</td>
+          <td><span class="cross">✘</span> Spreads to fill container</td>
+        </tr>
+        <tr>
+          <td><strong>Compressibility</strong></td>
+          <td><span class="cross">✘</span> Hard</td>
+          <td><span class="cross">✘</span> Hard</td>
+          <td><span class="tick">✔</span> Easy</td>
+        </tr>
+        <tr>
+          <td><strong>Density</strong></td>
+          <td>High</td>
+          <td>High</td>
+          <td>Low</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card">
+      <h3>💡 Why can gases be compressed easily?</h3>
+      <p>Gas particles have <strong>wide spaces</strong> between them. Applying force pushes particles closer. Solid &amp; liquid particles are already closely packed — so they can't be pushed much closer.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#f0d0fd;color:var(--accent4);">4</div>
+      <h2>Pure Substances &amp; Non-Pure Substances</h2>
+    </div>
+    <div class="two-col">
+      <div class="card" style="border-color:#c070f0;">
+        <h3>🔬 Pure Substance</h3>
+        <p>Contains <strong>only ONE component</strong> with constant, definite properties.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: sugar, pure water, copper, iron, aluminium, silver</p>
+      </div>
+      <div class="card" style="border-color:#aaa;">
+        <h3>🧪 Non-Pure Substance (Mixture)</h3>
+        <p>Contains <strong>two or more components</strong>.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Examples: air, drinking water, salt solution, tea</p>
+      </div>
+    </div>
+    <p style="font-weight:800;margin-bottom:12px;font-size:1rem;">Pure substances are further divided into:</p>
+    <div class="two-col">
+      <div class="card" style="border-color:var(--yellow);">
+        <h3>⚗️ Elements</h3>
+        <p>Pure substances that <strong>cannot be broken down</strong> into simpler substances by physical or chemical methods.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">~120 elements known. Each has unique properties.</p>
+        <p style="margin-top:8px;font-size:.88rem;"><strong>Examples:</strong> Iron, Copper, Aluminium, Gold, Silver, Oxygen, Hydrogen, Sulphur, Carbon</p>
+      </div>
+      <div class="card" style="border-color:var(--accent3);">
+        <h3>🔗 Compounds</h3>
+        <p>Formed when <strong>two or more elements</strong> combine chemically in a <strong>fixed ratio</strong>. Properties differ from original elements.</p>
+        <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">Millions of compounds exist!</p>
+        <p style="margin-top:8px;font-size:.88rem;"><strong>Examples:</strong> Water (H+O), Iron sulphide (Fe+S), Carbon dioxide (C+O)</p>
+      </div>
+    </div>
+    <table class="data-table" style="margin-top:10px;">
+      <thead>
+        <tr><th>Compound</th><th>Elements it contains</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Water</td><td>Hydrogen, Oxygen</td></tr>
+        <tr><td>Carbon dioxide</td><td>Carbon, Oxygen</td></tr>
+        <tr><td>Sodium chloride (salt)</td><td>Sodium, Chlorine</td></tr>
+        <tr><td>Copper sulphate</td><td>Copper, Sulphur, Oxygen</td></tr>
+        <tr><td>Calcium carbonate</td><td>Calcium, Carbon, Oxygen</td></tr>
+        <tr><td>Iron sulphide</td><td>Iron, Sulphur</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0fde8;color:var(--accent3);">5</div>
+      <h2>Physical Properties of Matter</h2>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Property</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lustre</strong></td><td>Shiny surface (reflects light)</td></tr>
+        <tr><td><strong>Hardness</strong></td><td>Resists scratching and wear</td></tr>
+        <tr><td><strong>Brittleness</strong></td><td>Breaks or crumbles easily when force is applied</td></tr>
+        <tr><td><strong>Thermal conductivity</strong></td><td>Ability to conduct heat</td></tr>
+        <tr><td><strong>Electrical conductivity</strong></td><td>Ability to conduct electricity</td></tr>
+        <tr><td><strong>Sonority</strong></td><td>Makes a ringing sound when struck</td></tr>
+        <tr><td><strong>Elasticity</strong></td><td>Stretches and returns to original shape</td></tr>
+        <tr><td><strong>Malleability</strong></td><td>Can be hammered into thin sheets</td></tr>
+        <tr><td><strong>Ductility</strong></td><td>Can be drawn into wires</td></tr>
+        <tr><td><strong>Density</strong></td><td>Mass of a unit volume</td></tr>
+        <tr><td><strong>Melting point</strong></td><td>Temperature at which solid → liquid</td></tr>
+        <tr><td><strong>Boiling point</strong></td><td>Temperature at which liquid → gas</td></tr>
+        <tr><td><strong>Expansivity</strong></td><td>Volume increases when heated</td></tr>
+        <tr><td><strong>Texture</strong></td><td>Rough or smooth feel to the touch</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">6</div>
+      <h2>Density · Melting Point · Boiling Point</h2>
+    </div>
+    <div class="definition" style="border-color:var(--accent1);">
+      <strong>Key Rule:</strong> For pure substances, density, melting point, and boiling point are <em>always constant</em>. This is used to check purity!
+    </div>
+    <div class="card">
+      <h3>📏 Density = Mass ÷ Volume</h3>
+      <p>Each pure substance has a fixed density. Mixed substances (like drinking water vs pure water) have different densities.</p>
+    </div>
+    <div class="two-col" style="margin-bottom:14px;">
+      <table class="data-table">
+        <thead><tr><th>Substance</th><th>Density (kg/m³)</th></tr></thead>
+        <tbody>
+          <tr><td>Gold</td><td>19 300</td></tr>
+          <tr><td>Mercury</td><td>13 600</td></tr>
+          <tr><td>Lead</td><td>11 300</td></tr>
+          <tr><td>Copper</td><td>8 900</td></tr>
+          <tr><td>Iron</td><td>7 700</td></tr>
+          <tr><td>Aluminium</td><td>2 700</td></tr>
+          <tr><td>Water</td><td>1 000</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <table class="data-table" style="margin-bottom:10px;">
+          <thead><tr><th>Substance</th><th>Melting Point (°C)</th></tr></thead>
+          <tbody>
+            <tr><td>Ice (Water)</td><td>0</td></tr>
+            <tr><td>Sulphur</td><td>132</td></tr>
+            <tr><td>Lead</td><td>317</td></tr>
+            <tr><td>Aluminium</td><td>660</td></tr>
+            <tr><td>Copper</td><td>1 083</td></tr>
+            <tr><td>Iron</td><td>1 539</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table">
+          <thead><tr><th>Substance</th><th>Boiling Point (°C)</th></tr></thead>
+          <tbody>
+            <tr><td>Ethyl alcohol</td><td>77</td></tr>
+            <tr><td>Pure water</td><td>100</td></tr>
+            <tr><td>Sulphur</td><td>444</td></tr>
+            <tr><td>Lead</td><td>1 744</td></tr>
+            <tr><td>Iron</td><td>2 900</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="memory-box">
+      <h4>🧊 Ice melts at 0°C · 💧 Water boils at 100°C</h4>
+      <p>These are the melting and boiling points of <strong>pure water</strong> at standard atmospheric pressure. If water has dissolved substances, these values change.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fff8cc;color:#b8860b;">7</div>
+      <h2>Metals vs Non-Metals</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="metal-card metal">
+        <h4>🔩 Metals</h4>
+        <ul>
+          <li>✔ Good conductors of heat</li>
+          <li>✔ Good conductors of electricity</li>
+          <li>✔ Lustrous (shiny)</li>
+          <li>✔ Sonorous (ringing sound)</li>
+          <li>✔ Malleable (hammer into sheets)</li>
+          <li>✔ Ductile (draw into wires)</li>
+          <li>✘ Not brittle</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.85rem;color:#666;">Examples: Iron, Copper, Aluminium, Gold, Silver, Lead, Zinc, Magnesium, Mercury</p>
+      </div>
+      <div class="metal-card nonmetal">
+        <h4>🧪 Non-Metals</h4>
+        <ul>
+          <li>✘ Poor conductors of heat</li>
+          <li>✘ Poor conductors of electricity<br><em>(except Carbon/Graphite)</em></li>
+          <li>✘ Not lustrous (dull)</li>
+          <li>✔ Brittle (breaks when struck)</li>
+          <li>✘ Not malleable</li>
+          <li>✘ Not ductile</li>
+        </ul>
+        <p style="margin-top:10px;font-size:.85rem;color:#666;">Examples: Sulphur, Carbon, Oxygen, Hydrogen, Nitrogen, Chlorine, Phosphorus, Iodine, Bromine, Argon</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>💎 Special cases to remember</h3>
+      <p><strong>Mercury</strong> — a metal that is <em>liquid</em> at room temperature.<br>
+      <strong>Carbon (Graphite)</strong> — a non-metal that <em>conducts electricity</em>.<br>
+      <strong>Bromine</strong> — a non-metal that is <em>liquid</em> at room temperature.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#d0e8fd;color:var(--accent2);">8</div>
+      <h2>Real-Life Applications of Physical Properties</h2>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Property</th><th>Application</th><th>Substance Used</th></tr></thead>
+      <tbody>
+        <tr><td>Metallic lustre</td><td>Making jewellery</td><td>Gold, Silver</td></tr>
+        <tr><td>Hardness</td><td>Cutting glass; rail tracks</td><td>Diamond, Steel</td></tr>
+        <tr><td>Compressibility</td><td>Storing gases in cylinders</td><td>Oxygen, LP gas</td></tr>
+        <tr><td>Thermal conductivity</td><td>Cooking pans; soldering</td><td>Aluminium, Lead</td></tr>
+        <tr><td>Electrical conductivity</td><td>Electrical cables</td><td>Copper, Aluminium</td></tr>
+        <tr><td>Elasticity</td><td>Balloons</td><td>Rubber</td></tr>
+        <tr><td>Expansivity</td><td>Thermometers; thermostats</td><td>Mercury, Alcohol</td></tr>
+        <tr><td>Odour</td><td>Detecting gas leaks; perfumes</td><td>LP gas, Scents</td></tr>
+        <tr><td>Brittleness</td><td>Breaking material into pieces</td><td>Granite, egg shells</td></tr>
+        <tr><td>Texture (rough)</td><td>Smoothing wood/walls</td><td>Sandpaper</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">✦</div>
+      <h2>Chapter Summary – Classification of Matter</h2>
+    </div>
+    <div class="summary-tree">
+      <div><span class="tree-root">⚗️ Matter</span></div>
+      <div class="tree-connector"></div>
+      <div class="tree-row">
+        <span class="tree-node orange">Pure Substances</span>
+        <span class="tree-node blue">Non-Pure Substances (Mixtures)</span>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;">
+        <div>
+          <div class="tree-connector"></div>
+          <div class="tree-row">
+            <span class="tree-node yellow">Elements</span>
+            <span class="tree-node green">Compounds</span>
+          </div>
+          <div style="display:flex;gap:14px;justify-content:center;">
+            <div>
+              <div class="tree-connector"></div>
+              <div class="tree-row">
+                <span class="tree-node yellow" style="font-size:.8rem;">Metals</span>
+                <span class="tree-node purple" style="font-size:.8rem;">Non-metals</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">
+      <div class="num" style="background:#fde8d0;color:var(--accent1);">✎</div>
+      <h2>Quick Revision Questions</h2>
+    </div>
+    <div class="card">
+      <ol style="padding-left:20px;font-size:.95rem;">
+        <li style="margin-bottom:8px;">What is the difference between matter and energy? Give two examples of each.</li>
+        <li style="margin-bottom:8px;">Explain what is meant by the "discontinuous nature" of matter.</li>
+        <li style="margin-bottom:8px;">Why can gases be compressed but not liquids?</li>
+        <li style="margin-bottom:8px;">What is an element? What is a compound? Give two examples of each.</li>
+        <li style="margin-bottom:8px;">Name THREE physical properties that can be used to test the purity of a substance.</li>
+        <li style="margin-bottom:8px;">The melting point of ice is ____°C and the boiling point of pure water is ____°C.</li>
+        <li style="margin-bottom:8px;">List FOUR properties that are found in metals but NOT in non-metals.</li>
+        <li style="margin-bottom:8px;">Why does mercury damage gold objects when they come into contact?</li>
+      </ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>`,
+            },
+          ],
+          natureAndPropertiesOfMatter: [
+            {
+              id: "g9-matter-01",
+              title: "Grade 9 · 03. Nature and Properties of Matter",
+              grade: "Grade 9",
+              lesson: "03. Nature and Properties of Matter",
+              description:
+                "Complete chapter notes: classification of matter, elements, symbols, atoms, molecules, atomic structure, atomic number, mass number, compounds, mixtures and separation methods.",
+              html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3 – Nature and Properties of Matter | Grade 9 Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1117;
+    --surface: #161b27;
+    --surface2: #1e2535;
+    --border: #2a3450;
+    --accent1: #7ec8e3;
+    --accent2: #f4a261;
+    --accent3: #6fcf97;
+    --accent4: #e07b8a;
+    --text: #e8eaf0;
+    --muted: #8a93a8;
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'DM Sans', sans-serif;
+    --mono-font: 'DM Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body-font);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0e1117 0%, #162040 50%, #0e1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(126,200,227,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 20%;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(244,162,97,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .chapter-label {
+    font-family: var(--mono-font);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: var(--heading-font);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #fff;
+    max-width: 600px;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .grade-badge {
+    display: inline-block;
+    background: var(--accent1);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-family: var(--mono-font);
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent1);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 52px;
+  }
+  .toc-title {
+    font-family: var(--mono-font);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 16px;
+  }
+  .toc ol {
+    padding-left: 20px;
+  }
+  .toc li {
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc a:hover { color: var(--accent1); }
+  .section {
+    margin-bottom: 60px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: var(--mono-font);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--bg);
+    background: var(--accent2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .section-num.blue { background: var(--accent1); }
+  .section-num.green { background: var(--accent3); }
+  .section-num.red { background: var(--accent4); }
+  .section h2 {
+    font-family: var(--heading-font);
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .section h3 {
+    font-family: var(--heading-font);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent1);
+    margin: 28px 0 12px;
+  }
+  p { color: var(--text); margin-bottom: 14px; }
+  .def-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent2);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 16px 0 22px;
+  }
+  .def-box.blue { border-left-color: var(--accent1); }
+  .def-box.green { border-left-color: var(--accent3); }
+  .def-box.pink { border-left-color: var(--accent4); }
+  .def-label {
+    font-family: var(--mono-font);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .def-box.blue .def-label { color: var(--accent1); }
+  .def-box.green .def-label { color: var(--accent3); }
+  .def-box.pink .def-label { color: var(--accent4); }
+  .def-box p { margin: 0; color: var(--text); }
+  .tbl-wrap {
+    overflow-x: auto;
+    margin: 20px 0 28px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead {
+    background: var(--surface2);
+  }
+  thead th {
+    padding: 12px 18px;
+    text-align: left;
+    font-family: var(--mono-font);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td {
+    padding: 11px 18px;
+    color: var(--text);
+  }
+  tbody td:first-child { font-weight: 500; }
+  .key-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+  .key-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 14.5px;
+  }
+  .key-list li::before {
+    content: '→';
+    color: var(--accent1);
+    font-family: var(--mono-font);
+    font-size: 13px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .atom-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0;
+    min-height: 180px;
+  }
+  .atom-svg { max-width: 260px; width: 100%; }
+  .mol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+    margin: 20px 0 28px;
+  }
+  .mol-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .mol-card:hover {
+    border-color: var(--accent1);
+    transform: translateY(-2px);
+  }
+  .mol-symbol {
+    font-family: var(--mono-font);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent1);
+    margin-bottom: 4px;
+  }
+  .mol-name {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .method-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .method-card:hover { border-color: var(--accent3); }
+  .method-name {
+    font-family: var(--mono-font);
+    font-size: 12px;
+    color: var(--accent3);
+    font-weight: 500;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .method-use {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .summary {
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(126,200,227,0.07) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-top: 16px;
+  }
+  .summary h2 {
+    font-family: var(--heading-font);
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .summary .key-list li::before { color: var(--accent3); content: '✓'; }
+  .tip {
+    background: rgba(244,162,97,0.08);
+    border: 1px dashed var(--accent2);
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .tip strong { color: var(--accent2); }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    text-align: center;
+    font-family: var(--mono-font);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 18px 0 26px;
+  }
+  .formula-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+  .formula-card:hover { border-color: var(--accent4); }
+  .formula-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  .formula-sym {
+    font-family: var(--mono-font);
+    font-size: 16px;
+    color: var(--accent4);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .formula-el { font-size: 11px; color: var(--muted); }
+  .proton-row td { color: #7ec8e3; }
+  .neutron-row td { color: #f4a261; }
+  .electron-row td { color: #6fcf97; }
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .container { padding: 32px 16px 60px; }
+    .methods-grid, .mol-grid, .formula-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="grade-badge">Grade 9 · Science</div>
+  <div class="chapter-label">Chapter 3</div>
+  <h1>Nature and Properties of Matter</h1>
+  <div class="hero-sub">Complete Study Notes · Elements · Compounds · Mixtures · Atomic Structure</div>
+</div>
+<div class="container">
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#classification">Classification of Matter</a></li>
+      <li><a href="#elements">Elements & Their Symbols</a></li>
+      <li><a href="#building-units">Building Units: Atoms & Molecules</a></li>
+      <li><a href="#atomic-structure">Atomic Structure</a></li>
+      <li><a href="#atomic-numbers">Atomic Number & Mass Number</a></li>
+      <li><a href="#compounds">Compounds</a></li>
+      <li><a href="#mixtures">Mixtures</a></li>
+      <li><a href="#separation">Separation Methods</a></li>
+      <li><a href="#summary">Summary</a></li>
+    </ol>
+  </div>
+  <div class="section" id="classification">
+    <div class="section-header">
+      <span class="section-num blue">3.0</span>
+      <h2>Classification of Matter</h2>
+    </div>
+    <p>All matter around us can be split into two broad groups:</p>
+    <div class="def-box blue">
+      <div class="def-label">Pure Substances</div>
+      <p>Matter that contains <strong>only one constituent</strong> with specific properties.<br>
+      <em>Examples: aluminium, silver, copper, distilled water, carbon, sulphur, zinc, copper sulphate, sodium chloride</em></p>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Mixtures (Non-pure Substances)</div>
+      <p>Matter that contains <strong>two or more constituents</strong>.<br>
+      <em>Examples: air, drinking water, salt solution</em></p>
+    </div>
+    <p>Pure substances are further divided:</p>
+    <ul class="key-list">
+      <li>Pure substances that <strong>cannot</strong> be broken down further → <strong>Elements</strong></li>
+      <li>Pure substances formed by the <strong>chemical combination</strong> of two or more elements → <strong>Compounds</strong></li>
+    </ul>
+  </div>
+  <div class="section" id="elements">
+    <div class="section-header">
+      <span class="section-num blue">3.1</span>
+      <h2>Elements</h2>
+    </div>
+    <div class="def-box blue">
+      <div class="def-label">Definition</div>
+      <p>Pure substances with specific properties which <strong>cannot be further divided</strong> by either physical or chemical methods into substances with different properties. There are about <strong>120 elements</strong> discovered so far.</p>
+    </div>
+    <h3>3.1.1 – Symbols for Elements</h3>
+    <p>Internationally accepted symbols are used for all elements. Rules for writing symbols:</p>
+    <ul class="key-list">
+      <li>Usually based on the <strong>English name</strong> — first letter is used as the symbol (must be a <strong>capital</strong> letter).</li>
+      <li>If two elements share the same first letter, a <strong>second (lowercase)</strong> letter is added.</li>
+      <li>Some symbols come from the element's <strong>Latin name</strong>.</li>
+    </ul>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Element</th><th>Symbol</th><th>Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hydrogen</td><td>H</td><td>English</td></tr>
+          <tr><td>Carbon</td><td>C</td><td>English</td></tr>
+          <tr><td>Oxygen</td><td>O</td><td>English</td></tr>
+          <tr><td>Nitrogen</td><td>N</td><td>English</td></tr>
+          <tr><td>Sulphur</td><td>S</td><td>English</td></tr>
+          <tr><td>Chlorine</td><td>Cl</td><td>English (2 letters)</td></tr>
+          <tr><td>Calcium</td><td>Ca</td><td>English (2 letters)</td></tr>
+          <tr><td>Magnesium</td><td>Mg</td><td>English (2 letters)</td></tr>
+          <tr><td>Aluminium</td><td>Al</td><td>English (2 letters)</td></tr>
+          <tr><td>Zinc</td><td>Zn</td><td>English (2 letters)</td></tr>
+          <tr><td>Iodine</td><td>I</td><td>English</td></tr>
+          <tr><td>Silicon</td><td>Si</td><td>English (2 letters)</td></tr>
+          <tr><td>Phosphorous</td><td>P</td><td>English</td></tr>
+          <tr><td>Argon</td><td>Ar</td><td>English (2 letters)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Elements with Latin-based Symbols</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>English Name</th><th>Latin Name</th><th>Symbol</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sodium</td><td>Natrium</td><td>Na</td></tr>
+          <tr><td>Copper</td><td>Cuprum</td><td>Cu</td></tr>
+          <tr><td>Lead</td><td>Plumbum</td><td>Pb</td></tr>
+          <tr><td>Gold</td><td>Aurum</td><td>Au</td></tr>
+          <tr><td>Mercury</td><td>Hydrargyrum</td><td>Hg</td></tr>
+          <tr><td>Iron</td><td>Ferrum</td><td>Fe</td></tr>
+          <tr><td>Silver</td><td>Argentum</td><td>Ag</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip"><strong>Memory tip:</strong> For Latin symbols, remember: <em>NaCuPb — AuHgFeAg</em> (Sodium-Copper-Lead — Gold-Mercury-Iron-Silver)</div>
+  </div>
+  <div class="section" id="building-units">
+    <div class="section-header">
+      <span class="section-num">3.1.2</span>
+      <h2>Building Units: Atoms & Molecules</h2>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Atom</div>
+      <p>The <strong>smallest, indivisible particle</strong> from which matter is made. The term was first used by <strong>John Dalton (1766–1844)</strong>. The word "atom" comes from the Greek word <em>atomos</em>, meaning "cannot be divided further."</p>
+    </div>
+    <ul class="key-list">
+      <li>An element is composed of <strong>atoms of the same type</strong>.</li>
+      <li>Atoms forming different elements are <strong>different from each other</strong> in structure.</li>
+    </ul>
+    <div class="def-box green">
+      <div class="def-label">Molecule</div>
+      <p>Units formed by the combination of <strong>one or more atoms of the same type</strong>, or <strong>one or more atoms of different types</strong>.</p>
+    </div>
+    <h3>Homo-atomic Molecules</h3>
+    <p>Molecules formed by atoms of the <strong>same element</strong>. These are found in elements.</p>
+    <div class="mol-grid">
+      <div class="mol-card"><div class="mol-symbol">O₂</div><div class="mol-name">Oxygen</div></div>
+      <div class="mol-card"><div class="mol-symbol">N₂</div><div class="mol-name">Nitrogen</div></div>
+      <div class="mol-card"><div class="mol-symbol">Cl₂</div><div class="mol-name">Chlorine</div></div>
+      <div class="mol-card"><div class="mol-symbol">H₂</div><div class="mol-name">Hydrogen</div></div>
+      <div class="mol-card"><div class="mol-symbol">F₂</div><div class="mol-name">Fluorine</div></div>
+    </div>
+    <h3>Hetero-atomic Molecules</h3>
+    <p>Molecules formed by atoms of <strong>different elements</strong>. These are found in compounds.</p>
+    <div class="mol-grid">
+      <div class="mol-card"><div class="mol-symbol">H₂O</div><div class="mol-name">Water</div></div>
+      <div class="mol-card"><div class="mol-symbol">HCl</div><div class="mol-name">Hydrogen Chloride</div></div>
+      <div class="mol-card"><div class="mol-symbol">CO₂</div><div class="mol-name">Carbon Dioxide</div></div>
+      <div class="mol-card"><div class="mol-symbol">CH₄</div><div class="mol-name">Methane</div></div>
+      <div class="mol-card"><div class="mol-symbol">NH₃</div><div class="mol-name">Ammonia</div></div>
+    </div>
+  </div>
+  <div class="section" id="atomic-structure">
+    <div class="section-header">
+      <span class="section-num green">3.1.3</span>
+      <h2>Atomic Structure</h2>
+    </div>
+    <p><strong>Ernest Rutherford (1871–1937)</strong>, a British physicist, first discovered that an atom consists of a large empty space and a positively charged central nucleus.</p>
+    <div class="atom-diagram">
+      <svg class="atom-svg" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="130" cy="100" rx="115" ry="40" fill="none" stroke="#2a3450" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <ellipse cx="130" cy="100" rx="80" ry="115" fill="none" stroke="#2a3450" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <ellipse cx="130" cy="100" rx="115" ry="70" fill="none" stroke="#2a3450" stroke-width="1.5" stroke-dasharray="4 3" transform="rotate(-40 130 100)"/>
+        <circle cx="130" cy="100" r="18" fill="rgba(244,162,97,0.15)" stroke="#f4a261" stroke-width="2"/>
+        <circle cx="130" cy="100" r="10" fill="#f4a261" opacity="0.7"/>
+        <text x="130" y="104" fill="#fff" font-size="7" text-anchor="middle" font-family="DM Mono, monospace">p⁺+n</text>
+        <circle cx="245" cy="100" r="6" fill="#7ec8e3"/>
+        <circle cx="130" cy="185" r="6" fill="#7ec8e3"/>
+        <circle cx="36" cy="72" r="6" fill="#7ec8e3"/>
+        <text x="200" y="80" fill="#7ec8e3" font-size="9" font-family="DM Mono, monospace">e⁻</text>
+        <text x="140" y="195" fill="#7ec8e3" font-size="9" font-family="DM Mono, monospace">e⁻</text>
+        <text x="18" y="62" fill="#7ec8e3" font-size="9" font-family="DM Mono, monospace">e⁻</text>
+        <text x="110" y="85" fill="#f4a261" font-size="8" font-family="DM Mono, monospace">Nucleus</text>
+      </svg>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Nucleus</div>
+      <p>The <strong>positively charged central core</strong> of the atom where almost all the mass is concentrated. Contains <strong>protons</strong> and <strong>neutrons</strong>.</p>
+    </div>
+    <h3>Subatomic Particles</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Particle</th><th>Location</th><th>Relative Mass</th><th>Relative Charge</th></tr>
+        </thead>
+        <tbody>
+          <tr class="proton-row">
+            <td>Proton</td><td>In the nucleus</td><td>1</td><td>+1</td>
+          </tr>
+          <tr class="neutron-row">
+            <td>Neutron</td><td>In the nucleus</td><td>1</td><td>0</td>
+          </tr>
+          <tr class="electron-row">
+            <td>Electron</td><td>Around the nucleus</td><td>1/1840</td><td>−1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip"><strong>Key fact:</strong> Electrons are about <strong>1840 times lighter</strong> than protons and neutrons. A greater part of an atom is <strong>empty space</strong>.</div>
+  </div>
+  <div class="section" id="atomic-numbers">
+    <div class="section-header">
+      <span class="section-num green">3.1.4</span>
+      <h2>Atomic Number & Mass Number</h2>
+    </div>
+    <div class="def-box green">
+      <div class="def-label">Atomic Number (Z)</div>
+      <p>The <strong>number of protons</strong> in the nucleus of an atom. It is a <strong>unique property</strong> of an element. Since the atom is electrically neutral, <strong>number of protons = number of electrons</strong>.</p>
+    </div>
+    <div class="def-box blue">
+      <div class="def-label">Mass Number (A)</div>
+      <p>The <strong>sum of protons and neutrons</strong> in the nucleus.<br>
+      <strong>A = number of protons + number of neutrons</strong></p>
+    </div>
+    <h3>Standard Notation</h3>
+    <p>The atomic number is written at the <strong>bottom-left</strong> and mass number at the <strong>top-left</strong> of the element symbol:</p>
+    <div style="text-align:center; margin: 22px 0;">
+      <span style="font-family: var(--mono-font); font-size: 36px; color: var(--accent1);">
+        <sup style="font-size:18px; color: var(--accent2);">23</sup>
+        <sub style="font-size:18px; color: var(--accent3);">11</sub>Na
+      </span>
+      <div style="font-size:12px; color: var(--muted); margin-top:8px;">
+        <span style="color:var(--accent2);">23 = Mass Number (p+n)</span> &nbsp;|&nbsp;
+        <span style="color:var(--accent3);">11 = Atomic Number (protons)</span>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Element</th><th>Protons (p)</th><th>Neutrons (n)</th><th>Atomic No. (Z)</th><th>Mass No. (A)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Carbon (C)</td><td>6</td><td>6</td><td>6</td><td>12</td></tr>
+          <tr><td>Nitrogen (N)</td><td>7</td><td>7</td><td>7</td><td>14</td></tr>
+          <tr><td>Oxygen (O)</td><td>8</td><td>8</td><td>8</td><td>16</td></tr>
+          <tr><td>Fluorine (F)</td><td>9</td><td>10</td><td>9</td><td>19</td></tr>
+          <tr><td>Sodium (Na)</td><td>11</td><td>12</td><td>11</td><td>23</td></tr>
+          <tr><td>Chlorine (Cl)</td><td>17</td><td>18</td><td>17</td><td>35</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section" id="compounds">
+    <div class="section-header">
+      <span class="section-num red">3.2</span>
+      <h2>Compounds</h2>
+    </div>
+    <div class="def-box pink">
+      <div class="def-label">Definition</div>
+      <p>Pure substances with specific properties formed by the <strong>chemical combination of two or more elements in a fixed ratio</strong>. Compounds have <strong>hetero-atomic molecules</strong> — containing atoms of different elements.</p>
+    </div>
+    <ul class="key-list">
+      <li>An <strong>element</strong> is composed of atoms of the <strong>same kind</strong>.</li>
+      <li>A <strong>compound</strong> is formed from atoms of <strong>two or more different elements</strong>.</li>
+      <li>The elements in a compound <strong>cannot show the properties</strong> of that compound individually.</li>
+      <li>Different compounds from the same elements have <strong>different chemical properties</strong>.</li>
+    </ul>
+    <h3>Common Compounds & Formulas</h3>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="formula-name">Water</div>
+        <div class="formula-sym">H₂O</div>
+        <div class="formula-el">H and O</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Glucose</div>
+        <div class="formula-sym">C₆H₁₂O₆</div>
+        <div class="formula-el">C, H and O</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Methane</div>
+        <div class="formula-sym">CH₄</div>
+        <div class="formula-el">C and H</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Carbon Dioxide</div>
+        <div class="formula-sym">CO₂</div>
+        <div class="formula-el">C and O</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Sodium Chloride</div>
+        <div class="formula-sym">NaCl</div>
+        <div class="formula-el">Na and Cl</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Copper Sulphate</div>
+        <div class="formula-sym">CuSO₄</div>
+        <div class="formula-el">Cu, S and O</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Calcium Carbonate</div>
+        <div class="formula-sym">CaCO₃</div>
+        <div class="formula-el">Ca, C and O</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">Ammonia</div>
+        <div class="formula-sym">NH₃</div>
+        <div class="formula-el">N and H</div>
+      </div>
+    </div>
+    <div class="tip"><strong>Interesting fact:</strong> The same set of elements (C, H, O) can form totally different compounds — glucose (sugar), acetic acid (vinegar), ethanol (alcohol), and sucrose (cane sugar)!</div>
+  </div>
+  <div class="section" id="mixtures">
+    <div class="section-header">
+      <span class="section-num">3.3</span>
+      <h2>Mixtures</h2>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Definition</div>
+      <p>Matter consisting of <strong>two or more pure substances (constituents)</strong> that can be separated by <strong>physical methods</strong>. Most substances found in nature are mixtures — air, soil, river water, sea water, rocks.</p>
+    </div>
+    <h3>Types of Mixtures</h3>
+    <div class="def-box green">
+      <div class="def-label">Homogeneous Mixtures</div>
+      <p>Mixtures with <strong>uniform composition</strong> throughout. Properties like colour and transparency are the same in every part.<br>
+      <em>Examples: salt solution, sugar solution, sea water</em></p>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Heterogeneous Mixtures</div>
+      <p>Mixtures where the <strong>composition is NOT uniform</strong> — it varies from place to place.<br>
+      <em>Examples: muddy water, mortar mixture, ice cream, fruit salad</em></p>
+    </div>
+    <h3>Common Mixtures & Their Constituents</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Mixture</th><th>Constituents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Air</td><td>Nitrogen, oxygen, argon, carbon dioxide, water vapour</td></tr>
+          <tr><td>Sea water</td><td>Water, salts, dissolved oxygen, dissolved carbon dioxide</td></tr>
+          <tr><td>Cake mixture</td><td>Sugar, flour, water, colouring, butter, eggs</td></tr>
+          <tr><td>Crude oil</td><td>Diesel, petrol, kerosene, tar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section" id="separation">
+    <div class="section-header">
+      <span class="section-num green">3.4</span>
+      <h2>Physical Methods of Separating Mixtures</h2>
+    </div>
+    <p>The key feature of mixtures is that constituents can be separated by <strong>physical methods</strong> (no chemical reaction needed):</p>
+    <div class="methods-grid">
+      <div class="method-card">
+        <div class="method-name">Panning</div>
+        <div class="method-use">Separating sand from rice; separating gems from ores</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Winnowing</div>
+        <div class="method-use">Separating chaff from rice</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Floating on Water</div>
+        <div class="method-use">Separating sterile seeds from seed paddy</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Sifting</div>
+        <div class="method-use">Separating gravel from sand</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Vapourisation</div>
+        <div class="method-use">Obtaining salt from sea water</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Fractional Distillation</div>
+        <div class="method-use">Separating various fuels from crude oil</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Steam Distillation</div>
+        <div class="method-use">Separating cinnamon oil from cinnamon leaves</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Crystallization</div>
+        <div class="method-use">Separating sugar from cane sugar syrup</div>
+      </div>
+      <div class="method-card">
+        <div class="method-name">Using Magnets</div>
+        <div class="method-use">Separating some minerals from mineral sands</div>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="summary">
+    <div class="summary">
+      <h2>📋 Chapter Summary</h2>
+      <ul class="key-list">
+        <li>Matter is classified as <strong>pure substances</strong> and <strong>mixtures</strong>.</li>
+        <li>Pure substances are further classified as <strong>elements</strong> and <strong>compounds</strong>.</li>
+        <li>Elements cannot be divided into different substances by physical or chemical methods.</li>
+        <li>Compounds are formed by chemical combination of two or more elements in a definite ratio.</li>
+        <li>Building units of elements are <strong>atoms</strong> and <strong>molecules</strong>.</li>
+        <li><strong>Homo-atomic</strong> molecules → same type of atoms; <strong>Hetero-atomic</strong> molecules → different types of atoms.</li>
+        <li>An atom has a <strong>nucleus</strong> (protons + neutrons) with electrons moving around it.</li>
+        <li><strong>Atomic number (Z)</strong> = number of protons (unique to each element).</li>
+        <li><strong>Mass number (A)</strong> = number of protons + number of neutrons.</li>
+        <li>Mixtures consist of two or more constituents separable by <strong>physical methods</strong>.</li>
+        <li>Mixtures are either <strong>homogeneous</strong> (uniform) or <strong>heterogeneous</strong> (non-uniform).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<footer>Grade 9 Science · Chapter 3 · Nature and Properties of Matter · Study Notes</footer>
+</body>
+</html>`,
+            },
+          ],
+          structureOfMatter: [
+            {
+              id: "g10-structure-01",
+              title: "Grade 10 · 03. Structure of Matter",
+              grade: "Grade 10",
+              lesson: "03. Structure of Matter",
+              description:
+                "Lesson reader for atoms, atomic number, mass number, electronic configuration, periodic table, isotopes, metals and non-metals, and formulae.",
+              html: `
+          <div class="reader-cover blue"><div class="reader-label">Grade 10 Science · Chapter 03</div><h1>Structure of Matter</h1><p>Lesson reader for atomic structure and related concepts.</p></div>
+          <section><h2>3.1 The Planetary Model of the Atom</h2><div class="reader-grid three"><div class="reader-card"><h3>Proton</h3><p>Positive particle in the nucleus.</p></div><div class="reader-card"><h3>Neutron</h3><p>Neutral particle in the nucleus.</p></div><div class="reader-card"><h3>Electron</h3><p>Negative particle in shells around the nucleus.</p></div></div></section>
+          <section><h2>Atomic Number and Mass Number</h2><ul><li>Atomic number = protons.</li><li>Mass number = protons + neutrons.</li><li>Neutrons = mass number − atomic number.</li></ul></section>
+          <section><h2>3.2 Electronic Configuration</h2><p>Electronic configuration is the arrangement of electrons in shells.</p></section>
+          <section><h2>3.3 Periodic Table</h2><p>Elements are arranged according to atomic number.</p></section>
+          <section><h2>3.4 Isotopes</h2><p>Isotopes have the same atomic number but different mass numbers.</p></section>
+          <section><h2>3.5 Metals and Non-metals</h2><p>Metals and non-metals show different physical and chemical properties.</p></section>
+          <section><h2>3.6 Chemical Formulae</h2><p>Formulae show the types and numbers of atoms in substances.</p></section>`,
+            },
+          ],
+          animalDiversity: [
+            {
+              id: "g7-animal-01",
+              title: "Worksheet 1",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "Worksheet for Animal Diversity chapter.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 1.pdf",
+            },
+            {
+              id: "g7-animal-02",
+              title: "Worksheet 2",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "Additional worksheet for Animal Diversity.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 2.pdf",
+            },
+            {
+              id: "g7-animal-03",
+              title: "Worksheet 3",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "Adaptations related worksheet.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 3.pdf",
+            },
+            {
+              id: "g7-animal-04",
+              title: "Worksheet 4",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "More practice on adaptations to environment.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 4.pdf",
+            },
+            {
+              id: "g7-animal-05",
+              title: "Worksheet 5",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "Dichotomous key practice worksheet.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 5.pdf",
+            },
+            {
+              id: "g7-animal-06",
+              title: "Worksheet 6",
+              grade: "Grade 7",
+              lesson: "06. Animal Diversity",
+              description: "Chapter review worksheet.",
+              type: "PDF Worksheet",
+              filePath: "./Grade 07_06.Animal Diversity/Worksheet 6.pdf",
+            },
+          ],
+          natureOfTheEarth: [
+            {
+              id: "g7-earth-01",
+              title: "WS1 Solar System Earth's Place",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Introductory worksheet for the chapter.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS1_Solar_System_Earths_Place.pdf",
+            },
+            {
+              id: "g7-earth-02",
+              title: "WS2 How Geologists Study Earth",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Background worksheet for studying the Earth.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS2_How_Geologists_Study_Earth.pdf",
+            },
+            {
+              id: "g7-earth-03",
+              title: "WS3 Layers of Earth",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Worksheet on the structure of the Earth.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS3_Layers_of_Earth.pdf",
+            },
+            {
+              id: "g7-earth-04",
+              title: "WS4 Tectonic Plates",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Worksheet on tectonic plates and plate tectonics.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS4_Tectonic_Plates.pdf",
+            },
+            {
+              id: "g7-earth-05",
+              title: "WS5 Advanced Analysis",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Extended analysis worksheet.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS5_Advanced_Analysis.pdf",
+            },
+            {
+              id: "g7-earth-06",
+              title: "WS6 Simplified Support",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Support worksheet for simplified reinforcement.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS6_SimplifiedSupport_GroupC.pdf",
+            },
+            {
+              id: "g7-earth-07",
+              title: "WS7 Chapter Review Test",
+              grade: "Grade 7",
+              lesson: "08. The Nature of the Earth",
+              description: "Chapter review test worksheet.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade 07_08.The Nature of the Earth/WS7_Chapter_Review_Test.pdf",
+            },
+          ],
+          humanOrganSystems: [
+            {
+              id: "g8-human-01",
+              title: "Human Organ Systems Document",
+              grade: "Grade 8",
+              lesson: "09. Human organ systems",
+              description:
+                "HTML document containing worksheets for excretory system, nervous system and human skin.",
+              type: "HTML Document",
+              filePath: "./Grade 08/DOC-20260427-WA0028..html",
+            },
+          ],
+          humanCirculatorySystem: [
+            {
+              id: "g9-circulatory-01",
+              title: "6.1 Structure of the human heart",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "PDF document for heart structure.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/6.1 Structure of the human heart.pdf",
+            },
+            {
+              id: "g9-circulatory-02",
+              title: "6.2 Arteries, veins and capillaries",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "PDF document for blood vessels.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/6.2 Arteries, veins and capillaries.pdf",
+            },
+            {
+              id: "g9-circulatory-03",
+              title: "6.3 Components of blood and their functions",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "PDF document for blood components.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/6.3 Components of blood and their functions.pdf",
+            },
+            {
+              id: "g9-circulatory-04",
+              title: "6.4 Blood transfusion",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "PDF document for blood transfusion.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/6.4 Blood transfusion.pdf",
+            },
+            {
+              id: "g9-circulatory-05",
+              title: "Compatibility of Rhesus factor",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "Supporting PDF on rhesus factor compatibility.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/Compatibility of Rhesus factor.pdf",
+            },
+            {
+              id: "g9-circulatory-06",
+              title: "Revision chapter 07 grade 09",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "Revision PDF for the chapter.",
+              type: "PDF Revision",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/Revision_chaptr 07_grd 09.pdf",
+            },
+            {
+              id: "g9-circulatory-07",
+              title: "Assessment chapter 07 grade 09",
+              grade: "Grade 9",
+              lesson: "06. The Human Circulatory System",
+              description: "Assessment PDF for the chapter.",
+              type: "PDF Assessment",
+              filePath:
+                "./Grade 09_6.The Human Circulatory  System/Assessment_chptr 07_grd 09.pdf",
+            },
+          ],
+          plantGrowthSubstances: [
+            {
+              id: "g9-plant-01",
+              title: "7.1 Introduction to plant growth substances",
+              grade: "Grade 9",
+              lesson: "07. Plant Growth Substances",
+              description: "Introduction PDF for plant growth substances.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_07.Plant Growth Substances/7.1 Introduction to plant growth substances.pdf",
+            },
+            {
+              id: "g9-plant-02",
+              title: "Auxins",
+              grade: "Grade 9",
+              lesson: "07. Plant Growth Substances",
+              description: "PDF document on auxins.",
+              type: "PDF Document",
+              filePath: "./Grade 09_07.Plant Growth Substances/Auxins.pdf",
+            },
+            {
+              id: "g9-plant-03",
+              title: "Gibberellins and Cytokinins",
+              grade: "Grade 9",
+              lesson: "07. Plant Growth Substances",
+              description: "PDF document on gibberellins and cytokinins.",
+              type: "PDF Document",
+              filePath:
+                "./Grade 09_07.Plant Growth Substances/Gibberellins_Cytokinins.pdf",
+            },
+          ],
+          biosphere: [
+            {
+              id: "g10-bio-01",
+              title: "ws13 01 Introduction to Classification",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_01_Introduction_to_Classification.pdf",
+            },
+            {
+              id: "g10-bio-02",
+              title: "ws13 02 Three Domain System",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_02_Three_Domain_System.pdf",
+            },
+            {
+              id: "g10-bio-03",
+              title: "ws13 03 Protista and Fungi",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath: "./Grade10_13.Biosphere/ws13_03_Protista_and_Fungi.pdf",
+            },
+            {
+              id: "g10-bio-04",
+              title: "ws13 04 Non flowering Plants",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_04_Non_flowering_Plants.pdf",
+            },
+            {
+              id: "g10-bio-05",
+              title: "ws13 05 Flowering Plants and Animalia",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_05_Flowering_Plants_and_Animalia.pdf",
+            },
+            {
+              id: "g10-bio-06",
+              title: "ws13 06 Cnidaria Annelida Mollusca",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_06_Cnidaria_Annelida_Mollusca.pdf",
+            },
+            {
+              id: "g10-bio-07",
+              title: "ws13 07 Arthropoda Echinodermata",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_07_Arthropoda_Echinodermata.pdf",
+            },
+            {
+              id: "g10-bio-08",
+              title: "ws13 08 Pisces and Amphibia",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_08_Pisces_and_Amphibia.pdf",
+            },
+            {
+              id: "g10-bio-09",
+              title: "ws13 09 Reptilia Aves Mammalia",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_09_Reptilia_Aves_Mammalia.pdf",
+            },
+            {
+              id: "g10-bio-10",
+              title: "ws13 10 Binomial Nomenclature",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere worksheet PDF.",
+              type: "PDF Worksheet",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_10_Binomial_Nomenclature.pdf",
+            },
+            {
+              id: "g10-bio-11",
+              title: "ws13 11 Chapter 13 Revision Mixed",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere revision worksheet PDF.",
+              type: "PDF Revision",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_11_Chapter13_Revision_Mixed.pdf",
+            },
+            {
+              id: "g10-bio-12",
+              title: "ws13 12 Chapter 13 Final Review",
+              grade: "Grade 10",
+              lesson: "13. Biosphere",
+              description: "Biosphere final review worksheet PDF.",
+              type: "PDF Review",
+              filePath:
+                "./Grade10_13.Biosphere/ws13_12_Chapter13_Final_Review.pdf",
+            },
+          ],
+        };
+
+        const gradeSelect = document.getElementById("gradeSelect");
+        const lessonSelect = document.getElementById("lessonSelect");
+        const topicSelect = document.getElementById("topicSelect");
+        const videoGrid = document.getElementById("videoGridContainer");
+        const emptyMsg = document.getElementById("emptyMessage");
+        const currentTopicTitle = document.getElementById("currentTopicTitle");
+        const videoCountDisplay = document.getElementById("videoCountDisplay");
+        const videoCountBadge = document.getElementById("videoCountBadge");
+        const noteCountBadge = document.getElementById("noteCountBadge");
+        const gradeLessonHint = document.getElementById("gradeLessonHint");
+        const notesGrid = document.getElementById("notesGridContainer");
+        const notesEmptyMessage = document.getElementById("notesEmptyMessage");
+        const currentNotesTitle = document.getElementById("currentNotesTitle");
+        const noteAvailabilityDisplay = document.getElementById(
+          "noteAvailabilityDisplay",
+        );
+        const fullscreenOverlay = document.getElementById("fullscreenOverlay");
+        const youtubeIframe = document.getElementById("youtubeIframe");
+        const closeBtn = document.getElementById("closeFullscreenBtn");
+        const noteModal = document.getElementById("noteModal");
+        const closeNoteModalBtn = document.getElementById("closeNoteModalBtn");
+        const noteReaderFrame = document.getElementById("noteReaderFrame");
+        const noteResourceEmbed = document.getElementById("noteResourceEmbed");
+        const mobilePdfFallback = document.getElementById("mobilePdfFallback");
+        const openPdfBtn = document.getElementById("openPdfBtn");
+        const downloadPdfBtn = document.getElementById("downloadPdfBtn");
+        const openResourceDirectBtn = document.getElementById("openResourceDirectBtn");
+        const noteModalTitle = document.getElementById("noteModalTitle");
+        const noteModalGrade = document.getElementById("noteModalGrade");
+        const noteModalLesson = document.getElementById("noteModalLesson");
+        const printNoteBtn = document.getElementById("printNoteBtn");
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        const htmlElement = document.documentElement;
+
+        let currentGrade = "10";
+        let currentLessonKey = "structureOfMatter";
+        let currentTopic = "3.1 The Planetary Model of the Atom";
+
+        function escapeHtml(str) {
+          return String(str || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+        function timeToSeconds(timeStr) {
+          if (!timeStr) return null;
+          let str = timeStr.trim().replace(":", ".");
+          const parts = str.split(".");
+          if (parts.length === 2) {
+            const min = parseInt(parts[0], 10);
+            const sec = parseInt(parts[1], 10);
+            if (!isNaN(min) && !isNaN(sec)) return min * 60 + sec;
+          }
+          const num = parseFloat(str);
+          return isNaN(num) ? null : Math.floor(num);
+        }
+        function extractYouTubeID(url) {
+          if (!url) return null;
+          if (url.includes("youtu.be/"))
+            return url.split("youtu.be/")[1].split(/[?&]/)[0];
+          if (url.includes("youtube.com/shorts/"))
+            return url.split("shorts/")[1].split(/[?&]/)[0];
+          const regExp =
+            /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+          const match = url.match(regExp);
+          return match ? match[1] : null;
+        }
+        function populateGrades() {
+          gradeSelect.innerHTML = "";
+          Object.keys(gradesData).forEach((gradeKey) => {
+            const opt = document.createElement("option");
+            opt.value = gradeKey;
+            opt.textContent = gradesData[gradeKey].name;
+            gradeSelect.appendChild(opt);
+          });
+          gradeSelect.value = currentGrade;
+        }
+        function populateLessons(gradeKey) {
+          lessonSelect.innerHTML = "";
+          const lessons = gradesData[gradeKey]?.lessons || {};
+          const lessonKeys = Object.keys(lessons);
+          if (!lessonKeys.length) return;
+          lessonKeys.forEach((key) => {
+            const opt = document.createElement("option");
+            opt.value = key;
+            opt.textContent = lessons[key].name;
+            lessonSelect.appendChild(opt);
+          });
+          if (!lessonKeys.includes(currentLessonKey))
+            currentLessonKey = lessonKeys[0];
+          lessonSelect.value = currentLessonKey;
+        }
+        function populateTopics(gradeKey, lessonKey) {
+          topicSelect.innerHTML = "";
+          const topics = gradesData[gradeKey]?.lessons[lessonKey]?.topics || {};
+          const topicNames = Object.keys(topics);
+          if (!topicNames.length) return;
+          topicNames.forEach((topic) => {
+            const opt = document.createElement("option");
+            opt.value = topic;
+            opt.textContent = topic;
+            topicSelect.appendChild(opt);
+          });
+          if (!topicNames.includes(currentTopic)) currentTopic = topicNames[0];
+          topicSelect.value = currentTopic;
+        }
+        function buildVideoObjects(gradeKey, lessonKey, topic) {
+          const rawVideos =
+            gradesData[gradeKey]?.lessons[lessonKey]?.topics[topic] || [];
+          return rawVideos
+            .map((v) => {
+              const id = extractYouTubeID(v.url);
+              return {
+                ...v,
+                id,
+                thumbnail: id
+                  ? "https://img.youtube.com/vi/" + id + "/mqdefault.jpg"
+                  : null,
+                startSeconds: v.start ? timeToSeconds(v.start) : null,
+                endSeconds: v.end ? timeToSeconds(v.end) : null,
+                displayTime:
+                  v.start && v.end
+                    ? v.start + " – " + v.end
+                    : v.start
+                      ? "starts " + v.start
+                      : "",
+              };
+            })
+            .filter((v) => v.id);
+        }
+        function getLessonNotes(lessonKey) {
+          return lessonNotes[lessonKey] || [];
+        }
+
+        function buildReaderDocument(note) {
+          if (!note || !note.html) return "";
+          var trimmed = note.html.trim();
+          if (
+            trimmed.indexOf("<!DOCTYPE") === 0 ||
+            trimmed.indexOf("<html") === 0
+          ) {
+            return note.html;
+          }
+          return (
+            '<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>' +
+            escapeHtml(note.title) +
+            "</title><style>" +
+            "body { margin:0; font-family: Inter, Arial, sans-serif; background:#f8fafc; color:#0f172a; line-height:1.7; }" +
+            ".page { max-width:950px; margin:0 auto; padding:32px 18px 48px; }" +
+            ".reader-cover { padding:34px 30px; border-radius:24px; color:white; margin-bottom:24px; box-shadow:0 20px 40px rgba(15,23,42,.18); }" +
+            ".reader-cover.blue { background:linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }" +
+            ".reader-cover.purple { background:linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%); }" +
+            ".reader-cover.rose { background:linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%); }" +
+            ".reader-cover.amber { background:linear-gradient(135deg, #78350f 0%, #f59e0b 100%); }" +
+            ".reader-label { display:inline-block; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.2); padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; margin-bottom:10px; }" +
+            "h1 { margin:0 0 6px; font-size:clamp(2rem,4vw,3rem); line-height:1.1; }" +
+            "section { background:white; border:1px solid #e2e8f0; border-radius:20px; padding:22px; margin-bottom:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }" +
+            "h2 { margin:0 0 10px; font-size:1.35rem; color:#0f172a; }" +
+            "h3 { margin:0 0 8px; font-size:1rem; }" +
+            "p { margin:0 0 10px; } ul { margin:0; padding-left:20px; } li { margin-bottom:8px; }" +
+            ".reader-grid { display:grid; gap:14px; margin:12px 0; }" +
+            ".reader-grid.two { grid-template-columns:repeat(2, minmax(0,1fr)); }" +
+            ".reader-grid.three { grid-template-columns:repeat(3, minmax(0,1fr)); }" +
+            ".reader-card { border:1px solid #e2e8f0; border-radius:16px; padding:16px; background:#f8fafc; }" +
+            "@media (max-width:700px) { .reader-grid.two,.reader-grid.three { grid-template-columns:1fr; } .page { padding:18px 12px 36px; } .reader-cover { padding:24px 20px; } }" +
+            '</style></head><body><div class="page">' +
+            note.html +
+            "</div></body></html>"
+          );
+        }
+
+        function applyGradeClass() {
+          const dashboard = document.querySelector(".dashboard");
+          dashboard.classList.remove(
+            "grade-7",
+            "grade-8",
+            "grade-9",
+            "grade-10",
+          );
+          dashboard.classList.add("grade-" + currentGrade);
+        }
+        function renderVideos() {
+          const lessonName =
+            gradesData[currentGrade]?.lessons[currentLessonKey]?.name || "";
+          gradeLessonHint.textContent =
+            (gradesData[currentGrade]?.name || "") + " · " + lessonName;
+          const videoItems = buildVideoObjects(
+            currentGrade,
+            currentLessonKey,
+            currentTopic,
+          );
+          currentTopicTitle.textContent = currentTopic;
+          videoCountDisplay.textContent =
+            "📹 " +
+            videoItems.length +
+            " video" +
+            (videoItems.length !== 1 ? "s" : "");
+          videoCountBadge.textContent = videoItems.length;
+          if (!videoItems.length) {
+            videoGrid.innerHTML = "";
+            videoGrid.style.display = "none";
+            emptyMsg.style.display = "block";
+            return;
+          }
+          videoGrid.style.display = "grid";
+          emptyMsg.style.display = "none";
+          videoGrid.innerHTML = videoItems
+            .map(function (video) {
+              return (
+                '<div class="video-card" tabindex="0" data-video-id="' +
+                video.id +
+                '" data-start="' +
+                (video.startSeconds || 0) +
+                '" data-end="' +
+                (video.endSeconds || 0) +
+                '">' +
+                '<div class="thumbnail">' +
+                (video.thumbnail
+                  ? '<img src="' +
+                    video.thumbnail +
+                    '" alt="thumbnail" loading="lazy">'
+                  : '<div style="color:white; padding:20px;">🎬</div>') +
+                '<div class="play-overlay"><div class="play-icon"><i class="fas fa-play"></i></div></div>' +
+                "</div>" +
+                '<div class="card-content">' +
+                '<div class="video-title">' +
+                escapeHtml(video.title || "Video") +
+                "</div>" +
+                '<div class="video-meta">' +
+                '<span class="badge">' +
+                (video.url.includes("/shorts/") ? "SHORT" : "VIDEO") +
+                "</span>" +
+                (video.displayTime
+                  ? '<span class="time-badge">' + video.displayTime + "</span>"
+                  : "") +
+                "</div></div></div>"
+              );
+            })
+            .join("");
+          document.querySelectorAll(".video-card").forEach(function (card) {
+            var open = function () {
+              playVideoFullscreen(
+                card.dataset.videoId,
+                parseInt(card.dataset.start, 10) || 0,
+                parseInt(card.dataset.end, 10) || 0,
+              );
+            };
+            card.addEventListener("click", open);
+            card.addEventListener("keypress", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                open();
+              }
+            });
+          });
+        }
+        function renderNotes() {
+          const lessonName =
+            gradesData[currentGrade]?.lessons[currentLessonKey]?.name || "";
+          const notes = getLessonNotes(currentLessonKey);
+          currentNotesTitle.textContent = lessonName + " · Lesson Notes";
+          noteCountBadge.textContent = notes.length;
+          noteAvailabilityDisplay.textContent =
+            "📚 " + notes.length + " note" + (notes.length !== 1 ? "s" : "");
+          if (!notes.length) {
+            notesGrid.innerHTML = "";
+            notesGrid.style.display = "none";
+            notesEmptyMessage.style.display = "block";
+            return;
+          }
+          notesGrid.style.display = "grid";
+          notesEmptyMessage.style.display = "none";
+          notesGrid.innerHTML = notes
+            .map(function (note) {
+              return (
+                '<article class="note-card">' +
+                '<div class="note-hero"><div class="note-meta"><span class="badge">' +
+                escapeHtml(note.type || "Reader Note") +
+                '</span><span class="badge">' +
+                escapeHtml(note.grade) +
+                "</span></div></div>" +
+                '<div class="note-content">' +
+                '<div class="note-title">' +
+                escapeHtml(note.title) +
+                "</div>" +
+                '<div class="note-desc">' +
+                escapeHtml(note.description) +
+                "</div>" +
+                '<div class="note-actions">' +
+                '<button class="btn btn-primary read-note-btn" data-note-id="' +
+                escapeHtml(note.id) +
+                '"><i class="fas fa-book-open"></i> Open Resource</button>' +
+                "</div></div></article>"
+              );
+            })
+            .join("");
+          notesGrid.querySelectorAll(".read-note-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              openNoteById(btn.dataset.noteId);
+            });
+          });
+        }
+        function findNoteById(noteId) {
+          return (
+            getLessonNotes(currentLessonKey).find(function (note) {
+              return note.id === noteId;
+            }) || null
+          );
+        }
+        function isMobilePdfViewerBlocked() {
+          return window.matchMedia("(max-width: 768px)").matches ||
+            /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+        }
+        function setResourceLinks(resourceUrl, title) {
+          if (!resourceUrl) {
+            openResourceDirectBtn.removeAttribute("href");
+            openResourceDirectBtn.style.display = "none";
+            openPdfBtn.removeAttribute("href");
+            downloadPdfBtn.removeAttribute("href");
+            return;
+          }
+          openResourceDirectBtn.href = resourceUrl;
+          openResourceDirectBtn.style.display = "inline-flex";
+          openPdfBtn.href = resourceUrl;
+          downloadPdfBtn.href = resourceUrl;
+          const safeName = (title || "resource").replace(/[^a-z0-9-_]+/gi, "_") + ".pdf";
+          downloadPdfBtn.setAttribute("download", safeName);
+        }
+        function resetResourceViewer() {
+          noteReaderFrame.style.display = "block";
+          noteResourceEmbed.style.display = "none";
+          mobilePdfFallback.style.display = "none";
+          noteReaderFrame.src = "about:blank";
+          noteReaderFrame.srcdoc = "";
+          noteResourceEmbed.removeAttribute("data");
+          noteResourceEmbed.type = "application/pdf";
+          setResourceLinks(null);
+        }
+        function openNoteById(noteId) {
+          const note = findNoteById(noteId);
+          if (!note) return;
+          noteModalTitle.textContent = note.title;
+          noteModalGrade.textContent = note.grade;
+          noteModalLesson.textContent = note.lesson;
+          resetResourceViewer();
+          if (note.filePath) {
+            const resourceUrl = encodeURI(note.filePath);
+            const lowerPath = note.filePath.toLowerCase();
+            setResourceLinks(resourceUrl, note.title);
+            printNoteBtn.style.display = "none";
+            if (lowerPath.endsWith(".pdf")) {
+              if (isMobilePdfViewerBlocked()) {
+                noteReaderFrame.style.display = "none";
+                noteResourceEmbed.style.display = "none";
+                mobilePdfFallback.style.display = "flex";
+              } else {
+                noteReaderFrame.style.display = "none";
+                mobilePdfFallback.style.display = "none";
+                noteResourceEmbed.style.display = "block";
+                noteResourceEmbed.type = "application/pdf";
+                noteResourceEmbed.data = resourceUrl;
+              }
+            } else {
+              noteResourceEmbed.style.display = "none";
+              mobilePdfFallback.style.display = "none";
+              noteReaderFrame.style.display = "block";
+              noteReaderFrame.src = resourceUrl;
+            }
+          } else {
+            printNoteBtn.style.display = "inline-flex";
+            noteReaderFrame.style.display = "block";
+            noteReaderFrame.removeAttribute("src");
+            noteReaderFrame.srcdoc = buildReaderDocument(note);
+          }
+          noteModal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        }
+        function closeNoteModal() {
+          noteModal.style.display = "none";
+          resetResourceViewer();
+          document.body.style.overflow = "";
+        }
+        function playVideoFullscreen(videoId, startSeconds, endSeconds) {
+          if (!videoId) return;
+          startSeconds = startSeconds || 0;
+          endSeconds = endSeconds || 0;
+          var params = "?autoplay=1&rel=0";
+          if (startSeconds > 0 || endSeconds > 0) {
+            params = "?";
+            if (startSeconds > 0) params += "start=" + startSeconds + "&";
+            if (endSeconds > 0) params += "end=" + endSeconds + "&";
+            params += "autoplay=1&rel=0";
+          }
+          youtubeIframe.src =
+            "https://www.youtube.com/embed/" + videoId + params;
+          fullscreenOverlay.style.display = "flex";
+          if (fullscreenOverlay.requestFullscreen)
+            fullscreenOverlay.requestFullscreen().catch(function () {});
+        }
+        function exitFullscreenAndHide() {
+          if (document.fullscreenElement)
+            document.exitFullscreen().catch(function () {});
+          youtubeIframe.src = "";
+          fullscreenOverlay.style.display = "none";
+        }
+        function onFullscreenChange() {
+          if (!document.fullscreenElement) {
+            youtubeIframe.src = "";
+            fullscreenOverlay.style.display = "none";
+          }
+        }
+        function handleGradeChange() {
+          currentGrade = gradeSelect.value;
+          applyGradeClass();
+          populateLessons(currentGrade);
+          currentLessonKey = lessonSelect.value;
+          populateTopics(currentGrade, currentLessonKey);
+          currentTopic = topicSelect.value;
+          renderVideos();
+          renderNotes();
+        }
+        function handleLessonChange() {
+          currentLessonKey = lessonSelect.value;
+          populateTopics(currentGrade, currentLessonKey);
+          currentTopic = topicSelect.value;
+          renderVideos();
+          renderNotes();
+        }
+        function handleTopicChange() {
+          currentTopic = topicSelect.value;
+          renderVideos();
+        }
+        function initTheme() {
+          const savedTheme = localStorage.getItem("theme-preference");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
+          htmlElement.classList.toggle("dark-mode", isDark);
+          themeToggleBtn.innerHTML = isDark
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+        }
+        function toggleTheme() {
+          const isDark = htmlElement.classList.toggle("dark-mode");
+          localStorage.setItem("theme-preference", isDark ? "dark" : "light");
+          themeToggleBtn.innerHTML = isDark
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+        }
+        themeToggleBtn.addEventListener("click", toggleTheme);
+        closeBtn.addEventListener("click", exitFullscreenAndHide);
+        closeNoteModalBtn.addEventListener("click", closeNoteModal);
+        printNoteBtn.addEventListener("click", function () {
+          const noteWindow = noteReaderFrame.contentWindow;
+          if (noteWindow) noteWindow.print();
+        });
+        document.addEventListener("fullscreenchange", onFullscreenChange);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
             if (fullscreenOverlay.style.display === "flex")
               setTimeout(function () {
                 if (!document.fullscreenElement) exitFullscreenAndHide();
